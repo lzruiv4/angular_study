@@ -1,16 +1,18 @@
 <nz-header>
-  <div class="logo"></div>
-  <a> Home </a>
-  <a nz-dropdown [nzDropdownMenu]="menu">
-    Test
-    <nz-icon nzType="down" />
-  </a>
-  <nz-dropdown-menu #menu="nzDropdownMenu">
-    <ul nz-menu>
-      <li nz-menu-item>1st menu item</li>
-      <li nz-menu-item>2nd menu item</li>
-      <li nz-menu-divider></li>
-      <li nz-menu-item nzDisabled>3rd menu item（disabled）</li>
-    </ul>
-  </nz-dropdown-menu>
+  <img class="logo" src="/static/logo.png" alt="LOGO"/>
+
+  <ng-container *ngFor="let item of menuList">
+    <a nz-dropdown [nzDropdownMenu]="menu">
+      {{ item.name }}
+    </a>
+
+    <nz-icon nzType="down"/>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu>
+        <li nz-menu-item *ngFor="let inDropDownItem of item.list">
+          {{ inDropDownItem.name }}
+        </li>
+      </ul>
+    </nz-dropdown-menu>
+  </ng-container>
 </nz-header>
