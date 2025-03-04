@@ -1,3 +1,16 @@
-<p>
-  header works!
-</p>
+<nz-header>
+  <div class="logo"></div>
+  <a> Home </a>
+  <a nz-dropdown [nzDropdownMenu]="menu">
+    Test
+    <nz-icon nzType="down" />
+  </a>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item>1st menu item</li>
+      <li nz-menu-item>2nd menu item</li>
+      <li nz-menu-divider></li>
+      <li nz-menu-item nzDisabled>3rd menu item（disabled）</li>
+    </ul>
+  </nz-dropdown-menu>
+</nz-header>
