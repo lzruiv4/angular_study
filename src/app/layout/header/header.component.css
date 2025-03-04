@@ -17,4 +17,6 @@ nz-breadcrumb {
 a {
   padding: 10px;
   color: antiquewhite;
+  font-size: large;
+  font-weight: bold;
 }

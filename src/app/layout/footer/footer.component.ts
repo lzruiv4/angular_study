@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NzFooterComponent } from 'ng-zorro-antd/layout';
-
+// import { NzFooterComponent } from 'ng-zorro-antd/layout';
 @Component({
   selector: 'app-footer',
-  imports: [NzFooterComponent],
+  // imports: [NzFooterComponent],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
 })

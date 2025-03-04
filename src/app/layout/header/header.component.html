@@ -1,18 +1,26 @@
-<nz-header>
-  <img class="logo" src="/static/logo.png" alt="LOGO"/>
+<img class="logo" src="/static/logo.png" alt="LOGO" />
 
-  <ng-container *ngFor="let item of menuList">
-    <a nz-dropdown [nzDropdownMenu]="menu">
-      {{ item.name }}
-    </a>
+<ng-template *ngFor="let item of menuList">
+  <a
+    nz-dropdown
+    [nzDropdownMenu]="menu"
+    *ngIf="item.lists else showTemplate"
+  >
+    {{ item.name }}
+    <span>
+      <nz-icon nzType="caret-down" nzTheme="outline" />
+    </span>
+  </a>
 
-    <nz-icon nzType="down"/>
-    <nz-dropdown-menu #menu="nzDropdownMenu">
-      <ul nz-menu>
-        <li nz-menu-item *ngFor="let inDropDownItem of item.list">
-          {{ inDropDownItem.name }}
-        </li>
-      </ul>
-    </nz-dropdown-menu>
-  </ng-container>
-</nz-header>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item *ngFor="let subItem of item.lists">
+        {{ subItem.name || "No Name" }}
+      </li>
+    </ul>
+  </nz-dropdown-menu>
+
+  <ng-template #showTemplate>
+    <a>{{ item.name }}</a>
+  </ng-template>
+</ng-template>

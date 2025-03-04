@@ -7,3 +7,10 @@ nz-content {
   padding: 24px;
   min-height: 280px;
 }
+
+nz-footer {
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

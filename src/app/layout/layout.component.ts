@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { NzContentComponent } from 'ng-zorro-antd/layout';
+import { NzContentComponent, NzFooterComponent, NzHeaderComponent } from 'ng-zorro-antd/layout';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
@@ -8,9 +7,11 @@ import { FooterComponent } from './footer/footer.component';
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css'],
-  imports: [HeaderComponent, NzContentComponent, FooterComponent],
+  imports: [HeaderComponent, NzHeaderComponent, NzContentComponent, FooterComponent, NzFooterComponent]
 })
 export class LayoutComponent implements OnInit {
+  footer : string = "Ant Design ©" + new Date().getFullYear() + " Implement By Lin"
+
   constructor() {}
 
   ngOnInit() {}
