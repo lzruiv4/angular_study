@@ -4,8 +4,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 // import { LicensesComponent } from '../core/produkt/licenses/licenses.component';
 
-@Component({
-  selector: 'app-layout',
+// angular 核心模块导入组件
+@Component({  // 装饰器定义组件元数据
+  selector: 'app-layout', // Component name
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css'],
   imports: [
