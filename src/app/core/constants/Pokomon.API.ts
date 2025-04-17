@@ -1,3 +1,3 @@
-export const PokemonMenge = 200;
-export const PokemonAPI =
-  'https://pokeapi.co/api/v2/pokemon?limit=' + PokemonMenge;
+export const POKEMON_AMOUNT = 10;
+export const POKEMON_API =
+  'https://pokeapi.co/api/v2/pokemon?limit=' + POKEMON_AMOUNT;

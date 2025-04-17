@@ -14,7 +14,6 @@ import { FooterComponent } from './footer/footer.component';
     NzHeaderComponent,
     FooterComponent,
     NzFooterComponent,
-    // LicensesComponent,
   ],
 })
 export class LayoutComponent implements OnInit {
