@@ -1,7 +1,7 @@
 <h2>Personenliste</h2>
 <ul>
   <li *ngFor="let pokemon of pokemons">
-    <!-- <img :src="pokemon.url.image" alt="pokemon image" /> -->
-    <a class="pname">{{ pokemon.name.toUpperCase() }}</a>
+    <h2>{{ pokemon.name.toUpperCase() }}</h2>
+    <img [src]="pokemon.image" alt="pokemon image" />
   </li>
 </ul>
