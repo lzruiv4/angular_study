@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
-interface MenuInfo {
+interface menuInfo {
   name: string;
-  lists?: MenuInfo[]; // Melden hier Fehler, falls keinen List angegeben ist.
+  lists?: menuInfo[]; // Melden hier Fehler, falls keinen List angegeben ist.
 }
 
 @Component({
@@ -15,24 +15,13 @@ interface MenuInfo {
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  menuList: MenuInfo[] = [
+  menuList: menuInfo[] = [
     {
-      name: "Home"
+      name: 'Home',
     },
     {
-      name: "Test1",
-      lists: [
-        {
-          name: "Test1-1"
-        },
-        {
-          name: "Test1-2"
-        },
-        {
-          name: "Test1-3"
-        }
-      ]
-    }
+      name: 'Car',
+    },
   ];
 
   constructor() {}
