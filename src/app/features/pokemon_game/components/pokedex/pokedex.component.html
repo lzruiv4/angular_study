@@ -1,33 +1,33 @@
-<!-- <h2>Personenliste</h2>
-<ul>
-  <li *ngFor="let pokemon of pokemons">
-    <h2>{{ pokemon.name.toUpperCase() }}</h2>
-    <img [src]="pokemon.image" alt="pokemon image" />
-  </li>
-</ul> -->
-
-<nz-table
-  #basicTable
-  [nzData]="pokemons"
-  [nzPageSize]="10"
-  [nzShowPagination]="true"
-  [nzFrontPagination]="true"
-  (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
->
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Image</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (pokemon of basicTable.data; track pokemon) {
-    <tr>
-      <td>{{ pokemon.name }}</td>
-      <td>
-        <img class="logo" [src]="pokemon.image" alt="LOGO" />
-      </td>
-    </tr>
-    }
-  </tbody>
-</nz-table>
+<div class="pokedex-container">
+  <div class="pokedex">
+    <nz-table
+      #basicTable
+      [nzData]="pokemons"
+      [nzPageSize]="10"
+      [nzShowPagination]="true"
+      [nzFrontPagination]="true"
+      (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+    >
+      <thead>
+        <tr>
+          <th [nzWidth]="'30%'" class="header-font-in-table">Image</th>
+          <th [nzWidth]="'70%'" class="header-font-in-table">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (pokemon of basicTable.data; track pokemon) {
+        <tr class="name-image">
+          <td>
+            <img class="image-in-list" [src]="pokemon.image" alt="LOGO" />
+          </td>
+          <td>{{ pokemon.name.toUpperCase() }}</td>
+        </tr>
+        }
+      </tbody>
+    </nz-table>
+  </div>
+  <div class="pokeball-div">
+    <img src="/static/poke.png" alt="LOGO" class="pokeball" />
+    <!-- <img [src]="imagePath$ | async" *ngIf="imagePath$ | async" /> -->
+  </div>
+</div>

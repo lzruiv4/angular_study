@@ -3,7 +3,6 @@ import { IPokemon } from '../../../../shared/models/IPokemen.model';
 import { CommonModule } from '@angular/common';
 import { PokemonService } from '../../services/pokemon.service';
 import { NzTableModule } from 'ng-zorro-antd/table';
-import { HttpParams } from '@angular/common/http';
 
 @Component({
   standalone: true, // After angular 17 can one use this. But module is not used.
@@ -16,10 +15,6 @@ export class PokedexComponent implements OnInit {
   pokemons: IPokemon[] = [];
 
   pokemonsInList: IPokemon[] = [];
-  // loading = true;
-  // total = 1;
-  // pageSize = 10;
-  // pageIndex = 1;
 
   constructor(private pokemonService: PokemonService) {}
   ngOnInit(): void {
@@ -31,3 +26,7 @@ export class PokedexComponent implements OnInit {
     this.pokemonsInList = [...data];
   }
 }
+function createSelector(selectAllPokemons: any, selectRouteQueryName: any, arg2: (pokemons: any, name: any) => any) {
+  throw new Error('Function not implemented.');
+}
+
