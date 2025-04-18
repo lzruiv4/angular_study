@@ -5,12 +5,12 @@ import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
   standalone: true, // After angular 17 can one use this. But module is not used.
-  selector: 'app-pokemons',
+  selector: 'app-pokedex',
   imports: [CommonModule],
-  templateUrl: './pokemons.component.html',
-  styleUrl: './pokemons.component.css',
+  templateUrl: './pokedex.component.html',
+  styleUrl: './pokedex.component.css',
 })
-export class PokemonsComponent implements OnInit {
+export class PokedexComponent implements OnInit {
   pokemons: IPokemon[] = [];
   constructor(private pokemonService: PokemonService) {}
   ngOnInit(): void {

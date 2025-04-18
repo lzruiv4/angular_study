@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
       name: 'Home',
     },
     {
-      name: 'Car',
+      name: 'Pokemon',
     },
   ];
 

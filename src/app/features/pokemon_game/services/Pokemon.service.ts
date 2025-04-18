@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, forkJoin, map, Observable, of, switchMap } from 'rxjs';
 import { IPokemon, IPokemonDTO } from '../../../shared/models/IPokemen.model';
-import { POKEMON_API } from '../../../core/constants/Pokomon.api';
+import { POKEMON_API } from '../../../core/constants/Pokomon.API';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {
