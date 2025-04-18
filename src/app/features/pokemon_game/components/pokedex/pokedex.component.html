@@ -1,7 +1,33 @@
-<h2>Personenliste</h2>
+<!-- <h2>Personenliste</h2>
 <ul>
   <li *ngFor="let pokemon of pokemons">
     <h2>{{ pokemon.name.toUpperCase() }}</h2>
     <img [src]="pokemon.image" alt="pokemon image" />
   </li>
-</ul>
+</ul> -->
+
+<nz-table
+  #basicTable
+  [nzData]="pokemons"
+  [nzPageSize]="10"
+  [nzShowPagination]="true"
+  [nzFrontPagination]="true"
+  (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (pokemon of basicTable.data; track pokemon) {
+    <tr>
+      <td>{{ pokemon.name }}</td>
+      <td>
+        <img class="logo" [src]="pokemon.image" alt="LOGO" />
+      </td>
+    </tr>
+    }
+  </tbody>
+</nz-table>
