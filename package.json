@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:angular_first": "node dist/angular_first/server/server.mjs"
+    "serve:ssr:angular_first": "node dist/angular_first/server/server.mjs",
+    "db": "npx json-server --watch db/db.json --port 9009"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,7 @@
     "@angular/router": "^19.2.0",
     "@angular/ssr": "^19.2.0",
     "express": "^4.18.2",
+    "json-server": "^1.0.0-beta.3",
     "ng-zorro-antd": "^19.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
