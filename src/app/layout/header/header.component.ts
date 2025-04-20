@@ -1,28 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-
-interface menuInfo {
-  name: string;
-  lists?: menuInfo[]; // Melden hier Fehler, falls keinen List angegeben ist.
-}
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NzHeaderComponent } from 'ng-zorro-antd/layout';
+import { HEADER_LIST } from '../../core/constants/PageSetting';
 
 @Component({
   selector: 'app-header',
-  imports: [NzDropDownModule, NzIconModule, CommonModule],
+  imports: [NzHeaderComponent, CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  menuList: menuInfo[] = [
-    {
-      name: 'Home',
-    },
-    {
-      name: 'Pokemon',
-    },
-  ];
+  menuList = HEADER_LIST;
 
   constructor() {}
 

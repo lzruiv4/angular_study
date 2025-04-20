@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { LayoutComponent } from './layout/layout.component';
-import { PokedexComponent } from './features/pokemon_game/components/pokedex/pokedex.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { RouterOutlet } from '@angular/router';
+import { WEB_NAME } from './core/constants/PageSetting';
 
 @Component({
   selector: 'app-root',
-  // imports: [RouterOutlet, NzButtonModule, LayoutComponent],
-  imports: [LayoutComponent, PokedexComponent],
+  imports: [HeaderComponent, FooterComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'angular_first';
+  // title = WEB_NAME;
 }

@@ -1,22 +1,13 @@
-<img class="logo" src="/static/logo.png" alt="LOGO" />
+<nz-header>
+  <img class="logo" src="/static/logo.png" alt="LOGO" />
 
-<ng-container *ngFor="let item of menuList">
-  <a nz-dropdown *ngIf="item.lists; else showTemplate1">
-    {{ item.name }}
-    <!-- <span>
-      <nz-icon nzType="caret-down" nzTheme="outline" />
-    </span> -->
-  </a>
-
-  <!-- <nz-dropdown-menu #dropDownMenu1="nzDropdownMenu">
-    <ul nz-menu nzSelectable>
-      <li nz-menu-item *ngFor="let subList of item.lists">
-        {{ subList.name }}
-      </li>
-    </ul>
-  </nz-dropdown-menu> -->
-
-  <ng-template #showTemplate1>
-    <a>{{ item.name }}</a>
-  </ng-template>
-</ng-container>
+  <nav>
+    <a
+      *ngFor="let item of menuList"
+      [routerLink]="item.path"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >{{ item.label }}</a
+    >
+  </nav>
+</nz-header>

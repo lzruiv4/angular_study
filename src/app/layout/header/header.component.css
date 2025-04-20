@@ -6,10 +6,6 @@
   float: left;
 }
 
-[nz-menu] {
-  line-height: 64px;
-}
-
 nz-breadcrumb {
   margin: 16px 0;
 }
@@ -19,4 +15,10 @@ a {
   color: antiquewhite;
   font-size: large;
   font-weight: bold;
+}
+
+nz-header {
+  /* position: fixed; */
+  top: 0;
+  width: 100%;
 }

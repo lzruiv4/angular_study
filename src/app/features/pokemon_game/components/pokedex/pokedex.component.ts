@@ -26,7 +26,3 @@ export class PokedexComponent implements OnInit {
     this.pokemonsInList = [...data];
   }
 }
-function createSelector(selectAllPokemons: any, selectRouteQueryName: any, arg2: (pokemons: any, name: any) => any) {
-  throw new Error('Function not implemented.');
-}
-
