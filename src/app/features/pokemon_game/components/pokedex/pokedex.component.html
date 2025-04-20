@@ -9,18 +9,18 @@
       (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
     >
       <thead>
-        <tr>
-          <th [nzWidth]="'30%'" class="header-font-in-table">Image</th>
-          <th [nzWidth]="'70%'" class="header-font-in-table">Name</th>
+        <tr class="left-header">
+          <th [nzWidth]="'40%'" style="text-align: center">Image</th>
+          <th [nzWidth]="'60%'" style="text-align: center">Name</th>
         </tr>
       </thead>
       <tbody>
         @for (pokemon of basicTable.data; track pokemon) {
-        <tr class="name-image">
-          <td>
-            <img class="image-in-list" [src]="pokemon.image" alt="LOGO" />
+        <tr class="left-image-name-container">
+          <td class="left-image">
+            <img class="left-img" [src]="pokemon.image" alt="LOGO" />
           </td>
-          <td>{{ pokemon.name.toUpperCase() }}</td>
+          <td class="left-name">{{ pokemon.name.toUpperCase() }}</td>
         </tr>
         }
       </tbody>
