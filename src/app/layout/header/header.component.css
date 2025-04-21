@@ -4,7 +4,6 @@
   margin: 4px;
   float: left;
 }
-
 a {
   padding: 10px;
   color: antiquewhite;
@@ -17,7 +16,7 @@ a.active {
   border-radius: 10px;
   transform: scale(1.2);
   padding: 10px;
-  font-size: 50px;
+  font-size: 40px;
 }
 
 a:hover {

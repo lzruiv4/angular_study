@@ -1,6 +1,7 @@
 export const HEADER_LIST = [
   { label: 'Home', path: '/home' },
   { label: 'Pokédex', path: '/pokedex' },
+  { label: 'Poké Lotte', path: '/poke-lotto' },
 ];
 
 export const WEB_NAME = 'ANGULAR';
