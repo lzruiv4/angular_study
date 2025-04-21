@@ -1,0 +1,63 @@
+.lotto-container {
+  display: flex;
+  /* max-width: 100%; */
+  min-height: 100vh;
+  gap: 20px;
+}
+
+.ball-coin-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  margin: 20px;
+  gap: 20px;
+  border-right: 1px solid #ccc;
+}
+
+.lotto-ball,
+.pokemon-coin-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.poke-ball {
+  max-width: 80%;
+  height: 80%;
+  animation: scaleAnimation 3s ease-in-out infinite;
+}
+
+@keyframes scaleAnimation {
+  0%,
+  100% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.game-info {
+  color: rgb(0, 52, 221);
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0 0 2px rgb(81, 81, 81);
+}
+
+.pokemons-history {
+  flex: 2;
+  margin: 20px;
+  padding-right: 20px;
+}
+
+[nz-button] {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  width: 200px;
+  height: 70px;
+}

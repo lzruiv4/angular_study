@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { PokedexComponent } from './features/pokemon_game/components/pokedex/pokedex.component';
 import { HomeComponent } from './layout/home/home.component';
-import { PokeLottoComponent } from './features/pokemon_game/components/poke.lotto/poke.lotto.component';
+import { PokeLottoComponent } from './features/pokemon_game/components/poke-lotto/poke-lotto.component';
 // import { UserComponent } from './features/user/user.component';
 
 export const routes: Routes = [

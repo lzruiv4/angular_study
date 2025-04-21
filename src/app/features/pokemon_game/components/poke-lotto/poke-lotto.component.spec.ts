@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PokeLottoComponent } from './poke.lotto.component';
+import { PokeLottoComponent } from './poke-lotto.component';
 
 describe('PokeLottoComponent', () => {
   let component: PokeLottoComponent;
@@ -8,9 +8,8 @@ describe('PokeLottoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PokeLottoComponent]
-    })
-    .compileComponents();
+      imports: [PokeLottoComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PokeLottoComponent);
     component = fixture.componentInstance;

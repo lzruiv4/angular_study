@@ -1,0 +1,53 @@
+<div class="lotto-container">
+  <div class="ball-coin-container">
+    <div class="lotto-ball">
+      <img src="/static/poke.png" alt="LOGO" class="poke-ball" />
+    </div>
+    <div class="pokemon-coin-container">
+      <a class="game-info">Coin: 1</a>
+      <div>
+        <button nz-button nzShape="round" nzType="primary" nzDanger>
+          Recharge
+        </button>
+        <button
+          nz-button
+          nzShape="round"
+          nzType="primary"
+          nzDanger
+          (click)="openRechargeHistory()"
+        >
+          Recharge History
+        </button>
+        <app-recharge-history />
+      </div>
+    </div>
+  </div>
+
+  <div class="pokemons-history">
+    <nz-table
+      #basicTable
+      [nzData]="pokemonRecords"
+      [nzPageSize]="9"
+      [nzShowPagination]="true"
+      [nzFrontPagination]="true"
+    >
+      <thead>
+        <tr class="lotto-table-header">
+          <th [nzWidth]="'40%'" style="text-align: center">Date</th>
+          <th [nzWidth]="'60%'" style="text-align: center">Pokemons</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (pokemonRecord of basicTable.data; track pokemonRecord) {
+        <tr class="lotto-date-image-container">
+          <td class="lotto-date">{{ pokemonRecord.catch_time }}</td>
+          <td class="lotto-images">
+            <img class="left-img" [src]="pokemonRecord.id" alt="LOGO" />
+          </td>
+        </tr>
+
+        }
+      </tbody>
+    </nz-table>
+  </div>
+</div>
