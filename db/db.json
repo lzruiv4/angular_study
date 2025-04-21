@@ -31,56 +31,7 @@
       "poke_id": "21",
       "catch_time": "14-04-2022 22:25:22",
       "user_id": "ad1",
-      "isDeleted": false
-    },
-    {
-      "id": "6678",
-      "poke_id": "28",
-      "catch_time": "14-04-2022 23:20:31",
-      "user_id": "ad1",
-      "isDeleted": false
-    },
-    {
-      "id": "afe6",
-      "poke_id": "151",
-      "catch_time": "14-04-2023 23:38:53",
-      "user_id": "ad1",
-      "isDeleted": false
-    },
-    {
-      "id": "98b4",
-      "poke_id": "136",
-      "catch_time": "14-04-2024 23:38:58",
-      "user_id": "ad1",
-      "isDeleted": false
-    },
-    {
-      "id": "0970",
-      "poke_id": "143",
-      "catch_time": "14-04-2024 23:39:02",
-      "user_id": "ad1",
-      "isDeleted": false
-    },
-    {
-      "id": "6c27",
-      "poke_id": "137",
-      "catch_time": "14-04-2023 23:39:05",
-      "user_id": "ad1",
-      "isDeleted": false
-    },
-    {
-      "id": "dd8d",
-      "poke_id": "105",
-      "catch_time": "14-04-2022 23:45:15",
-      "user_id": "ad1",
-      "isDeleted": false
-    },
-    {
-      "id": "acc9",
-      "poke_id": "53",
-      "catch_time": "15-04-2025 00:12:56",
-      "user_id": "ad1",
-      "isDeleted": false
+      "isRelease": false
     }
   ]
 }

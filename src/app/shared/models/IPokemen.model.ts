@@ -14,5 +14,5 @@ export interface IPokemonRecord {
   poke_id: string;
   catch_time: string;
   user_id: string;
-  isDeleted: boolean;
+  isRelease: boolean;
 }

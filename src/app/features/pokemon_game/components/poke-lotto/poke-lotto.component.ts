@@ -1,14 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { IPokemonRecord } from '../../../../shared/models/IPokemen.model';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { RechargeService } from '../../../user/service/recharge.service';
 import { RechargeHistoryComponent } from '../../../user/components/recharge-history/recharge-history.component';
 import { RechargeComponent } from '../../../user/components/recharge/recharge.component';
+import { PokemonRecordService } from '../../services/pokemon-record.service';
 
 @Component({
-  selector: 'app-poke.lotto',
+  selector: 'app-poke-lotto',
   imports: [
     CommonModule,
     NzTableModule,
@@ -19,18 +20,27 @@ import { RechargeComponent } from '../../../user/components/recharge/recharge.co
   templateUrl: './poke-lotto.component.html',
   styleUrl: './poke-lotto.component.css',
 })
-export class PokeLottoComponent {
+export class PokeLottoComponent implements OnInit {
   pokemonRecords: IPokemonRecord[] = [];
 
-  constructor(private rechargeService: RechargeService) {}
+  constructor(
+    private rechargeService: RechargeService,
+    private pokemonRecordService: PokemonRecordService
+  ) {}
+
+  ngOnInit(): void {
+    this.pokemonRecordService.getAllPokemonRecordsByCurrentUserId().subscribe();
+    this.pokemonRecordService.pokemonRecords$.subscribe(
+      (data) => (this.pokemonRecords = data)
+    );
+    console.log(this.pokemonRecords);
+  }
 
   openRechargeHistory(): void {
-    console.log('rr');
     this.rechargeService.triggerRechargeHistoryModal();
   }
 
   openRecharge(): void {
-    console.log('rr1111');
     this.rechargeService.triggerRechargeModal();
   }
 }

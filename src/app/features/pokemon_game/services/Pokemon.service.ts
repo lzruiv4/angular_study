@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, forkJoin, map, Observable, of, switchMap } from 'rxjs';
 import { IPokemon, IPokemonDTO } from '../../../shared/models/IPokemen.model';
-import { POKEMON_API } from '../../../core/constants/Pokomon.API';
+import { POKEMON_API } from '../../../core/constants/Pokomon-API';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {
@@ -14,7 +14,6 @@ export class PokemonService {
       switchMap((pokemonDto: IPokemonDTO[]) => {
         const requests = pokemonDto.map((pokemon) =>
           this.http.get<any>(pokemon.url).pipe(
-            // tap((data) => console.log(`Get the ${pokemon.url} data:`, data)),
             map((res) => {
               return {
                 id: res.id,

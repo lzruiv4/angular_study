@@ -37,6 +37,8 @@
       [nzPageSize]="9"
       [nzShowPagination]="true"
       [nzFrontPagination]="true"
+      [nzScroll]="{ x: '1000px' }"
+      [nzBordered]="true"
     >
       <thead>
         <tr class="lotto-table-header">
@@ -49,7 +51,7 @@
         <tr class="lotto-date-image-container">
           <td class="lotto-date">{{ pokemonRecord.catch_time }}</td>
           <td class="lotto-images">
-            <img class="left-img" [src]="pokemonRecord.id" alt="LOGO" />
+            <img class="right-img" [src]="pokemonRecord.catch_time" alt="LOGO" />
           </td>
         </tr>
 
