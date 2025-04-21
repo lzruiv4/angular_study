@@ -4,19 +4,20 @@
   margin: 4px;
   float: left;
 }
+
 a {
   padding: 10px;
   color: antiquewhite;
   font-size: 40px;
   font-weight: bold;
+  margin-right: 20px;
 }
 
 a.active {
-  background-color: #30e136;
   border-radius: 10px;
   transform: scale(1.2);
-  padding: 10px;
-  font-size: 40px;
+  font-size: 50px;
+  background-color: #30e136;
 }
 
 a:hover {

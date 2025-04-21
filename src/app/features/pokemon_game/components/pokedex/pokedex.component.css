@@ -57,7 +57,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* text-align: center; */
 }
 
 .pokeball {
@@ -69,7 +68,7 @@
   transform: scale(1.2);
 }
 
-.catch_ball {
+/* .catch_ball {
   animation: zoomInOut 3s infinite;
 }
 
@@ -107,14 +106,14 @@
 
 .dateStyle {
   flex: 1;
-  font-size: 25px; /* 设置文字大小 */
+  font-size: 25px;
   text-align: center;
   font-weight: bold;
   text-shadow: 0 0 2px rgb(61, 60, 60);
 }
 
 .element-table-container {
-  font-size: 30px; /* 设置文字大小 */
+  font-size: 30px;
   text-align: left;
   font-weight: bold;
   padding: 20px;
@@ -125,9 +124,8 @@
 
 .poke_image {
   width: 60px !important;
-  /* height: 70px !important; */
   margin: 10px;
   border-radius: 50%;
   object-fit: cover;
   transition: transform 0.2s;
-}
+} */
