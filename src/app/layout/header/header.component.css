@@ -6,11 +6,15 @@
 }
 
 a {
-  padding: 10px;
+  padding: 8px 16px;
   color: antiquewhite;
+  display: inline-block;
+  transition: all 0.3s ease;
+  transform-origin: center center;
   font-size: 40px;
   font-weight: bold;
-  margin-right: 20px;
+  margin: 10px;
+  margin-right: 30px;
 }
 
 a.active {
@@ -21,15 +25,16 @@ a.active {
 }
 
 a:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   border-radius: 10px;
+  font-size: 45px;
   background-color: rgb(253, 174, 3);
 }
 
 nz-header {
   /* position: fixed; */
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   top: 0;
   width: 100%;
