@@ -14,15 +14,22 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 export class PokedexComponent implements OnInit {
   pokemons: IPokemon[] = [];
 
-  pokemonsInList: IPokemon[] = [];
+  selectedPokemon: IPokemon = {
+    id: '',
+    name: '',
+    image: '',
+    biggerImage: '',
+  };
+
+  selectPokemon(pokemon: IPokemon): void {
+    this.selectedPokemon = pokemon;
+    console.log(this.selectedPokemon);
+  }
 
   constructor(private pokemonService: PokemonService) {}
   ngOnInit(): void {
     this.pokemonService.getPokemonDTOs().subscribe((data) => {
       this.pokemons = data;
     });
-  }
-  onCurrentPageDataChange(data: readonly IPokemon[]) {
-    this.pokemonsInList = [...data];
   }
 }

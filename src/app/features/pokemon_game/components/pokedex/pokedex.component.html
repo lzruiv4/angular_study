@@ -6,7 +6,6 @@
       [nzPageSize]="9"
       [nzShowPagination]="true"
       [nzFrontPagination]="true"
-      (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
     >
       <thead>
         <tr class="left-header">
@@ -16,18 +15,27 @@
       </thead>
       <tbody>
         @for (pokemon of basicTable.data; track pokemon) {
-        <tr class="left-image-name-container">
+
+        <tr class="left-image-name-container" (click)="selectPokemon(pokemon)">
           <td class="left-image">
             <img class="left-img" [src]="pokemon.image" alt="LOGO" />
           </td>
           <td class="left-name">{{ pokemon.name.toUpperCase() }}</td>
         </tr>
+
         }
       </tbody>
     </nz-table>
   </div>
   <div class="pokeball-div">
-    <img src="/static/poke.png" alt="LOGO" class="pokeball" />
-    <!-- <img [src]="imagePath$ | async" *ngIf="imagePath$ | async" /> -->
+    <img
+      [src]="
+        selectedPokemon.biggerImage
+          ? selectedPokemon.biggerImage
+          : '/static/poke.png'
+      "
+      alt="LOGO"
+      class="pokeball"
+    />
   </div>
 </div>
