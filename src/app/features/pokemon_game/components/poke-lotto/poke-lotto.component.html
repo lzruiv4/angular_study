@@ -6,9 +6,16 @@
     <div class="pokemon-coin-container">
       <a class="game-info">Coin: 1</a>
       <div>
-        <button nz-button nzShape="round" nzType="primary" nzDanger>
+        <button
+          nz-button
+          nzShape="round"
+          nzType="primary"
+          nzDanger
+          (click)="openRecharge()"
+        >
           Recharge
         </button>
+        <app-recharge />
         <button
           nz-button
           nzShape="round"

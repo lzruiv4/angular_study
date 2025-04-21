@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NzModalModule } from 'ng-zorro-antd/modal';
-import { RechargeHistoryService } from '../../service/recharge.history.service';
 import { NzTimelineModule } from 'ng-zorro-antd/timeline';
+import { RechargeService } from '../../service/recharge.service';
 
 @Component({
   selector: 'app-recharge-history',
@@ -10,23 +10,23 @@ import { NzTimelineModule } from 'ng-zorro-antd/timeline';
   styleUrl: './recharge-history.component.css',
 })
 export class RechargeHistoryComponent implements OnInit {
-  isVisible = false;
+  isChargeHistoryVisible = false;
 
-  constructor(private rechargeHistoryService: RechargeHistoryService) {}
+  constructor(private rechargeService: RechargeService) {}
 
   ngOnInit(): void {
-    this.rechargeHistoryService.showModal$.subscribe(() => {
-      this.isVisible = true;
+    this.rechargeService.showRechargeHistoryModal$.subscribe(() => {
+      this.isChargeHistoryVisible = true;
     });
   }
 
   handleOk(): void {
     // console.log('Button ok clicked!');
-    this.isVisible = false;
+    this.isChargeHistoryVisible = false;
   }
 
   handleCancel(): void {
     // console.log('Button cancel clicked!');
-    this.isVisible = false;
+    this.isChargeHistoryVisible = false;
   }
 }

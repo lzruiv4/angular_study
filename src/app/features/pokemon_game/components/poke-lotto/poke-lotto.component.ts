@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { IPokemonRecord } from '../../../../shared/models/IPokemen.model';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { RechargeHistoryService } from '../../../user/service/recharge.history.service';
+import { RechargeService } from '../../../user/service/recharge.service';
 import { RechargeHistoryComponent } from '../../../user/components/recharge-history/recharge-history.component';
+import { RechargeComponent } from '../../../user/components/recharge/recharge.component';
 
 @Component({
   selector: 'app-poke.lotto',
@@ -13,6 +14,7 @@ import { RechargeHistoryComponent } from '../../../user/components/recharge-hist
     NzTableModule,
     NzButtonModule,
     RechargeHistoryComponent,
+    RechargeComponent,
   ],
   templateUrl: './poke-lotto.component.html',
   styleUrl: './poke-lotto.component.css',
@@ -20,9 +22,15 @@ import { RechargeHistoryComponent } from '../../../user/components/recharge-hist
 export class PokeLottoComponent {
   pokemonRecords: IPokemonRecord[] = [];
 
-  constructor(private rechargeHistoryService: RechargeHistoryService) {}
+  constructor(private rechargeService: RechargeService) {}
 
   openRechargeHistory(): void {
-    this.rechargeHistoryService.triggerModal();
+    console.log('rr');
+    this.rechargeService.triggerRechargeHistoryModal();
+  }
+
+  openRecharge(): void {
+    console.log('rr1111');
+    this.rechargeService.triggerRechargeModal();
   }
 }

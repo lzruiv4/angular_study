@@ -1,0 +1,18 @@
+<nz-modal
+  [(nzVisible)]="isRechargeVisible"
+  nzTitle="Recharge pokemon coin"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <nz-select
+      ngModel="Recharge quantity"
+      [nzDropdownMatchSelectWidth]="true"
+      nzPlaceHolder="Select one of [1, 5, 10]"
+    >
+      <nz-option nzValue="1" nzLabel="1 pokemon coin"></nz-option>
+      <nz-option nzValue="5" nzLabel="5 pokemon coin"></nz-option>
+      <nz-option nzValue="10" nzLabel="10 pokemon coin"></nz-option>
+    </nz-select>
+  </ng-container>
+</nz-modal>
