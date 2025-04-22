@@ -1,19 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, forkJoin, map, Observable, of, switchMap } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  forkJoin,
+  map,
+  Observable,
+  of,
+  switchMap,
+  tap,
+} from 'rxjs';
 import { IPokemon, IPokemonDTO } from '../../../shared/models/IPokemen.model';
 import { POKEMON_API } from '../../../core/constants/Pokomon-API';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {
-  constructor(private http: HttpClient) {}
+  private pokemonsSubject = new BehaviorSubject<IPokemon[]>([]);
+  pokemons$: Observable<IPokemon[]> = this.pokemonsSubject.asObservable();
+
+  constructor(private pokemonHttp: HttpClient) {}
 
   getPokemonDTOs(): Observable<IPokemon[]> {
-    return this.http.get<{ results: IPokemonDTO[] }>(POKEMON_API).pipe(
+    return this.pokemonHttp.get<{ results: IPokemonDTO[] }>(POKEMON_API).pipe(
       map((response) => response.results),
       switchMap((pokemonDto: IPokemonDTO[]) => {
         const requests = pokemonDto.map((pokemon) =>
-          this.http.get<any>(pokemon.url).pipe(
+          this.pokemonHttp.get<any>(pokemon.url).pipe(
             map((res) => {
               return {
                 id: res.id,
@@ -31,7 +43,8 @@ export class PokemonService {
         );
         return forkJoin(requests);
       }),
-      map((results) => results.filter((p) => p !== null))
+      map((results) => results.filter((p) => p !== null)),
+      tap((pokemon) => this.pokemonsSubject.next(pokemon))
     );
   }
 }

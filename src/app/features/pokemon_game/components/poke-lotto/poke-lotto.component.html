@@ -47,14 +47,13 @@
         </tr>
       </thead>
       <tbody>
-        @for (pokemonRecord of basicTable.data; track pokemonRecord) {
+        @for (pokemonRecord of basicTable.data; track pokemonRecord.id) {
         <tr class="lotto-date-image-container">
           <td class="lotto-date">{{ pokemonRecord.catch_time }}</td>
           <td class="lotto-images">
-            <img class="right-img" [src]="pokemonRecord.catch_time" alt="LOGO" />
+            <img class="right-img" [src]="pokemonRecord.image" alt="LOGO" />
           </td>
         </tr>
-
         }
       </tbody>
     </nz-table>

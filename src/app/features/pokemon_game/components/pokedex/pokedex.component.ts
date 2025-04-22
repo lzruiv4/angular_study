@@ -23,13 +23,12 @@ export class PokedexComponent implements OnInit {
 
   selectPokemon(pokemon: IPokemon): void {
     this.selectedPokemon = pokemon;
-    console.log(this.selectedPokemon);
+    // console.log(this.selectedPokemon);
   }
 
   constructor(private pokemonService: PokemonService) {}
   ngOnInit(): void {
-    this.pokemonService.getPokemonDTOs().subscribe((data) => {
-      this.pokemons = data;
-    });
+    this.pokemonService.getPokemonDTOs().subscribe();
+    this.pokemonService.pokemons$.subscribe((data) => (this.pokemons = data))
   }
 }

@@ -55,12 +55,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 80%;
-  max-height: auto;
+  max-width: 70%;
+  max-height: 70%;
 }
 
 .pokeball {
-  width: 60%;
+  width: 60vw;
+  height: 70vh;
 }
 
 .pokeball:hover {

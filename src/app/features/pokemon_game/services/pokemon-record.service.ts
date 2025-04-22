@@ -1,9 +1,9 @@
 // person.service.ts
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, Observable, tap } from 'rxjs';
 import { IPokemonRecord } from '../../../shared/models/IPokemen.model';
-import { HttpClient } from '@angular/common/http';
-import { PokemonRecordsAPIByUserId } from '../../../core/constants/Pokomon-API';
+import { PokemonService } from './pokemon.service';
+import { PokemonRecordDTOService } from './pokemon-record-dto.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +13,36 @@ export class PokemonRecordService {
   pokemonRecords$: Observable<IPokemonRecord[]> =
     this.pokemonRecordsSubject.asObservable();
 
-  constructor(private pokemonRecordHttp: HttpClient) {}
+  constructor(
+    private pokemonRecordDTOService: PokemonRecordDTOService,
+    private pokemonService: PokemonService
+  ) {
+    this.pokemonRecordDTOService
+      .getAllPokemonRecordDTOsByCurrentUserId()
+      .subscribe();
+    this.pokemonService.getPokemonDTOs().subscribe();
+  }
 
   getAllPokemonRecordsByCurrentUserId(): Observable<IPokemonRecord[]> {
-    return this.pokemonRecordHttp
-      .get<IPokemonRecord[]>(PokemonRecordsAPIByUserId)
-      .pipe(tap((data) => this.pokemonRecordsSubject.next(data)));
+    return combineLatest([
+      this.pokemonRecordDTOService.pokemonRecordDTOs$,
+      this.pokemonService.pokemons$,
+    ]).pipe(
+      map(([pokemonRecordDTOs, pokemons]) =>
+        pokemonRecordDTOs.map((pokemonRecordDTO) => {
+          const imageUrl = pokemons.find(
+            (pokemon) => pokemon.id.toString() === pokemonRecordDTO.poke_id
+          )?.image;
+          return {
+            id: pokemonRecordDTO.id,
+            poke_id: pokemonRecordDTO.poke_id,
+            catch_time: pokemonRecordDTO.catch_time,
+            image: imageUrl,
+            isRelease: pokemonRecordDTO.isRelease,
+          } as IPokemonRecord;
+        })
+      ),
+      tap((record) => this.pokemonRecordsSubject.next(record))
+    );
   }
 }

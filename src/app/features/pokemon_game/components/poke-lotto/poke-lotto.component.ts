@@ -29,11 +29,9 @@ export class PokeLottoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.pokemonRecordService.getAllPokemonRecordsByCurrentUserId().subscribe();
-    this.pokemonRecordService.pokemonRecords$.subscribe(
-      (data) => (this.pokemonRecords = data)
-    );
-    console.log(this.pokemonRecords);
+    this.pokemonRecordService
+      .getAllPokemonRecordsByCurrentUserId()
+      .subscribe((data) => (this.pokemonRecords = data));
   }
 
   openRechargeHistory(): void {

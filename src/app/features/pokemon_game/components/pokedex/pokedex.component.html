@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        @for (pokemon of basicTable.data; track pokemon) {
+        @for (pokemon of basicTable.data; track pokemon.id) {
 
         <tr class="left-image-name-container" (click)="selectPokemon(pokemon)">
           <td class="left-image">
