@@ -60,8 +60,8 @@
 }
 
 .pokeball {
-  width: 60vw;
-  height: 70vh;
+  width: 60%;
+  height: 60%;
 }
 
 .pokeball:hover {
