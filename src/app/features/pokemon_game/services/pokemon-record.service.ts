@@ -1,4 +1,3 @@
-// person.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatest, map, Observable, tap } from 'rxjs';
 import { IPokemonRecord } from '../../../shared/models/IPokemen.model';

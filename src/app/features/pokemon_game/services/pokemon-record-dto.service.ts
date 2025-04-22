@@ -1,4 +1,3 @@
-// person.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { IPokemonRecordDTO } from '../../../shared/models/IPokemen.model';

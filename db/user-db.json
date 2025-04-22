@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": "ad1",
+      "firstname": "Z",
+      "lastname": "L",
+      "poke_coin": 0
+    },
+    {
+      "id": "user2",
+      "firstname": "Z",
+      "lastname": "Chen",
+      "poke_coin": 10
+    }
+  ],
+  "recharges": [
+    {
+      "id": "11",
+      "recharge_time": "14-04-2022 22:25:22",
+      "user_id": "ad1",
+      "recharge_amount": 1
+    }
+  ]
+}
