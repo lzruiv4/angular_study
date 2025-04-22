@@ -40,14 +40,14 @@ export class RechargeService {
   rechargeRecords$: Observable<IRechargeRecord[] | null> =
     this.rechargeRecordsSubject.asObservable();
 
-  constructor(private chargeRecordsHttp: HttpClient) {}
+  constructor(private rechargeRecordsHttp: HttpClient) {}
 
   createNewRechargeRecord(
     newRechargeRecord: IRechargeRecord
   ): Observable<IRechargeRecord> {
     const newRechargeRecordDTO: IRechargeRecordDTO =
       mapModelToDto(newRechargeRecord);
-    return this.chargeRecordsHttp
+    return this.rechargeRecordsHttp
       .post<IRechargeRecordDTO>(
         RECHARGE_RECORD_API + '?user_id=' + currentUserId,
         newRechargeRecordDTO
@@ -64,5 +64,20 @@ export class RechargeService {
           return throwError(() => err);
         })
       );
+  }
+
+  getAllRechargeRecordsByUserId() {
+    this.rechargeRecordsHttp
+      .get<IRechargeRecordDTO[]>(
+        RECHARGE_RECORD_API + '?user_id=' + currentUserId
+      )
+      .pipe(
+        tap((records) => this.rechargeRecordsSubject.next(records)),
+        catchError((error) => {
+          console.error('', error);
+          throw error;
+        })
+      )
+      .subscribe();
   }
 }

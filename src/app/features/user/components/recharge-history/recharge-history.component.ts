@@ -2,15 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 import { RechargeService } from '../../service/recharge.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-recharge-history',
-  imports: [NzModalModule, NzTimelineModule],
+  imports: [CommonModule, NzModalModule, NzTimelineModule],
   templateUrl: './recharge-history.component.html',
   styleUrl: './recharge-history.component.css',
 })
 export class RechargeHistoryComponent implements OnInit {
   isChargeHistoryVisible = false;
+
+  get rechargeRecords$() {
+    return this.rechargeService.rechargeRecords$;
+  }
 
   constructor(private rechargeService: RechargeService) {}
 
@@ -18,6 +23,7 @@ export class RechargeHistoryComponent implements OnInit {
     this.rechargeService.showRechargeHistoryModal$.subscribe(() => {
       this.isChargeHistoryVisible = true;
     });
+    this.rechargeService.getAllRechargeRecordsByUserId();
   }
 
   handleOk(): void {
