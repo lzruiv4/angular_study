@@ -11,7 +11,7 @@ export interface IPokemon {
 }
 
 export interface IPokemonRecordDTO {
-  id: string;
+  id?: string;
   poke_id: string;
   catch_time: string;
   user_id: string;

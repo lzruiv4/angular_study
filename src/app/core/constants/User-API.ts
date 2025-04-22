@@ -1,5 +1,5 @@
-// export const testUserId = '8778';
-export const testUserId = 'ad1';
+export const testUserId = 'user2';
+// export const testUserId = 'ad1';
 
 export const currentUserId = testUserId;
 

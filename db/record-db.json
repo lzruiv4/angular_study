@@ -6,6 +6,20 @@
       "catch_time": "14-04-2022 22:25:22",
       "user_id": "ad1",
       "isRelease": false
+    },
+    {
+      "id": "5243",
+      "poke_id": "153",
+      "catch_time": "23-04-2025 01:07:40",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "2a47",
+      "poke_id": "97",
+      "catch_time": "23-04-2025 01:07:58",
+      "user_id": "user2",
+      "isRelease": false
     }
   ]
 }

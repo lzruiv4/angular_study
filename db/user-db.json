@@ -10,7 +10,7 @@
       "id": "user2",
       "firstname": "Z",
       "lastname": "Chen",
-      "poke_coin": 10
+      "poke_coin": 17
     }
   ],
   "rechargeRecords": [
@@ -55,6 +55,41 @@
       "amount_recharge": 1,
       "current_poke_coin": 4,
       "recharge_date": "22-04-2025 23:12:20"
+    },
+    {
+      "id": "034b",
+      "user_id": "user2",
+      "amount_recharge": 1,
+      "current_poke_coin": 10,
+      "recharge_date": "23-04-2025 00:02:41"
+    },
+    {
+      "id": "6a9a",
+      "user_id": "user2",
+      "amount_recharge": 1,
+      "current_poke_coin": 11,
+      "recharge_date": "23-04-2025 00:02:51"
+    },
+    {
+      "id": "30d3",
+      "user_id": "user2",
+      "amount_recharge": 1,
+      "current_poke_coin": 12,
+      "recharge_date": "23-04-2025 00:02:55"
+    },
+    {
+      "id": "bccf",
+      "user_id": "user2",
+      "amount_recharge": 1,
+      "current_poke_coin": 13,
+      "recharge_date": "23-04-2025 00:02:58"
+    },
+    {
+      "id": "26fe",
+      "user_id": "user2",
+      "amount_recharge": 5,
+      "current_poke_coin": 14,
+      "recharge_date": "23-04-2025 00:03:02"
     }
   ]
 }

@@ -1,7 +1,13 @@
 <div class="lotto-container">
   <div class="ball-coin-container">
     <div class="lotto-ball">
-      <img src="/static/poke.png" alt="LOGO" class="poke-ball" />
+      <img
+        src="/static/poke.png"
+        alt="LOGO"
+        class="poke-ball"
+        (click)="openCatchPokemonDialog()"
+      />
+      <app-catch-new-pokemon />
     </div>
     <div class="pokemon-coin-container">
       <a class="game-info" *ngIf="user$ | async as user; else loading"

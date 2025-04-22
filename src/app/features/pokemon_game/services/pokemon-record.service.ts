@@ -1,8 +1,27 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, map, Observable, tap } from 'rxjs';
-import { IPokemonRecord } from '../../../shared/models/IPokemen.model';
+import {
+  BehaviorSubject,
+  catchError,
+  combineLatest,
+  map,
+  Observable,
+  Subject,
+  tap,
+  throwError,
+} from 'rxjs';
+import {
+  IPokemonRecord,
+  IPokemonRecordDTO,
+} from '../../../shared/models/IPokemen.model';
 import { PokemonService } from './pokemon.service';
 import { PokemonRecordDTOService } from './pokemon-record-dto.service';
+import {
+  POKEMON_AMOUNT,
+  PokemonRecordsAPIByUserId,
+} from '../../../core/constants/Pokomon-API';
+import Dayjs from 'dayjs';
+import { HttpClient } from '@angular/common/http';
+import { currentUserId } from '../../../core/constants/User-API';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +32,7 @@ export class PokemonRecordService {
     this.pokemonRecordsSubject.asObservable();
 
   constructor(
+    private pokemonRecordsHttp: HttpClient,
     private pokemonRecordDTOService: PokemonRecordDTOService,
     private pokemonService: PokemonService
   ) {
@@ -43,5 +63,44 @@ export class PokemonRecordService {
       ),
       tap((record) => this.pokemonRecordsSubject.next(record))
     );
+  }
+
+  captureNewPokemon(): Observable<IPokemonRecord> {
+    const newPokemonDTO: IPokemonRecordDTO = {
+      poke_id: (Math.floor(Math.random() * POKEMON_AMOUNT) + 1).toString(),
+      catch_time: Dayjs().format('DD-MM-YYYY HH:mm:ss'),
+      user_id: currentUserId,
+      isRelease: false,
+    };
+    return this.pokemonRecordsHttp
+      .post<IPokemonRecordDTO>(PokemonRecordsAPIByUserId, newPokemonDTO)
+      .pipe(
+        map((model) => {
+          return {
+            id: model.id,
+            poke_id: model.poke_id,
+            catch_time: model.catch_time,
+            image: '',
+            isRelease: model.isRelease,
+          } as IPokemonRecord;
+        }),
+        tap((poke) => {
+          console.log('You captured a ', poke.id); //TODO
+          const old = this.pokemonRecordsSubject.getValue() ?? [];
+          this.pokemonRecordsSubject.next([...old, poke]);
+        }),
+        catchError((err) => {
+          console.error('Error occurred during create : ', err);
+          return throwError(() => err);
+        })
+      );
+  }
+  // For dialog
+
+  private openDialog = new Subject<void>();
+  showDialog$ = this.openDialog.asObservable();
+
+  triggerRechargeModal() {
+    this.openDialog.next();
   }
 }
