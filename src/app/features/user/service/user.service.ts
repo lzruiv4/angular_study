@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, tap } from 'rxjs';
 import {
   IUser,
   IUserDTO,
@@ -14,7 +14,7 @@ import { currentUserId, UserAPI } from '../../../core/constants/User-API';
 })
 export class UserService {
   private userSubject = new BehaviorSubject<IUser | null>(null);
-  user$ = this.userSubject.asObservable();
+  user$: Observable<IUser | null> = this.userSubject.asObservable();
 
   constructor(private userHttp: HttpClient) {}
 
@@ -29,10 +29,16 @@ export class UserService {
   updateUser(newUser: IUser): Observable<IUser> {
     const newUserDTO: IUserDTO = mapModelToDto(newUser);
     return this.userHttp
-      .put<IUserDTO>(UserAPI + '/' + currentUserId, newUserDTO)
+      .put<IUserDTO>(UserAPI + '/' + newUser.id, newUserDTO)
       .pipe(
-        map((dto) => mapDtoToModel(dto)),
-        tap((user) => this.userSubject.next(user))
+        tap((response) => {
+          console.log('Response from update:', response);
+          this.userSubject.next(response);
+        }),
+        catchError((error) => {
+          console.error('Error occurred during update:', error);
+          throw error;
+        })
       );
   }
 }

@@ -3,8 +3,6 @@ import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class RechargeService {
-  private openRechargeHistory = new Subject<void>();
-  showRechargeHistoryModal$ = this.openRechargeHistory.asObservable();
 
   private openRecharge = new Subject<void>();
   showRechargeModal$ = this.openRecharge.asObservable();
@@ -12,6 +10,9 @@ export class RechargeService {
   triggerRechargeModal() {
     this.openRecharge.next();
   }
+
+  private openRechargeHistory = new Subject<void>();
+  showRechargeHistoryModal$ = this.openRechargeHistory.asObservable();
 
   triggerRechargeHistoryModal() {
     this.openRechargeHistory.next();

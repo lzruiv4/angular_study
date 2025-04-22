@@ -6,8 +6,9 @@
 >
   <ng-container *nzModalContent>
     <nz-select
-      ngModel="Recharge quantity"
-      [nzDropdownMatchSelectWidth]="true"
+      [(ngModel)]="selectOption"
+      (ngModelChange)="selectedOneOption($event)"
+      [nzAllowClear]="true"
       nzPlaceHolder="Select one of [1, 5, 10]"
     >
       <nz-option nzValue="1" nzLabel="1 pokemon coin"></nz-option>
