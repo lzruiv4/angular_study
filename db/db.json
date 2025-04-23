@@ -4,7 +4,7 @@
       "id": "ad1",
       "firstname": "Za",
       "lastname": "Li",
-      "poke_coin": 0
+      "poke_coin": 1
     },
     {
       "id": "user2",
@@ -258,6 +258,48 @@
       "catch_time": "23-04-2025 17:31:57",
       "user_id": "user2",
       "isRelease": false
+    },
+    {
+      "id": "6091",
+      "poke_id": "72",
+      "catch_time": "23-04-2025 17:49:41",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "e6d0",
+      "poke_id": "18",
+      "catch_time": "23-04-2025 17:51:30",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "1789",
+      "poke_id": "2",
+      "catch_time": "23-04-2025 17:52:45",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "dc1e",
+      "poke_id": "126",
+      "catch_time": "23-04-2025 18:18:52",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "3b65",
+      "poke_id": "59",
+      "catch_time": "23-04-2025 18:23:05",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "8960",
+      "poke_id": "78",
+      "catch_time": "23-04-2025 18:24:38",
+      "user_id": "ad1",
+      "isRelease": false
     }
   ],
   "rechargeRecords": [
@@ -428,6 +470,41 @@
       "amount_recharge": 1,
       "current_poke_coin": 0,
       "recharge_date": "23-04-2025 17:13:16"
+    },
+    {
+      "id": "9870",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "23-04-2025 17:39:36"
+    },
+    {
+      "id": "1844",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "23-04-2025 17:50:43"
+    },
+    {
+      "id": "e89f",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "23-04-2025 17:51:50"
+    },
+    {
+      "id": "727b",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "23-04-2025 17:52:53"
+    },
+    {
+      "id": "d85f",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "23-04-2025 18:24:44"
     }
   ]
 }

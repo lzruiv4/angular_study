@@ -1,6 +1,5 @@
 .lotto-container {
   display: flex;
-  /* max-width: 100%; */
   min-height: 100vh;
   gap: 20px;
 }
@@ -15,7 +14,13 @@
   border-right: 1px solid #ccc;
 }
 
-.lotto-ball,
+.lotto-ball {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .pokemon-coin-container {
   flex: 1;
   display: flex;
@@ -26,18 +31,30 @@
 }
 
 .poke-ball {
-  max-width: 80%;
-  height: 80%;
-  animation: scaleAnimation 3s ease-in-out infinite;
+  max-width: 70%;
+  max-height: 70%;
+  animation: scaleAnimation 3s infinite;
+}
+
+.no_ball_animation {
+  max-width: 70%;
+  max-height: 70%;
+  animation: none;
+}
+
+.poke_ball:hover {
+  animation-play-state: paused;
 }
 
 @keyframes scaleAnimation {
-  0%,
-  100% {
+  0% {
     transform: scale(0.8);
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
   }
 }
 
@@ -54,22 +71,9 @@
   padding-right: 20px;
 }
 
-.lotto-table-header {
-  /***/
-}
-
-.lotto-date-image-container {
-  /* display: flex; */
-}
-
-.lotto-date {
-  /* flex: 3; */
-}
-
 .lotto-images {
   display: flex;
   overflow-x: auto;
-  /* flex: 10; */
 }
 
 .right-img {

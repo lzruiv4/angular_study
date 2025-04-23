@@ -8,7 +8,6 @@ import { RechargeHistoryComponent } from '../../../user/components/recharge-hist
 import { RechargeComponent } from '../../../user/components/recharge/recharge.component';
 import { PokemonRecordService } from '../../services/pokemon-record.service';
 import { UserService } from '../../../user/service/user.service';
-import { IUser } from '../../../../shared/models/IUser.model';
 import { CatchNewPokemonComponent } from '../catch-new-pokemon/catch-new-pokemon.component';
 import { Observable } from 'rxjs';
 
@@ -26,12 +25,6 @@ import { Observable } from 'rxjs';
   styleUrl: './poke-lotto.component.css',
 })
 export class PokeLottoComponent implements OnInit {
-  // pokemonRecords: IPokemonRecord[] = [];
-
-  // pokemonRecords: IPokemonRecordInList[] = [];
-
-  user: IUser | null = null;
-
   constructor(
     private rechargeService: RechargeService,
     private pokemonRecordService: PokemonRecordService,
@@ -46,14 +39,9 @@ export class PokeLottoComponent implements OnInit {
   pokemonRecordInList$!: Observable<IPokemonRecordInList[]>;
 
   ngOnInit(): void {
-    // this.pokemonRecordService
-    //   .getAllPokemonRecordsByCurrentUserId()
-    //   .subscribe((data) => (this.pokemonRecords = data));
     this.pokemonRecordInList$ = this.pokemonRecordService.groupByRecords();
 
-    this.userService
-      .getUserInfo()
-      .subscribe((user: IUser | null) => (this.user = user));
+    this.userService.getUserInfo().subscribe();
   }
 
   openRechargeHistory(): void {

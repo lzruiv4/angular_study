@@ -18,12 +18,12 @@ export class RechargeComponent implements OnInit {
 
   selectOption: number = 0;
 
-  user: IUser = {
-    id: '',
-    firstname: '',
-    lastname: '',
-    poke_coin: 0,
-  };
+  user!: IUser | null;
+
+  // Getter for user
+  get user$() {
+    return this.userService.user$;
+  }
 
   constructor(
     private rechargeService: RechargeService,
@@ -34,9 +34,7 @@ export class RechargeComponent implements OnInit {
     this.rechargeService.showRechargeModal$.subscribe(() => {
       this.isRechargeVisible = true;
     });
-    this.userService.getUserInfo().subscribe((user) => {
-      this.user = user;
-    });
+    this.userService.getUserInfo().subscribe();
   }
 
   selectedOneOption(value: number): void {
@@ -58,39 +56,45 @@ export class RechargeComponent implements OnInit {
   }
 
   updateUserInfo(): void {
-    const newUser = {
-      id: this.user.id,
-      firstname: this.user.firstname,
-      lastname: this.user.lastname,
-      poke_coin: this.user.poke_coin + Number(this.selectOption),
-    };
-    this.userService.updateUser(newUser).subscribe({
-      next: (response) => {
-        console.log('Update successful:', response);
-        this.user = response;
-      },
-      error: (error) => {
-        console.error('Error updating user:', error);
-        alert('An error occurred while updating the user.');
-      },
-    });
+    this.user$.subscribe((user) => (this.user = user));
+    if (this.user !== null) {
+      const newUser = {
+        id: this.user.id,
+        firstname: this.user.firstname,
+        lastname: this.user.lastname,
+        poke_coin: this.user.poke_coin + Number(this.selectOption),
+      };
+      this.userService.updateUser(newUser).subscribe({
+        next: (response) => {
+          console.log('Update successful:', response);
+        },
+        error: (error) => {
+          console.error('Error updating user:', error);
+          alert('An error occurred while updating the user.');
+        },
+      });
+    }
   }
 
   createNewRechargeRecord(): void {
-    const newRechargeRecord = {
-      user_id: this.user.id,
-      amount_recharge: Number(this.selectOption),
-      current_poke_coin: this.user.poke_coin, // check here
-      recharge_date: Dayjs().format('DD-MM-YYYY HH:mm:ss'),
-    };
-    this.rechargeService.createNewRechargeRecord(newRechargeRecord).subscribe({
-      next: (response) => {
-        console.log('Create successful:', response);
-      },
-      error: (error) => {
-        console.error('Error creating :', error);
-        alert('An error occurred while creating a new record.');
-      },
-    });
+    if (this.user !== null) {
+      const newRechargeRecord = {
+        user_id: this.user.id,
+        amount_recharge: Number(this.selectOption),
+        current_poke_coin: this.user.poke_coin, // check here
+        recharge_date: Dayjs().format('DD-MM-YYYY HH:mm:ss'),
+      };
+      this.rechargeService
+        .createNewRechargeRecord(newRechargeRecord)
+        .subscribe({
+          next: (response) => {
+            console.log('Create successful:', response);
+          },
+          error: (error) => {
+            console.error('Error creating :', error);
+            alert('An error occurred while creating a new record.');
+          },
+        });
+    }
   }
 }

@@ -1,10 +1,10 @@
 <div class="lotto-container">
   <div class="ball-coin-container">
-    <div class="lotto-ball">
+    <div class="lotto-ball" *ngIf="user$ | async as user">
       <img
         src="/static/poke.png"
         alt="LOGO"
-        class="poke-ball"
+        [ngClass]="user.poke_coin > 0 ? 'poke-ball' : 'no_ball_animation'"
         (click)="openCatchPokemonDialog()"
       />
       <app-catch-new-pokemon />
