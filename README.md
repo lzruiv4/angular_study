@@ -1,13 +1,12 @@
 # AngularFirst
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
-
-##### WIP
+##### almost done
 
 1. Display of Pokémon encyclopedia, the number to be displayed can be defined in `POKEMON_AMOUNT` in the `/src/app/core/constants/Pokomon.api.ts`
 
 2. Pokémon can be captured randomly, which requires a pokemon coin
-3. Pokemon coin recharge is realized
+
+3. Pokemon coin recharge is realized and recharge history can be found by button recharge history in Poke Lotto.
 
 ## Development server
 
@@ -19,7 +18,6 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-
 ## Building
 
 To build the project run:
@@ -27,7 +25,6 @@ To build the project run:
 ```bash
 ng build
 ```
-
 
 ## Running unit tests
 

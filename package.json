@@ -8,8 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:angular_first": "node dist/angular_first/server/server.mjs",
-    "user-db": "npx json-server --watch db/user-db.json --port 9008",
-    "record-db": "npx json-server --watch db/record-db.json --port 9009"
+    "db": "npx json-server --watch db/db.json --port 9009"
   },
   "private": true,
   "dependencies": {
