@@ -47,7 +47,7 @@
       #basicTable
       *ngIf="pokemonRecordInList$ | async as data"
       [nzData]="data"
-      [nzPageSize]="9"
+      [nzPageSize]="6"
       [nzShowPagination]="true"
       [nzFrontPagination]="true"
       [nzScroll]="{ x: '50%' }"
@@ -55,7 +55,13 @@
     >
       <thead>
         <tr class="lotto-table-header">
-          <th [nzWidth]="'15%'" style="text-align: center">Date</th>
+          <th
+            [nzWidth]="'15%'"
+            style="text-align: center"
+            [nzSortFn]="sortByDate"
+          >
+            Date
+          </th>
           <th [nzWidth]="'85%'" style="text-align: center">Pokemons</th>
         </tr>
       </thead>

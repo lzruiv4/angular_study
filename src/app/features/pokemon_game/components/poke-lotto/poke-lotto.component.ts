@@ -55,4 +55,16 @@ export class PokeLottoComponent implements OnInit {
   openCatchPokemonDialog(): void {
     this.pokemonRecordService.triggerRechargeModal();
   }
+
+  parseDate(dateStr: string): Date {
+    const [day, month, year] = dateStr.split('-').map(Number);
+    return new Date(year, month - 1, day); // 月份从 0 开始
+  }
+
+  sortByDate = (a: any, b: any): number => {
+    const today = new Date();
+    const diffA = Math.abs(this.parseDate(a.date).getTime() - today.getTime());
+    const diffB = Math.abs(this.parseDate(b.date).getTime() - today.getTime());
+    return diffA - diffB;
+  };
 }

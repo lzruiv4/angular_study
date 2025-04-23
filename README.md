@@ -8,6 +8,22 @@
 
 3. Pokemon coin recharge is realized and recharge history can be found by button recharge history in Poke Lotto.
 
+### UI
+
+#### Pokédex
+
+<img src="./public/pokedex.png" width="700px" height="auto"/>
+
+You can check all Pokémon Pokédex here
+
+#### Pokémon lotto
+
+<img src="./public/lotto.png" width="700px" height="auto" />
+
+1. Here you can randomly get a Pokémon, including legendary ones.
+2. Each time you spend one gold coin, if you don't have gold coins, you can recharge and check the recharge history.
+3. All the Pokémon you have drawn will be displayed on the right
+
 ## Development server
 
 To start a local development server, run:
