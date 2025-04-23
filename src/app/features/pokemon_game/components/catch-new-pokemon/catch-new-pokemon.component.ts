@@ -37,32 +37,34 @@ export class CatchNewPokemonComponent implements OnInit {
   }
 
   handleOk(): void {
-    const newUser = {
-      id: this.user.id,
-      firstname: this.user.firstname,
-      lastname: this.user.lastname,
-      poke_coin: this.user.poke_coin - 1,
-    };
-    this.userService.updateUser(newUser).subscribe({
-      next: (response) => {
-        console.log('Update successful:', response);
-        this.user = response;
-      },
-      error: (error) => {
-        console.error('Error updating user:', error);
-        alert('An error occurred while updating the user.');
-      },
-    });
+    if (this.user.poke_coin > 0) {
+      const newUser = {
+        id: this.user.id,
+        firstname: this.user.firstname,
+        lastname: this.user.lastname,
+        poke_coin: this.user.poke_coin - 1,
+      };
+      this.userService.updateUser(newUser).subscribe({
+        next: (response) => {
+          console.log('Update successful:', response);
+          this.user = response;
+        },
+        error: (error) => {
+          console.error('Error updating user:', error);
+          alert('An error occurred while updating the user.');
+        },
+      });
 
-    this.pokemonRecordService.captureNewPokemon().subscribe({
-      next: (response) => {
-        console.log('Captured successful:', response);
-      },
-      error: (error) => {
-        console.error('Error during capturing :', error);
-        alert('An error occurred while capturing a new pokemon.');
-      },
-    });
+      this.pokemonRecordService.captureNewPokemon().subscribe({
+        next: (response) => {
+          console.log('Captured successful:', response);
+        },
+        error: (error) => {
+          console.error('Error during capturing :', error);
+          alert('An error occurred while capturing a new pokemon.');
+        },
+      });
+    }
     this.isDialogVisible = false;
   }
 

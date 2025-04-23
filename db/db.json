@@ -4,13 +4,13 @@
       "id": "ad1",
       "firstname": "Za",
       "lastname": "Li",
-      "poke_coin": 2
+      "poke_coin": 0
     },
     {
       "id": "user2",
       "firstname": "Z",
       "lastname": "Chen",
-      "poke_coin": 18
+      "poke_coin": 5
     }
   ],
   "pokemonRecords": [
@@ -89,6 +89,174 @@
       "poke_id": "84",
       "catch_time": "23-04-2025 16:11:01",
       "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "1f34",
+      "poke_id": "127",
+      "catch_time": "23-04-2025 16:29:36",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "2a8b",
+      "poke_id": "28",
+      "catch_time": "23-04-2025 16:40:35",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "b3be",
+      "poke_id": "54",
+      "catch_time": "23-04-2025 16:43:06",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "f8a8",
+      "poke_id": "78",
+      "catch_time": "23-04-2025 16:44:48",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "a31a",
+      "poke_id": "27",
+      "catch_time": "23-04-2025 16:45:29",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "6d68",
+      "poke_id": "191",
+      "catch_time": "23-04-2025 16:58:12",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "fb1f",
+      "poke_id": "176",
+      "catch_time": "23-04-2025 17:00:29",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "a09b",
+      "poke_id": "124",
+      "catch_time": "23-04-2025 17:02:05",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "65ff",
+      "poke_id": "144",
+      "catch_time": "23-04-2025 17:03:17",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "8361",
+      "poke_id": "116",
+      "catch_time": "23-04-2025 17:12:13",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "84e3",
+      "poke_id": "142",
+      "catch_time": "23-04-2025 17:13:29",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "eac8",
+      "poke_id": "176",
+      "catch_time": "23-04-2025 17:14:33",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "f5d0",
+      "poke_id": "183",
+      "catch_time": "23-04-2025 17:17:59",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "9c8a",
+      "poke_id": "91",
+      "catch_time": "23-04-2025 17:18:35",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "9173",
+      "poke_id": "151",
+      "catch_time": "23-04-2025 17:20:31",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "b235",
+      "poke_id": "104",
+      "catch_time": "23-04-2025 17:23:00",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "ecb9",
+      "poke_id": "170",
+      "catch_time": "23-04-2025 17:23:48",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "fe26",
+      "poke_id": "3",
+      "catch_time": "23-04-2025 17:25:11",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "c9d4",
+      "poke_id": "174",
+      "catch_time": "23-04-2025 17:25:49",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "ff9d",
+      "poke_id": "14",
+      "catch_time": "23-04-2025 17:26:33",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "0d74",
+      "poke_id": "39",
+      "catch_time": "23-04-2025 17:27:19",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "6ec7",
+      "poke_id": "103",
+      "catch_time": "23-04-2025 17:29:54",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "e0a7",
+      "poke_id": "11",
+      "catch_time": "23-04-2025 17:30:30",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "1b25",
+      "poke_id": "158",
+      "catch_time": "23-04-2025 17:31:57",
+      "user_id": "user2",
       "isRelease": false
     }
   ],
@@ -190,6 +358,76 @@
       "amount_recharge": 1,
       "current_poke_coin": 5,
       "recharge_date": "23-04-2025 16:10:42"
+    },
+    {
+      "id": "9096",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "23-04-2025 16:43:02"
+    },
+    {
+      "id": "4fbc",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": -1,
+      "recharge_date": "23-04-2025 16:44:36"
+    },
+    {
+      "id": "9d80",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "23-04-2025 16:44:41"
+    },
+    {
+      "id": "b691",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "23-04-2025 16:45:11"
+    },
+    {
+      "id": "3e62",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "23-04-2025 16:58:00"
+    },
+    {
+      "id": "157d",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "23-04-2025 17:00:09"
+    },
+    {
+      "id": "4cb8",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "23-04-2025 17:01:34"
+    },
+    {
+      "id": "1ac2",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "23-04-2025 17:03:00"
+    },
+    {
+      "id": "e619",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "23-04-2025 17:11:55"
+    },
+    {
+      "id": "2c02",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "23-04-2025 17:13:16"
     }
   ]
 }

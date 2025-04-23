@@ -45,7 +45,8 @@
   <div class="pokemons-history">
     <nz-table
       #basicTable
-      [nzData]="pokemonRecords"
+      *ngIf="pokemonRecordInList$ | async as data"
+      [nzData]="data"
       [nzPageSize]="9"
       [nzShowPagination]="true"
       [nzFrontPagination]="true"

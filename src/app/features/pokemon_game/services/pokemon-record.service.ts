@@ -6,10 +6,12 @@ import {
   map,
   Observable,
   Subject,
+  take,
   tap,
   throwError,
 } from 'rxjs';
 import {
+  IPokemon,
   IPokemonRecord,
   IPokemonRecordDTO,
   IPokemonRecordInList,
@@ -29,10 +31,14 @@ import dayjs from 'dayjs';
   providedIn: 'root',
 })
 export class PokemonRecordService {
+  pokemons: IPokemon[] = [];
+
+  // Get all record from db
   private pokemonRecordsSubject = new BehaviorSubject<IPokemonRecord[]>([]);
   pokemonRecords$: Observable<IPokemonRecord[]> =
     this.pokemonRecordsSubject.asObservable();
 
+  // Type, what will be showed in table
   private pokemonRecordInListSubject = new BehaviorSubject<
     IPokemonRecordInList[]
   >([]);
@@ -47,7 +53,10 @@ export class PokemonRecordService {
     this.pokemonRecordDTOService
       .getAllPokemonRecordDTOsByCurrentUserId()
       .subscribe();
-    this.pokemonService.getPokemonDTOs().subscribe();
+    this.pokemonService
+      .getPokemonDTOs()
+      .subscribe((item) => (this.pokemons = item));
+    this.getAllPokemonRecordsByCurrentUserId().subscribe();
   }
 
   getAllPokemonRecordsByCurrentUserId(): Observable<IPokemonRecord[]> {
@@ -88,7 +97,8 @@ export class PokemonRecordService {
             id: model.id,
             poke_id: model.poke_id,
             catch_time: model.catch_time,
-            image: '', //TODO
+            image:
+              model.id !== null ? this.getPokemonImageUrl(model.poke_id) : '',
             isRelease: model.isRelease,
           } as IPokemonRecord;
         }),
@@ -96,6 +106,7 @@ export class PokemonRecordService {
           console.log('You captured a ', poke.id); //TODO
           const old = this.pokemonRecordsSubject.getValue() ?? [];
           this.pokemonRecordsSubject.next([...old, poke]);
+          this.groupByRecords();
         }),
         catchError((err) => {
           console.error('Error occurred during create : ', err);
@@ -105,7 +116,7 @@ export class PokemonRecordService {
   }
 
   groupByRecords(): Observable<IPokemonRecordInList[]> {
-    return this.getAllPokemonRecordsByCurrentUserId().pipe(
+    return this.pokemonRecords$.pipe(
       map((records) => {
         const map = new Map<string, IPokemonRecord[]>();
         records.forEach((record) => {
@@ -129,12 +140,9 @@ export class PokemonRecordService {
     );
   }
 
-  getPokemonImageUrl(pokemon_name: string): Observable<string | undefined> {
-    return this.pokemonService.pokemons$.pipe(
-      map(
-        (pokemons) =>
-          pokemons.find((pokemon) => pokemon.name === pokemon_name)?.image
-      )
+  getPokemonImageUrl(pokemonId: string): string {
+    return (
+      this.pokemons.find((pokemon) => pokemonId == pokemon.id)?.image ?? ''
     );
   }
 
