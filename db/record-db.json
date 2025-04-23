@@ -10,14 +10,49 @@
     {
       "id": "5243",
       "poke_id": "153",
-      "catch_time": "23-04-2025 01:07:40",
+      "catch_time": "23-03-2025 01:07:40",
       "user_id": "user2",
       "isRelease": false
     },
     {
       "id": "2a47",
       "poke_id": "97",
-      "catch_time": "23-04-2025 01:07:58",
+      "catch_time": "23-02-2025 01:07:58",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "46ca",
+      "poke_id": "142",
+      "catch_time": "23-03-2025 01:09:36",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "4ccb",
+      "poke_id": "190",
+      "catch_time": "23-02-2025 01:10:44",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "89cc",
+      "poke_id": "109",
+      "catch_time": "23-04-2025 02:17:40",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "4afd",
+      "poke_id": "97",
+      "catch_time": "23-04-2025 02:21:31",
+      "user_id": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "a16e",
+      "poke_id": "131",
+      "catch_time": "23-04-2025 02:34:28",
       "user_id": "user2",
       "isRelease": false
     }

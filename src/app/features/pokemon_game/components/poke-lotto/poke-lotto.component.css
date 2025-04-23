@@ -54,6 +54,39 @@
   padding-right: 20px;
 }
 
+.lotto-table-header {
+  /***/
+}
+
+.lotto-date-image-container {
+  /* display: flex; */
+}
+
+.lotto-date {
+  /* flex: 3; */
+}
+
+.lotto-images {
+  display: flex;
+  overflow-x: auto;
+  /* flex: 10; */
+}
+
+.right-img {
+  width: 70px !important;
+  height: 70px !important;
+  margin: 10px;
+  border-radius: 30%;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.right-img:hover {
+  transform: scale(1.2);
+  background-color: aqua;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
 [nz-button] {
   margin-right: 20px;
   margin-bottom: 20px;

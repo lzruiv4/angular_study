@@ -54,16 +54,17 @@
     >
       <thead>
         <tr class="lotto-table-header">
-          <th [nzWidth]="'40%'" style="text-align: center">Date</th>
-          <th [nzWidth]="'60%'" style="text-align: center">Pokemons</th>
+          <th [nzWidth]="'15%'" style="text-align: center">Date</th>
+          <th [nzWidth]="'85%'" style="text-align: center">Pokemons</th>
         </tr>
       </thead>
       <tbody>
-        @for (pokemonRecord of basicTable.data; track pokemonRecord.id) {
+        @for (pokemonRecord of basicTable.data; track pokemonRecord.date) {
         <tr class="lotto-date-image-container">
-          <td class="lotto-date">{{ pokemonRecord.catch_time }}</td>
+          <td class="lotto-date">{{ pokemonRecord.date }}</td>
           <td class="lotto-images">
-            <img class="right-img" [src]="pokemonRecord.image" alt="LOGO" />
+            @for (poke of pokemonRecord.pokemonRecordsInTheSameDay; track
+            poke.id){<img class="right-img" [src]="poke.image" alt="LOGO" />}
           </td>
         </tr>
         }

@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
-import { IPokemonRecord } from '../../../../shared/models/IPokemen.model';
+import {
+  IPokemonRecord,
+  IPokemonRecordInList,
+} from '../../../../shared/models/IPokemen.model';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { RechargeService } from '../../../user/service/recharge.service';
 import { RechargeHistoryComponent } from '../../../user/components/recharge-history/recharge-history.component';
@@ -25,7 +28,9 @@ import { CatchNewPokemonComponent } from '../catch-new-pokemon/catch-new-pokemon
   styleUrl: './poke-lotto.component.css',
 })
 export class PokeLottoComponent implements OnInit {
-  pokemonRecords: IPokemonRecord[] = [];
+  // pokemonRecords: IPokemonRecord[] = [];
+
+  pokemonRecords: IPokemonRecordInList[] = [];
 
   user: IUser | null = null;
 
@@ -41,8 +46,11 @@ export class PokeLottoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.pokemonRecordService
+    //   .getAllPokemonRecordsByCurrentUserId()
+    //   .subscribe((data) => (this.pokemonRecords = data));
     this.pokemonRecordService
-      .getAllPokemonRecordsByCurrentUserId()
+      .groupByRecords()
       .subscribe((data) => (this.pokemonRecords = data));
 
     this.userService

@@ -46,7 +46,6 @@ export class RechargeComponent implements OnInit {
   handleOk(): void {
     if (this.selectOption !== 0) {
       this.updateUserInfo();
-      // console.log(this.user);
       this.createNewRechargeRecord();
     }
     this.selectOption = 0;

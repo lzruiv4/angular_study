@@ -26,6 +26,11 @@ export interface IPokemonRecord {
   isRelease: boolean;
 }
 
+export interface IPokemonRecordInList {
+  date: string;
+  pokemonRecordsInTheSameDay: IPokemonRecord[];
+}
+
 // export function mapDtoToModel(dto: IPokemonRecordDTO): IPokemonRecord {
 //   return {
 //     id: dto.id,

@@ -12,6 +12,7 @@ import {
 import {
   IPokemonRecord,
   IPokemonRecordDTO,
+  IPokemonRecordInList,
 } from '../../../shared/models/IPokemen.model';
 import { PokemonService } from './pokemon.service';
 import { PokemonRecordDTOService } from './pokemon-record-dto.service';
@@ -22,6 +23,7 @@ import {
 import Dayjs from 'dayjs';
 import { HttpClient } from '@angular/common/http';
 import { currentUserId } from '../../../core/constants/User-API';
+import dayjs from 'dayjs';
 
 @Injectable({
   providedIn: 'root',
@@ -30,6 +32,12 @@ export class PokemonRecordService {
   private pokemonRecordsSubject = new BehaviorSubject<IPokemonRecord[]>([]);
   pokemonRecords$: Observable<IPokemonRecord[]> =
     this.pokemonRecordsSubject.asObservable();
+
+  private pokemonRecordInListSubject = new BehaviorSubject<
+    IPokemonRecordInList[]
+  >([]);
+  pokemonRecordInList$: Observable<IPokemonRecordInList[]> =
+    this.pokemonRecordInListSubject.asObservable();
 
   constructor(
     private pokemonRecordsHttp: HttpClient,
@@ -80,7 +88,7 @@ export class PokemonRecordService {
             id: model.id,
             poke_id: model.poke_id,
             catch_time: model.catch_time,
-            image: '',
+            image: '', //TODO
             isRelease: model.isRelease,
           } as IPokemonRecord;
         }),
@@ -95,8 +103,42 @@ export class PokemonRecordService {
         })
       );
   }
-  // For dialog
 
+  groupByRecords(): Observable<IPokemonRecordInList[]> {
+    return this.getAllPokemonRecordsByCurrentUserId().pipe(
+      map((records) => {
+        const map = new Map<string, IPokemonRecord[]>();
+        records.forEach((record) => {
+          const date_temp = record.catch_time.split(' ')[0];
+          const group = map.get(date_temp) || [];
+          group.push(record);
+          map.set(date_temp, group);
+        });
+
+        const result: IPokemonRecordInList[] = [];
+        map.forEach((pokemonRecordsInTheSameDay, date) => {
+          result.push({ date, pokemonRecordsInTheSameDay });
+        });
+        console.log(result);
+        return result.sort(
+          (a, b) =>
+            dayjs(b.date, 'DD-MM-YYYY').valueOf() -
+            dayjs(a.date, 'DD-MM-YYYY').valueOf()
+        );
+      })
+    );
+  }
+
+  getPokemonImageUrl(pokemon_name: string): Observable<string | undefined> {
+    return this.pokemonService.pokemons$.pipe(
+      map(
+        (pokemons) =>
+          pokemons.find((pokemon) => pokemon.name === pokemon_name)?.image
+      )
+    );
+  }
+
+  // For dialog
   private openDialog = new Subject<void>();
   showDialog$ = this.openDialog.asObservable();
 
