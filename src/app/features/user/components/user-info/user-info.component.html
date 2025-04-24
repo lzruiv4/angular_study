@@ -1,11 +1,20 @@
-<div class="user-container">
+<div class="user-container" *ngIf="user$ | async as user">
   <div class="user-info">
-    <nz-descriptions nzTitle="User Info" nzBordered [nzColumn]="1" class="nz-info">
-      <nz-descriptions-item nzTitle="Firstname"
-        >Cloud Database</nz-descriptions-item
-      >
-      <nz-descriptions-item nzTitle="Lastname">Prepaid</nz-descriptions-item>
-      <nz-descriptions-item nzTitle="Pokemon coins">YES</nz-descriptions-item>
+    <nz-descriptions
+      nzTitle="User Info"
+      nzBordered
+      [nzColumn]="1"
+      class="nz-info"
+    >
+      <nz-descriptions-item nzTitle="Firstname">{{
+        user.firstname
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Lastname">{{
+        user.lastname
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Pokemon coins">{{
+        user.poke_coin
+      }}</nz-descriptions-item>
       <nz-descriptions-item nzTitle="Adresse">
         Street
         <br />

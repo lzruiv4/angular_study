@@ -4,7 +4,7 @@
       "id": "ad1",
       "firstname": "Za",
       "lastname": "Li",
-      "poke_coin": 1
+      "poke_coin": 2
     },
     {
       "id": "user2",
@@ -344,6 +344,13 @@
       "amount_recharge": 1,
       "current_poke_coin": 0,
       "recharge_date": "23-04-2025 23:12:49"
+    },
+    {
+      "id": "3882",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 1,
+      "recharge_date": "24-04-2025 18:48:11"
     }
   ]
 }
