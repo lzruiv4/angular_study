@@ -40,7 +40,7 @@ export class PokeLottoComponent implements OnInit {
 
   ngOnInit(): void {
     this.pokemonRecordInList$ = this.pokemonRecordService.groupByRecords();
-    this.userService.getUserInfo();
+    this.userService.getUserInfo().subscribe();
   }
 
   openRechargeHistory(): void {

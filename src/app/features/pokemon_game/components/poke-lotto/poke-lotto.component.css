@@ -86,7 +86,7 @@
 .img-div {
   width: 100px;
   height: 100px;
-  margin: 5px, 5px;
+  /* margin: 5px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,7 +95,7 @@
 .right-img {
   width: auto !important;
   height: 80px !important;
-  margin: 5px;
+  /* margin: 5px; */
   transition: transform 0.2s;
 }
 
