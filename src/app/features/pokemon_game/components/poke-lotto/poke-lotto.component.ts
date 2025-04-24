@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
-import { IPokemonRecordInList } from '../../../../shared/models/IPokemen.model';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { RechargeService } from '../../../user/service/recharge.service';
 import { RechargeHistoryComponent } from '../../../user/components/recharge-history/recharge-history.component';
@@ -9,6 +8,7 @@ import { RechargeComponent } from '../../../user/components/recharge/recharge.co
 import { PokemonRecordService } from '../../services/pokemon-record.service';
 import { UserService } from '../../../user/service/user.service';
 import { CatchNewPokemonComponent } from '../catch-new-pokemon/catch-new-pokemon.component';
+import { IPokemonRecordInList } from '../../../../shared/models/IPokemen.model';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -40,6 +40,7 @@ export class PokeLottoComponent implements OnInit {
 
   ngOnInit(): void {
     this.pokemonRecordInList$ = this.pokemonRecordService.groupByRecords();
+    this.userService.getUserInfo();
   }
 
   openRechargeHistory(): void {
@@ -56,7 +57,7 @@ export class PokeLottoComponent implements OnInit {
 
   parseDate(dateStr: string): Date {
     const [day, month, year] = dateStr.split('-').map(Number);
-    return new Date(year, month - 1, day); // 月份从 0 开始
+    return new Date(year, month - 1, day);
   }
 
   sortByDate = (a: any, b: any): number => {

@@ -4,9 +4,8 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { FormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { UserService } from '../../service/user.service';
-import { IUser } from '../../../../shared/models/IUser.model';
 import Dayjs from 'dayjs';
-import { filter, switchMap, take, tap } from 'rxjs';
+import { filter, switchMap, take } from 'rxjs';
 
 @Component({
   selector: 'app-recharge',
@@ -42,7 +41,7 @@ export class RechargeComponent implements OnInit {
   handleOk(): void {
     if (this.selectOption !== 0) {
       this.updateUserInfo();
-      // this.createNewRechargeRecord();
+      this.createNewRechargeRecord();
     }
     this.selectOption = 0;
     this.isRechargeVisible = false;
@@ -77,25 +76,31 @@ export class RechargeComponent implements OnInit {
       });
   }
 
-  // createNewRechargeRecord(): void {
-  //   if (this.user !== null) {
-  //     const newRechargeRecord = {
-  //       user_id: this.user.id,
-  //       amount_recharge: Number(this.selectOption),
-  //       current_poke_coin: this.user.poke_coin, // check here
-  //       recharge_date: Dayjs().format('DD-MM-YYYY HH:mm:ss'),
-  //     };
-  //     this.rechargeService
-  //       .createNewRechargeRecord(newRechargeRecord)
-  //       .subscribe({
-  //         next: (response) => {
-  //           console.log('Create successful:', response);
-  //         },
-  //         error: (error) => {
-  //           console.error('Error creating :', error);
-  //           alert('An error occurred while creating a new record.');
-  //         },
-  //       });
-  //   }
-  // }
+  createNewRechargeRecord(): void {
+    this.user$
+      .pipe(
+        take(1),
+        filter((user) => !!user),
+        switchMap((user) => {
+          const newRechargeRecord = {
+            user_id: user.id,
+            amount_recharge: Number(this.selectOption),
+            current_poke_coin: user.poke_coin,
+            recharge_date: Dayjs().format('DD-MM-YYYY HH:mm:ss'),
+          };
+          return this.rechargeService.createNewRechargeRecord(
+            newRechargeRecord
+          );
+        })
+      )
+      .subscribe({
+        next: (response) => {
+          console.log('Create successful:', response);
+        },
+        error: (error) => {
+          console.error('Error creating :', error);
+          alert('An error occurred while creating a new record.');
+        },
+      });
+  }
 }

@@ -32,15 +32,12 @@ export class UserService {
       console.error('System want to update user information, but user is null');
     }
     const newUserDTO: IUserDTO = mapModelToDto({ ...oldUser, ...newUser });
-    console.log('update :', newUserDTO);
-    console.log('User is updated:', oldUser?.poke_coin);
     return this.userHttp
       .put<IUserDTO>(UserAPI + '/' + newUser.id, newUserDTO)
       .pipe(
         tap((response) => {
           console.log('Response from update:', response);
           this.userSubject.next(response);
-          console.log('User is updated:', response.poke_coin);
         }),
         catchError((error) => {
           console.error('Error occurred during update:', error);

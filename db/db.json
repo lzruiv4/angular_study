@@ -2,397 +2,89 @@
   "users": [
     {
       "id": "ad1",
-      "firstname": "Za",
-      "lastname": "Li",
+      "firstname": "Jack",
+      "lastname": "Chen",
       "poke_coin": 0
     },
     {
       "id": "user2",
-      "firstname": "Z",
-      "lastname": "Chen",
+      "firstname": "Tommy",
+      "lastname": "Wang",
       "poke_coin": 1
     }
   ],
   "pokemonRecords": [
     {
-      "id": "9309",
-      "poke_id": "21",
-      "catch_time": "14-04-2022 22:25:22",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "5243",
-      "poke_id": "153",
-      "catch_time": "23-03-2024 01:07:40",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "2a47",
-      "poke_id": "97",
-      "catch_time": "23-02-2024 01:07:58",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "46ca",
-      "poke_id": "142",
-      "catch_time": "23-03-2024 01:09:36",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "4ccb",
-      "poke_id": "190",
-      "catch_time": "23-02-2022 01:10:44",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "89cc",
-      "poke_id": "109",
-      "catch_time": "23-04-2024 02:17:40",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "4afd",
-      "poke_id": "97",
-      "catch_time": "23-04-2023 02:21:31",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "a16e",
-      "poke_id": "131",
-      "catch_time": "23-04-2021 02:34:28",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "fd7f",
-      "poke_id": "68",
-      "catch_time": "23-04-2022 16:10:48",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "4c29",
-      "poke_id": "40",
-      "catch_time": "23-04-2023 16:10:56",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "84ce",
-      "poke_id": "84",
-      "catch_time": "23-04-2022 16:11:01",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "1f34",
-      "poke_id": "127",
-      "catch_time": "23-04-2023 16:29:36",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "2a8b",
-      "poke_id": "28",
-      "catch_time": "23-04-2022 16:40:35",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "b3be",
-      "poke_id": "54",
-      "catch_time": "23-04-2023 16:43:06",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "f8a8",
-      "poke_id": "78",
-      "catch_time": "23-04-2022 16:44:48",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "a31a",
-      "poke_id": "27",
-      "catch_time": "23-04-2022 16:45:29",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "6d68",
-      "poke_id": "191",
-      "catch_time": "23-04-2022 16:58:12",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "fb1f",
-      "poke_id": "176",
-      "catch_time": "23-04-2021 17:00:29",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "a09b",
-      "poke_id": "124",
-      "catch_time": "23-04-2022 17:02:05",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "65ff",
-      "poke_id": "144",
-      "catch_time": "23-04-2021 17:03:17",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "8361",
-      "poke_id": "116",
-      "catch_time": "23-04-2022 17:12:13",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "84e3",
-      "poke_id": "142",
-      "catch_time": "23-04-2023 17:13:29",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "eac8",
-      "poke_id": "176",
-      "catch_time": "23-04-2022 17:14:33",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "f5d0",
-      "poke_id": "183",
-      "catch_time": "23-04-2023 17:17:59",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "9c8a",
-      "poke_id": "91",
-      "catch_time": "23-04-2022 17:18:35",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "9173",
-      "poke_id": "151",
-      "catch_time": "23-04-2023 17:20:31",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "b235",
-      "poke_id": "104",
-      "catch_time": "23-04-2022 17:23:00",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "ecb9",
-      "poke_id": "170",
-      "catch_time": "23-04-2023 17:23:48",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "fe26",
-      "poke_id": "3",
-      "catch_time": "23-04-2024 17:25:11",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "c9d4",
-      "poke_id": "174",
-      "catch_time": "23-04-2023 17:25:49",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "ff9d",
-      "poke_id": "14",
-      "catch_time": "23-04-2024 17:26:33",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "0d74",
-      "poke_id": "39",
-      "catch_time": "23-04-2024 17:27:19",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "6ec7",
+      "id": "07c5",
       "poke_id": "103",
-      "catch_time": "23-04-2023 17:29:54",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "e0a7",
-      "poke_id": "11",
-      "catch_time": "23-04-2023 17:30:30",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "1b25",
-      "poke_id": "158",
-      "catch_time": "23-04-2024 17:31:57",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "6091",
-      "poke_id": "72",
-      "catch_time": "23-04-2023 17:49:41",
+      "catch_time": "24-04-2025 20:27:38",
       "user_id": "ad1",
       "isRelease": false
     },
     {
-      "id": "e6d0",
-      "poke_id": "18",
-      "catch_time": "23-04-2024 17:51:30",
+      "id": "3126",
+      "poke_id": "24",
+      "catch_time": "24-04-2025 20:28:04",
       "user_id": "ad1",
       "isRelease": false
     },
     {
-      "id": "1789",
-      "poke_id": "2",
-      "catch_time": "23-04-2023 17:52:45",
+      "id": "8702",
+      "poke_id": "64",
+      "catch_time": "24-04-2025 20:28:06",
       "user_id": "ad1",
       "isRelease": false
     },
     {
-      "id": "dc1e",
-      "poke_id": "126",
-      "catch_time": "23-04-2024 18:18:52",
+      "id": "242d",
+      "poke_id": "48",
+      "catch_time": "24-04-2025 20:28:09",
       "user_id": "ad1",
       "isRelease": false
     },
     {
-      "id": "6c6e",
-      "poke_id": "141",
-      "catch_time": "23-04-2025 18:29:09",
+      "id": "79df",
+      "poke_id": "103",
+      "catch_time": "24-04-2025 20:28:11",
       "user_id": "ad1",
       "isRelease": false
     },
     {
-      "id": "f094",
-      "poke_id": "35",
-      "catch_time": "23-04-2025 18:29:49",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "02e0",
-      "poke_id": "7",
-      "catch_time": "23-04-2025 18:39:41",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "4aec",
-      "poke_id": "108",
-      "catch_time": "23-04-2025 22:26:58",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "547f",
-      "poke_id": "166",
-      "catch_time": "23-04-2025 22:27:17",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "dc42",
-      "poke_id": "47",
-      "catch_time": "23-04-2025 22:27:28",
-      "user_id": "user2",
-      "isRelease": false
-    },
-    {
-      "id": "0b9b",
-      "poke_id": "181",
-      "catch_time": "23-04-2025 22:29:57",
+      "id": "6e43",
+      "poke_id": "146",
+      "catch_time": "24-04-2025 20:28:13",
       "user_id": "ad1",
       "isRelease": false
     },
     {
-      "id": "5334",
-      "poke_id": "180",
-      "catch_time": "24-04-2025 19:51:56",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "a316",
-      "poke_id": "160",
-      "catch_time": "24-04-2025 19:52:04",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "5723",
-      "poke_id": "152",
-      "catch_time": "24-04-2025 19:56:05",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "e005",
-      "poke_id": "158",
-      "catch_time": "24-04-2025 20:00:53",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "acfd",
-      "poke_id": "122",
-      "catch_time": "24-04-2025 20:01:05",
-      "user_id": "ad1",
-      "isRelease": false
-    },
-    {
-      "id": "456d",
-      "poke_id": "83",
-      "catch_time": "24-04-2025 20:02:18",
+      "id": "409b",
+      "poke_id": "186",
+      "catch_time": "24-04-2025 20:28:23",
       "user_id": "ad1",
       "isRelease": false
     }
   ],
   "rechargeRecords": [
     {
-      "id": "778e",
+      "id": "3154",
       "user_id": "ad1",
       "amount_recharge": 1,
       "current_poke_coin": 0,
-      "recharge_date": "23-04-2025 23:12:49"
+      "recharge_date": "24-04-2025 20:27:26"
     },
     {
-      "id": "3882",
+      "id": "5f8e",
+      "user_id": "ad1",
+      "amount_recharge": 5,
+      "current_poke_coin": 0,
+      "recharge_date": "24-04-2025 20:27:44"
+    },
+    {
+      "id": "7900",
       "user_id": "ad1",
       "amount_recharge": 1,
-      "current_poke_coin": 1,
-      "recharge_date": "24-04-2025 18:48:11"
+      "current_poke_coin": 0,
+      "recharge_date": "24-04-2025 20:28:18"
     }
   ]
 }
