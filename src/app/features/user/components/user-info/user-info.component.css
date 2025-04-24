@@ -1,0 +1,33 @@
+.user-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* max-width: 100wh; */
+  gap: 20px;
+}
+
+.user-info {
+  flex: 2 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* max-width: 700px; */
+  /* width: 300px; */
+
+  margin: 40px;
+}
+
+.nz-info {
+  width: 500px;
+}
+
+.user-foto-div {
+  flex: 1 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-foto {
+  width: 250px;
+  height: 270px;
+}

@@ -1,7 +1,9 @@
 .lotto-container {
+  min-height: 85vh;
   display: flex;
   flex-wrap: wrap;
-  min-height: 100vh;
+  /* justify-content: center;
+  align-items: center; */
   gap: 20px;
 }
 
@@ -9,6 +11,8 @@
   flex: 1 200px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding-left: 20px;
   margin: 20px;
   gap: 20px;

@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
+import { UserInfoComponent } from '../../features/user/components/user-info/user-info.component';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [UserInfoComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
-export class HomeComponent {
-
-}
+export class HomeComponent {}

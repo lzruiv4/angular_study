@@ -4,7 +4,8 @@ import {
   importProvidersFrom,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
+import { provideNzIcons } from 'ng-zorro-antd/icon';
+import { PlusOutline } from '@ant-design/icons-angular/icons';
 import { routes } from './app.routes';
 // import { provideClientHydration } from '@angular/platform-browser';
 import { en_US, provideNzI18n } from 'ng-zorro-antd/i18n';
@@ -26,5 +27,6 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(FormsModule),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
+    provideNzIcons([PlusOutline]),
   ],
 };

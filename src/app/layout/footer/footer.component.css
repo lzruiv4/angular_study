@@ -1,6 +1,6 @@
 nz-footer {
   text-align: center;
-  /* position: static; */
-  bottom: 0;
+  /* position: relative; */
+  /* bottom: 0; */
   width: 100%;
 }
