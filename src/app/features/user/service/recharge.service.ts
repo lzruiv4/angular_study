@@ -20,6 +20,9 @@ import { currentUserId } from '../../../core/constants/User-API';
 
 @Injectable({ providedIn: 'root' })
 export class RechargeService {
+  /**
+   * open a dialog for coin recharge
+  */
   private openRecharge = new Subject<void>();
   showRechargeModal$ = this.openRecharge.asObservable();
 
@@ -27,6 +30,9 @@ export class RechargeService {
     this.openRecharge.next();
   }
 
+  /**
+   * open a dialog for recharge history
+  */
   private openRechargeHistory = new Subject<void>();
   showRechargeHistoryModal$ = this.openRechargeHistory.asObservable();
 
@@ -34,6 +40,7 @@ export class RechargeService {
     this.openRechargeHistory.next();
   }
 
+  
   private rechargeRecordsSubject = new BehaviorSubject<
     IRechargeRecord[] | null
   >([]);

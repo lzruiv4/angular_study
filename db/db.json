@@ -4,7 +4,7 @@
       "id": "ad1",
       "firstname": "Za",
       "lastname": "Li",
-      "poke_coin": 2
+      "poke_coin": 0
     },
     {
       "id": "user2",
@@ -333,6 +333,48 @@
       "id": "0b9b",
       "poke_id": "181",
       "catch_time": "23-04-2025 22:29:57",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "5334",
+      "poke_id": "180",
+      "catch_time": "24-04-2025 19:51:56",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "a316",
+      "poke_id": "160",
+      "catch_time": "24-04-2025 19:52:04",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "5723",
+      "poke_id": "152",
+      "catch_time": "24-04-2025 19:56:05",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "e005",
+      "poke_id": "158",
+      "catch_time": "24-04-2025 20:00:53",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "acfd",
+      "poke_id": "122",
+      "catch_time": "24-04-2025 20:01:05",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "456d",
+      "poke_id": "83",
+      "catch_time": "24-04-2025 20:02:18",
       "user_id": "ad1",
       "isRelease": false
     }

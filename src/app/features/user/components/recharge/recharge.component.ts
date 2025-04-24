@@ -6,6 +6,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { UserService } from '../../service/user.service';
 import { IUser } from '../../../../shared/models/IUser.model';
 import Dayjs from 'dayjs';
+import { filter, switchMap, take, tap } from 'rxjs';
 
 @Component({
   selector: 'app-recharge',
@@ -17,8 +18,6 @@ export class RechargeComponent implements OnInit {
   isRechargeVisible = false;
 
   selectOption: number = 0;
-
-  user!: IUser | null;
 
   // Getter for user
   get user$() {
@@ -34,7 +33,6 @@ export class RechargeComponent implements OnInit {
     this.rechargeService.showRechargeModal$.subscribe(() => {
       this.isRechargeVisible = true;
     });
-    this.userService.getUserInfo().subscribe();
   }
 
   selectedOneOption(value: number): void {
@@ -44,7 +42,7 @@ export class RechargeComponent implements OnInit {
   handleOk(): void {
     if (this.selectOption !== 0) {
       this.updateUserInfo();
-      this.createNewRechargeRecord();
+      // this.createNewRechargeRecord();
     }
     this.selectOption = 0;
     this.isRechargeVisible = false;
@@ -56,15 +54,19 @@ export class RechargeComponent implements OnInit {
   }
 
   updateUserInfo(): void {
-    this.user$.subscribe((user) => (this.user = user));
-    if (this.user !== null) {
-      const newUser = {
-        id: this.user.id,
-        firstname: this.user.firstname,
-        lastname: this.user.lastname,
-        poke_coin: this.user.poke_coin + Number(this.selectOption),
-      };
-      this.userService.updateUser(newUser).subscribe({
+    this.user$
+      .pipe(
+        take(1),
+        filter((user) => !!user),
+        switchMap((user) => {
+          const newUser = {
+            ...user,
+            poke_coin: user.poke_coin + Number(this.selectOption),
+          };
+          return this.userService.updateUser(newUser);
+        })
+      )
+      .subscribe({
         next: (response) => {
           console.log('Update successful:', response);
         },
@@ -73,28 +75,27 @@ export class RechargeComponent implements OnInit {
           alert('An error occurred while updating the user.');
         },
       });
-    }
   }
 
-  createNewRechargeRecord(): void {
-    if (this.user !== null) {
-      const newRechargeRecord = {
-        user_id: this.user.id,
-        amount_recharge: Number(this.selectOption),
-        current_poke_coin: this.user.poke_coin, // check here
-        recharge_date: Dayjs().format('DD-MM-YYYY HH:mm:ss'),
-      };
-      this.rechargeService
-        .createNewRechargeRecord(newRechargeRecord)
-        .subscribe({
-          next: (response) => {
-            console.log('Create successful:', response);
-          },
-          error: (error) => {
-            console.error('Error creating :', error);
-            alert('An error occurred while creating a new record.');
-          },
-        });
-    }
-  }
+  // createNewRechargeRecord(): void {
+  //   if (this.user !== null) {
+  //     const newRechargeRecord = {
+  //       user_id: this.user.id,
+  //       amount_recharge: Number(this.selectOption),
+  //       current_poke_coin: this.user.poke_coin, // check here
+  //       recharge_date: Dayjs().format('DD-MM-YYYY HH:mm:ss'),
+  //     };
+  //     this.rechargeService
+  //       .createNewRechargeRecord(newRechargeRecord)
+  //       .subscribe({
+  //         next: (response) => {
+  //           console.log('Create successful:', response);
+  //         },
+  //         error: (error) => {
+  //           console.error('Error creating :', error);
+  //           alert('An error occurred while creating a new record.');
+  //         },
+  //       });
+  //   }
+  // }
 }
