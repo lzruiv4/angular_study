@@ -11,9 +11,9 @@
     </div>
     <div class="pokemon-coin-container">
       <a class="game-info" *ngIf="user$ | async as user; else loading"
-        >Coin: {{ user.poke_coin }}</a
+        >Pokemon coin: {{ user.poke_coin }}</a
       >
-      <div>
+      <div class="button-container">
         <button
           nz-button
           nzShape="round"
@@ -71,7 +71,11 @@
           <td class="lotto-date">{{ pokemonRecord.date }}</td>
           <td class="lotto-images">
             @for (poke of pokemonRecord.pokemonRecordsInTheSameDay; track
-            poke.id){<img class="right-img" [src]="poke.image" alt="LOGO" />}
+            poke.id) {
+            <div class="img-div">
+              <img class="right-img" [src]="poke.image" alt="LOGO" />
+            </div>
+            }
           </td>
         </tr>
         }

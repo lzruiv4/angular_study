@@ -1,11 +1,12 @@
 .pokedex-container {
   display: flex;
+  flex-wrap: wrap;
   margin: 15px;
   gap: 20px;
 }
 
 .pokedex {
-  flex: 2;
+  flex: 2 200px;
   margin: 20px;
   max-height: 80%;
 }
@@ -51,7 +52,7 @@
 }
 
 .pokeball-div {
-  flex: 5;
+  flex: 5 500px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,8 +61,8 @@
 }
 
 .pokeball {
-  width: 60%;
-  height: 60%;
+  width: auto;
+  height: 60vh;
 }
 
 .pokeball:hover {

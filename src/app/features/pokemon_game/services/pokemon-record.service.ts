@@ -38,7 +38,7 @@ export class PokemonRecordService {
   pokemonRecords$: Observable<IPokemonRecord[]> =
     this.pokemonRecordsSubject.asObservable();
 
-  // Type, what will be showed in table
+  // What will be showed in table (Pokemon Lotto)
   private pokemonRecordInListSubject = new BehaviorSubject<
     IPokemonRecordInList[]
   >([]);
