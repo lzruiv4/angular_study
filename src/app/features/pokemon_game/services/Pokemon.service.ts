@@ -27,14 +27,25 @@ export class PokemonService {
         const requests = pokemonDto.map((pokemon) =>
           this.pokemonHttp.get<any>(pokemon.url).pipe(
             map((res) => {
-              console.log('asdf', res);
+              // console.log('asdf', res);
               return {
                 id: res.id,
                 name: res.name,
-                image: res.sprites.other.showdown.front_default || undefined,
-                // image: res.sprites.other.dream_world.front_default || undefined,
+                // TODO:
+                // image:
+                //   res.sprites.other.showdown.front_default || undefined,
+                image:
+                  res.sprites.other.showdown.front_default.replace(
+                    'https://raw.githubusercontent.com/PokeAPI/sprites/',
+                    'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@'
+                  ) || undefined,
+                // biggerImage:
+                //   res.sprites.other.dream_world.front_default || undefined
                 biggerImage:
-                  res.sprites.other.dream_world.front_default || undefined,
+                  res.sprites.other.dream_world.front_default.replace(
+                    'https://raw.githubusercontent.com/PokeAPI/sprites/',
+                    'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@'
+                  ) || undefined,
               } as IPokemon;
             }),
             catchError((error) => {
