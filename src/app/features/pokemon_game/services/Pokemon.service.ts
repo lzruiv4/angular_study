@@ -27,10 +27,12 @@ export class PokemonService {
         const requests = pokemonDto.map((pokemon) =>
           this.pokemonHttp.get<any>(pokemon.url).pipe(
             map((res) => {
+              console.log('asdf', res);
               return {
                 id: res.id,
                 name: res.name,
                 image: res.sprites.other.showdown.front_default || undefined,
+                // image: res.sprites.other.dream_world.front_default || undefined,
                 biggerImage:
                   res.sprites.other.dream_world.front_default || undefined,
               } as IPokemon;

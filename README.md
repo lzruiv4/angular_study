@@ -12,13 +12,13 @@
 
 #### Pokédex
 
-<img src="./public/pokedex.png" width="700px" height="auto"/>
+<img src="./public/pokedex.png" width="500px" height="auto"/>
 
 You can check all Pokémon Pokédex here
 
 #### Pokémon lotto
 
-<img src="./public/lotto.png" width="700px" height="auto" />
+<img src="./public/lotto.png" width="500px" height="auto" />
 
 1. Here you can randomly get a Pokémon, including legendary ones.
 2. Each time you spend one gold coin, if you don't have gold coins, you can recharge and check the recharge history.
