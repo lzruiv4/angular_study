@@ -15,7 +15,7 @@ import {
   IPokemonRecordDTO,
   IPokemonRecordInList,
 } from '../../../shared/models/IPokemen.model';
-import { PokemonService } from './pokemon.service';
+import { PokemonService } from './Pokemon.service';
 import { PokemonRecordDTOService } from './pokemon-record-dto.service';
 import {
   POKEMON_AMOUNT,

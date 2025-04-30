@@ -38,7 +38,7 @@ export class CatchNewPokemonComponent implements OnInit {
         switchMap((user) => {
           return this.userService.updateUser({
             ...user,
-            poke_coin: user.poke_coin - 1,
+            pokemonCoin: user.pokemonCoin - 1,
           });
         })
       )

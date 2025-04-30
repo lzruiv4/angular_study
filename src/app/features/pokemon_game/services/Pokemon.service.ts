@@ -32,20 +32,19 @@ export class PokemonService {
                 id: res.id,
                 name: res.name,
                 // TODO:
+                image: res.sprites.other.showdown.front_default || undefined,
                 // image:
-                //   res.sprites.other.showdown.front_default || undefined,
-                image:
-                  res.sprites.other.showdown.front_default.replace(
-                    'https://raw.githubusercontent.com/PokeAPI/sprites/',
-                    'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@'
-                  ) || undefined,
-                // biggerImage:
-                //   res.sprites.other.dream_world.front_default || undefined
+                //   res.sprites.other.showdown.front_default.replace(
+                //     'https://raw.githubusercontent.com/PokeAPI/sprites/',
+                //     'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@'
+                //   ) || undefined,
                 biggerImage:
-                  res.sprites.other.dream_world.front_default.replace(
-                    'https://raw.githubusercontent.com/PokeAPI/sprites/',
-                    'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@'
-                  ) || undefined,
+                  res.sprites.other.dream_world.front_default || undefined,
+                // biggerImage:
+                //   res.sprites.other.dream_world.front_default.replace(
+                //     'https://raw.githubusercontent.com/PokeAPI/sprites/',
+                //     'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@'
+                //   ) || undefined,
               } as IPokemon;
             }),
             catchError((error) => {

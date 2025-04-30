@@ -1,31 +1,39 @@
 export interface IUserDTO {
-  id: string;
+  userId: string;
+  username: string;
+  createdAt: Date;
   firstname: string;
   lastname: string;
-  poke_coin: number;
+  pokemonCoin: number;
 }
 
 export interface IUser {
-  id: string;
+  userId: string;
+  username: string;
+  createdAt: Date;
   firstname: string;
   lastname: string;
-  poke_coin: number;
+  pokemonCoin: number;
 }
 
 export function mapDtoToModel(userDto: IUserDTO): IUser {
   return {
-    id: userDto.id,
+    userId: userDto.userId,
+    username: userDto.username,
     firstname: userDto.firstname,
+    createdAt: userDto.createdAt,
     lastname: userDto.lastname,
-    poke_coin: userDto.poke_coin,
+    pokemonCoin: userDto.pokemonCoin,
   };
 }
 
 export function mapModelToDto(user: IUser): IUserDTO {
   return {
-    id: user.id,
+    userId: user.userId,
+    username: user.username,
     firstname: user.firstname,
+    createdAt: user.createdAt,
     lastname: user.lastname,
-    poke_coin: user.poke_coin,
+    pokemonCoin: user.pokemonCoin,
   };
 }

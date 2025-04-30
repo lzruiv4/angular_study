@@ -4,14 +4,14 @@
       <img
         src="/static/poke.png"
         alt="LOGO"
-        [ngClass]="user.poke_coin > 0 ? 'poke-ball' : 'no_ball_animation'"
+        [ngClass]="user.pokemonCoin > 0 ? 'poke-ball' : 'no_ball_animation'"
         (click)="openCatchPokemonDialog()"
       />
       <app-catch-new-pokemon />
     </div>
     <div class="pokemon-coin-container">
       <a class="game-info" *ngIf="user$ | async as user; else loading"
-        >Coin: {{ user.poke_coin }}</a
+        >Coin: {{ user.pokemonCoin }}</a
       >
       <div class="button-container">
         <button

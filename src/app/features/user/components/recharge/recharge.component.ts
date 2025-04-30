@@ -60,7 +60,7 @@ export class RechargeComponent implements OnInit {
         switchMap((user) => {
           const newUser = {
             ...user,
-            poke_coin: user.poke_coin + Number(this.selectOption),
+            pokemonCoin: user.pokemonCoin + Number(this.selectOption),
           };
           return this.userService.updateUser(newUser);
         })
@@ -83,9 +83,9 @@ export class RechargeComponent implements OnInit {
         filter((user) => !!user),
         switchMap((user) => {
           const newRechargeRecord = {
-            user_id: user.id,
+            user_id: user.userId,
             amount_recharge: Number(this.selectOption),
-            current_poke_coin: user.poke_coin,
+            current_poke_coin: user.pokemonCoin,
             recharge_date: Dayjs().format('DD-MM-YYYY HH:mm:ss'),
           };
           return this.rechargeService.createNewRechargeRecord(

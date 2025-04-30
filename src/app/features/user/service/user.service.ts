@@ -21,6 +21,7 @@ export class UserService {
   getUserInfo(): Observable<IUser> {
     // TODO: By login feature can this testUser be changed
     return this.userHttp.get<IUserDTO>(UserAPI + '/' + currentUserId).pipe(
+      tap((response) => console.log('获取到的响应内容:', response)),
       map((dto) => mapDtoToModel(dto)),
       tap((user) => this.userSubject.next(user))
     );
@@ -33,7 +34,7 @@ export class UserService {
     }
     const newUserDTO: IUserDTO = mapModelToDto({ ...oldUser, ...newUser });
     return this.userHttp
-      .put<IUserDTO>(UserAPI + '/' + newUser.id, newUserDTO)
+      .put<IUserDTO>(UserAPI + '/' + newUser.userId, newUserDTO)
       .pipe(
         tap((response) => {
           console.log('Response from update:', response);

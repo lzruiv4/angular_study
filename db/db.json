@@ -76,6 +76,27 @@
       "catch_time": "29-04-2025 23:02:49",
       "user_id": "ad1",
       "isRelease": false
+    },
+    {
+      "id": "7f7a",
+      "poke_id": "184",
+      "catch_time": "30-04-2025 23:01:35",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "3fb2",
+      "poke_id": "12",
+      "catch_time": "30-04-2025 23:01:46",
+      "user_id": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "41f4",
+      "poke_id": "28",
+      "catch_time": "01-05-2025 00:00:48",
+      "user_id": "796493a8-3967-4f6a-abd4-f8a9a9509062",
+      "isRelease": false
     }
   ],
   "rechargeRecords": [
@@ -113,6 +134,20 @@
       "amount_recharge": 1,
       "current_poke_coin": 0,
       "recharge_date": "29-04-2025 23:02:46"
+    },
+    {
+      "id": "4d56",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "30-04-2025 23:01:32"
+    },
+    {
+      "id": "dc05",
+      "user_id": "ad1",
+      "amount_recharge": 1,
+      "current_poke_coin": 0,
+      "recharge_date": "30-04-2025 23:01:43"
     }
   ]
 }

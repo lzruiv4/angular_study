@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IPokemon } from '../../../../shared/models/IPokemen.model';
 import { CommonModule } from '@angular/common';
-import { PokemonService } from '../../services/pokemon.service';
+import { PokemonService } from '@/features/pokemon_game/services/Pokemon.service';
 import { NzTableModule } from 'ng-zorro-antd/table';
 
 @Component({
