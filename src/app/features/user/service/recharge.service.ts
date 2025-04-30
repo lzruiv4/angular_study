@@ -6,6 +6,7 @@ import {
   map,
   Observable,
   Subject,
+  switchMap,
   tap,
   throwError,
 } from 'rxjs';
@@ -16,13 +17,13 @@ import {
   mapModelToDto,
 } from '../../../shared/models/IRechargeRecord.model';
 import { RECHARGE_RECORD_API } from '../../../core/constants/Recharge-API';
-import { currentUserId } from '../../../core/constants/User-API';
+import { CURRENT_USER_ID } from '../../../core/constants/User-API';
 
 @Injectable({ providedIn: 'root' })
 export class RechargeService {
   /**
    * open a dialog for coin recharge
-  */
+   */
   private openRecharge = new Subject<void>();
   showRechargeModal$ = this.openRecharge.asObservable();
 
@@ -32,7 +33,7 @@ export class RechargeService {
 
   /**
    * open a dialog for recharge history
-  */
+   */
   private openRechargeHistory = new Subject<void>();
   showRechargeHistoryModal$ = this.openRechargeHistory.asObservable();
 
@@ -40,7 +41,6 @@ export class RechargeService {
     this.openRechargeHistory.next();
   }
 
-  
   private rechargeRecordsSubject = new BehaviorSubject<
     IRechargeRecord[] | null
   >([]);
@@ -54,11 +54,9 @@ export class RechargeService {
   ): Observable<IRechargeRecord> {
     const newRechargeRecordDTO: IRechargeRecordDTO =
       mapModelToDto(newRechargeRecord);
+    console.log('dto: ', newRechargeRecord);
     return this.rechargeRecordsHttp
-      .post<IRechargeRecordDTO>(
-        RECHARGE_RECORD_API + '?user_id=' + currentUserId,
-        newRechargeRecordDTO
-      )
+      .post<IRechargeRecordDTO>(RECHARGE_RECORD_API, newRechargeRecordDTO)
       .pipe(
         map((model) => mapDtoToModel(model)),
         tap((record) => {
@@ -76,10 +74,13 @@ export class RechargeService {
   getAllRechargeRecordsByUserId() {
     this.rechargeRecordsHttp
       .get<IRechargeRecordDTO[]>(
-        RECHARGE_RECORD_API + '?user_id=' + currentUserId
+        RECHARGE_RECORD_API + '?userId=' + CURRENT_USER_ID
       )
       .pipe(
-        tap((records) => this.rechargeRecordsSubject.next(records)),
+        tap((records) => {
+          console.log('sdfsa', records);
+          this.rechargeRecordsSubject.next(records);
+        }),
         catchError((error) => {
           console.error('', error);
           throw error;

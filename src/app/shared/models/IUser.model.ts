@@ -1,5 +1,5 @@
 export interface IUserDTO {
-  userId: string;
+  id: string;
   username: string;
   createdAt: Date;
   firstname: string;
@@ -18,7 +18,7 @@ export interface IUser {
 
 export function mapDtoToModel(userDto: IUserDTO): IUser {
   return {
-    userId: userDto.userId,
+    userId: userDto.id,
     username: userDto.username,
     firstname: userDto.firstname,
     createdAt: userDto.createdAt,
@@ -29,7 +29,7 @@ export function mapDtoToModel(userDto: IUserDTO): IUser {
 
 export function mapModelToDto(user: IUser): IUserDTO {
   return {
-    userId: user.userId,
+    id: user.userId,
     username: user.username,
     firstname: user.firstname,
     createdAt: user.createdAt,

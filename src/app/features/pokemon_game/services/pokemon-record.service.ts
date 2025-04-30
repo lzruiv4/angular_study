@@ -23,7 +23,7 @@ import {
 } from '../../../core/constants/Pokomon-API';
 import Dayjs from 'dayjs';
 import { HttpClient } from '@angular/common/http';
-import { currentUserId } from '../../../core/constants/User-API';
+import { CURRENT_USER_ID } from '../../../core/constants/User-API';
 import dayjs from 'dayjs';
 
 @Injectable({
@@ -85,7 +85,7 @@ export class PokemonRecordService {
     const newPokemonDTO: IPokemonRecordDTO = {
       poke_id: (Math.floor(Math.random() * POKEMON_AMOUNT) + 1).toString(),
       catch_time: Dayjs().format('DD-MM-YYYY HH:mm:ss'),
-      user_id: currentUserId,
+      user_id: CURRENT_USER_ID,
       isRelease: false,
     };
     return this.pokemonRecordsHttp

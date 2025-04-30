@@ -17,7 +17,9 @@ export class RechargeHistoryComponent implements OnInit {
     return this.rechargeService.rechargeRecords$;
   }
 
-  constructor(private rechargeService: RechargeService) {}
+  constructor(
+    private rechargeService: RechargeService
+  ) {}
 
   ngOnInit(): void {
     this.rechargeService.showRechargeHistoryModal$.subscribe(() => {

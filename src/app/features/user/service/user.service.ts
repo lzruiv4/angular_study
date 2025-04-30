@@ -7,7 +7,7 @@ import {
   mapModelToDto,
 } from '../../../shared/models/IUser.model';
 import { HttpClient } from '@angular/common/http';
-import { currentUserId, UserAPI } from '../../../core/constants/User-API';
+import { CURRENT_USER_ID, USER_API } from '../../../core/constants/User-API';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +20,7 @@ export class UserService {
 
   getUserInfo(): Observable<IUser> {
     // TODO: By login feature can this testUser be changed
-    return this.userHttp.get<IUserDTO>(UserAPI + '/' + currentUserId).pipe(
+    return this.userHttp.get<IUserDTO>(USER_API + '/' + CURRENT_USER_ID).pipe(
       tap((response) => console.log('获取到的响应内容:', response)),
       map((dto) => mapDtoToModel(dto)),
       tap((user) => this.userSubject.next(user))
@@ -34,8 +34,18 @@ export class UserService {
     }
     const newUserDTO: IUserDTO = mapModelToDto({ ...oldUser, ...newUser });
     return this.userHttp
-      .put<IUserDTO>(UserAPI + '/' + newUser.userId, newUserDTO)
+      .put<IUserDTO>(`${USER_API}/${CURRENT_USER_ID}`, newUserDTO)
       .pipe(
+        map((res) => {
+          return {
+            userId: res.id,
+            username: res.username,
+            createdAt: res.createdAt,
+            firstname: res.firstname,
+            lastname: res.lastname,
+            pokemonCoin: res.pokemonCoin,
+          } as IUser;
+        }),
         tap((response) => {
           console.log('Response from update:', response);
           this.userSubject.next(response);

@@ -5,13 +5,16 @@
   (nzOnOk)="handleOk()"
 >
   <ng-container *nzModalContent>
-    <nz-timeline *ngIf="rechargeRecords$ | async as rechargeRecords">
-      <nz-timeline-item *ngFor="let record of rechargeRecords"
-        >The current balance is {{ record.current_poke_coin }}, recharge
-        {{ record.amount_recharge }}, and the current balance is
-        {{ record.current_poke_coin + record.amount_recharge }}.
-        {{ record.recharge_date }}
-      </nz-timeline-item>
-    </nz-timeline>
+    <ng-container *ngIf="rechargeRecords$ | async as rechargeRecords">
+      <nz-timeline>
+        <nz-timeline-item *ngFor="let record of rechargeRecords">
+          The current balance is
+          {{ record.currentPokemonCoin - record.amountRecharge }}, recharge
+          {{ record.amountRecharge }}, and the new balance is
+          {{ record.currentPokemonCoin }}.
+          {{ record.rechargeAt }}
+        </nz-timeline-item>
+      </nz-timeline>
+    </ng-container>
   </ng-container>
 </nz-modal>
