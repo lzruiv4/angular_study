@@ -90,6 +90,7 @@ export class RechargeComponent implements OnInit {
             userId: user.userId,
             amountRecharge: Number(this.selectOption),
             currentPokemonCoin: user.pokemonCoin + Number(this.selectOption),
+            rechargeAt: new Date(),
           };
           return this.rechargeService.createNewRechargeRecord(
             newRechargeRecord

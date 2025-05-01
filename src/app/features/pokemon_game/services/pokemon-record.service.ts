@@ -16,15 +16,15 @@ import {
   IPokemonRecordInList,
 } from '../../../shared/models/IPokemen.model';
 import { PokemonService } from './Pokemon.service';
-import { PokemonRecordDTOService } from './pokemon-record-dto.service';
 import {
   POKEMON_AMOUNT,
-  PokemonRecordsAPIByUserId,
+  POKEMON_RECORDS_API,
 } from '../../../core/constants/Pokomon-API';
 import Dayjs from 'dayjs';
 import { HttpClient } from '@angular/common/http';
 import { CURRENT_USER_ID } from '../../../core/constants/User-API';
 import dayjs from 'dayjs';
+import { DateTime } from 'luxon';
 
 @Injectable({
   providedIn: 'root',
@@ -32,77 +32,78 @@ import dayjs from 'dayjs';
 export class PokemonRecordService {
   pokemons: IPokemon[] = [];
 
-  // Get all record from db
-  private pokemonRecordsSubject = new BehaviorSubject<IPokemonRecord[]>([]);
-  pokemonRecords$: Observable<IPokemonRecord[]> =
-    this.pokemonRecordsSubject.asObservable();
-
-  // What will be showed in table (Pokemon Lotto)
-  private pokemonRecordInListSubject = new BehaviorSubject<
-    IPokemonRecordInList[]
-  >([]);
-  pokemonRecordInList$: Observable<IPokemonRecordInList[]> =
-    this.pokemonRecordInListSubject.asObservable();
-
   constructor(
     private pokemonRecordsHttp: HttpClient,
-    private pokemonRecordDTOService: PokemonRecordDTOService,
     private pokemonService: PokemonService
   ) {
-    this.pokemonRecordDTOService
-      .getAllPokemonRecordDTOsByCurrentUserId()
-      .subscribe();
     this.pokemonService
       .getPokemonDTOs()
       .subscribe((item) => (this.pokemons = item));
     this.getAllPokemonRecordsByCurrentUserId().subscribe();
   }
 
+  // Get all record from db
+  private pokemonRecordsSubject = new BehaviorSubject<IPokemonRecord[]>([]);
+  pokemonRecords$: Observable<IPokemonRecord[]> =
+    this.pokemonRecordsSubject.asObservable();
+
   getAllPokemonRecordsByCurrentUserId(): Observable<IPokemonRecord[]> {
     return combineLatest([
-      this.pokemonRecordDTOService.pokemonRecordDTOs$,
+      this.pokemonRecordsHttp.get<IPokemonRecordDTO[]>(
+        POKEMON_RECORDS_API + '?userId=' + CURRENT_USER_ID
+      ),
       this.pokemonService.pokemons$,
     ]).pipe(
       map(([pokemonRecordDTOs, pokemons]) =>
         pokemonRecordDTOs.map((pokemonRecordDTO) => {
           const imageUrl = pokemons.find(
-            (pokemon) => pokemon.id.toString() === pokemonRecordDTO.poke_id
+            (pokemon) => pokemon.id.toString() === pokemonRecordDTO.pokemonId
           )?.image;
           return {
-            id: pokemonRecordDTO.id,
-            poke_id: pokemonRecordDTO.poke_id,
-            catch_time: pokemonRecordDTO.catch_time,
+            pokemonCaptureRecordId: pokemonRecordDTO.id,
+            pokemonId: pokemonRecordDTO.pokemonId,
+            captureTime: pokemonRecordDTO.captureTime,
             image: imageUrl,
             isRelease: pokemonRecordDTO.isRelease,
           } as IPokemonRecord;
         })
       ),
-      tap((record) => this.pokemonRecordsSubject.next(record))
+      tap((record) => {
+        // console.log('ppp: ', record);
+        this.pokemonRecordsSubject.next(record);
+      }),
+      catchError((err) => {
+        console.error(
+          'Something is wrong in getAllPokemonRecordsByCurrentUserId '
+        );
+        throw err;
+      })
     );
   }
 
   captureNewPokemon(): Observable<IPokemonRecord> {
     const newPokemonDTO: IPokemonRecordDTO = {
-      poke_id: (Math.floor(Math.random() * POKEMON_AMOUNT) + 1).toString(),
-      catch_time: Dayjs().format('DD-MM-YYYY HH:mm:ss'),
-      user_id: CURRENT_USER_ID,
+      pokemonId: (Math.floor(Math.random() * POKEMON_AMOUNT) + 1).toString(),
+      captureTime: new Date(),
+      userId: CURRENT_USER_ID,
       isRelease: false,
     };
+    console.log('123sss : ', newPokemonDTO);
     return this.pokemonRecordsHttp
-      .post<IPokemonRecordDTO>(PokemonRecordsAPIByUserId, newPokemonDTO)
+      .post<IPokemonRecordDTO>(POKEMON_RECORDS_API, newPokemonDTO)
       .pipe(
         map((model) => {
           return {
-            id: model.id,
-            poke_id: model.poke_id,
-            catch_time: model.catch_time,
+            pokemonCaptureRecordId: model.id,
+            pokemonId: model.pokemonId,
+            captureTime: model.captureTime,
             image:
-              model.id !== null ? this.getPokemonImageUrl(model.poke_id) : '',
+              model.id !== null ? this.getPokemonImageUrl(model.pokemonId) : '',
             isRelease: model.isRelease,
           } as IPokemonRecord;
         }),
         tap((poke) => {
-          console.log('You captured a ', poke.id); //TODO
+          console.log('You captured a ', poke.pokemonId); //TODO
           const old = this.pokemonRecordsSubject.getValue() ?? [];
           this.pokemonRecordsSubject.next([...old, poke]);
           this.groupByRecords();
@@ -114,12 +115,19 @@ export class PokemonRecordService {
       );
   }
 
+  // What will be showed in table (Pokemon Lotto)
+  private pokemonRecordInListSubject = new BehaviorSubject<
+    IPokemonRecordInList[]
+  >([]);
+  pokemonRecordInList$: Observable<IPokemonRecordInList[]> =
+    this.pokemonRecordInListSubject.asObservable();
+
   groupByRecords(): Observable<IPokemonRecordInList[]> {
     return this.pokemonRecords$.pipe(
       map((records) => {
         const map = new Map<string, IPokemonRecord[]>();
         records.forEach((record) => {
-          const date_temp = record.catch_time.split(' ')[0];
+          const date_temp = record.captureTime!.toString().split('T')[0];
           const group = map.get(date_temp) || [];
           group.push(record);
           map.set(date_temp, group);
@@ -129,7 +137,7 @@ export class PokemonRecordService {
         map.forEach((pokemonRecordsInTheSameDay, date) => {
           result.push({ date, pokemonRecordsInTheSameDay });
         });
-        console.log(result);
+        // console.log('asd', result);
         return result.sort(
           (a, b) =>
             dayjs(b.date, 'DD-MM-YYYY').valueOf() -
