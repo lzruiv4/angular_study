@@ -9,7 +9,7 @@
       <nz-timeline>
         <nz-timeline-item *ngFor="let record of rechargeRecords">
           The current balance is
-          {{ record.currentPokemonCoin - record.amountRecharge }}, recharge
+          {{ (record.currentPokemonCoin ?? 0) - record.amountRecharge }}, recharge
           {{ record.amountRecharge }}, and the new balance is
           {{ record.currentPokemonCoin }}.
           {{ record.rechargeAt }}

@@ -3,10 +3,10 @@
     {
       "id": "ad1",
       "username": "ad1-username",
-      "createdAt": "2025-04-30 19:22:20.134051",
       "firstname": "Jack",
+      "createdAt": "2023-04-30 19:22:20.134051",
       "lastname": "Chen",
-      "pokemonCoin": 0
+      "pokemonCoin": 1
     },
     {
       "id": "user2",
@@ -115,20 +115,14 @@
       "catch_time": "01-05-2025 01:32:23",
       "user_id": "user2",
       "isRelease": false
-    }
-  ],
-  "rechargeRecords": [
-    {
-      "id": "227e",
-      "userId": "user2",
-      "amountRecharge": 1,
-      "currentPokemonCoin": 2
     },
     {
-      "id": "a8b5",
-      "userId": "user2",
-      "amountRecharge": 1,
-      "currentPokemonCoin": 2
+      "id": "1c01",
+      "poke_id": "490",
+      "catch_time": "01-05-2025 01:46:18",
+      "user_id": "796493a8-3967-4f6a-abd4-f8a9a9509062",
+      "isRelease": false
     }
-  ]
+  ],
+  "rechargeRecords": []
 }
