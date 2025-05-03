@@ -1,10 +1,6 @@
 <div class="user-container" *ngIf="user$ | async as user">
   <div class="user-info-div">
-    <nz-descriptions
-      nzTitle="User Info"
-      nzBordered
-      [nzColumn]="1"
-    >
+    <nz-descriptions nzTitle="User Info" nzBordered [nzColumn]="1">
       <nz-descriptions-item nzTitle="Firstname">{{
         user.firstname
       }}</nz-descriptions-item>
@@ -17,6 +13,20 @@
     </nz-descriptions>
   </div>
   <div class="user-foto-div">
-    <img class="user-foto" src="/static/poke.png" alt="LOGO" />
+    <nz-row [nzGutter]="200">
+      <nz-col [nzSpan]="10">
+        <nz-statistic [nzValue]="amount" nzTitle="Total"></nz-statistic>
+      </nz-col>
+      <nz-col [nzSpan]="10">
+        <nz-statistic
+          nzTitle="Captured"
+          [nzValue]="(captured | async) ?? 0"
+          [nzSuffix]="prefixTpl"
+        ></nz-statistic>
+        <ng-template #prefixTpl
+          ><img class="user-foto" src="/static/poke.png" alt="LOGO"
+        /></ng-template>
+      </nz-col>
+    </nz-row>
   </div>
 </div>

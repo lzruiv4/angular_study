@@ -164,6 +164,13 @@
       "captureTime": "2025-05-03T20:33:01.749Z",
       "userId": "user2",
       "isRelease": false
+    },
+    {
+      "id": "d75b",
+      "pokemonId": "385",
+      "captureTime": "2025-05-03T21:25:26.849Z",
+      "userId": "user2",
+      "isRelease": false
     }
   ],
   "rechargeRecords": [
@@ -201,6 +208,13 @@
       "amountRecharge": 1,
       "currentPokemonCoin": 1,
       "rechargeAt": "2025-05-03T20:32:56.928Z"
+    },
+    {
+      "id": "a82d",
+      "userId": "user2",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 1,
+      "rechargeAt": "2025-05-03T21:25:23.383Z"
     }
   ]
 }

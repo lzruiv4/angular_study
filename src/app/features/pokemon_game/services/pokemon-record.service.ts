@@ -81,6 +81,15 @@ export class PokemonRecordService {
     );
   }
 
+  getUniquePokemonCount(): Observable<number> {
+    return this.pokemonRecords$.pipe(
+      map((pokemonRecords) =>
+        pokemonRecords.map((pokemonRecord) => pokemonRecord.pokemonId)
+      ),
+      map((ids) => new Set(ids).size)
+    );
+  }
+
   captureNewPokemon(): Observable<IPokemonRecord> {
     const newPokemonDTO: IPokemonRecordDTO = {
       pokemonId: (Math.floor(Math.random() * POKEMON_AMOUNT) + 1).toString(),
