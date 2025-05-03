@@ -13,19 +13,18 @@
     </nz-descriptions>
   </div>
   <div class="user-foto-div">
-    <nz-row [nzGutter]="200">
-      <nz-col [nzSpan]="10">
-        <nz-statistic [nzValue]="amount" nzTitle="Total"></nz-statistic>
-      </nz-col>
-      <nz-col [nzSpan]="10">
+    <nz-row [nzGutter]="70">
+      <nz-col [nzSpan]="12">
         <nz-statistic
           nzTitle="Captured"
           [nzValue]="(captured | async) ?? 0"
-          [nzSuffix]="prefixTpl"
+          [nzPrefix]="prefixTpl"
+          ><ng-template #prefixTpl
+            ><img class="user-foto" src="/static/poke.png" /></ng-template
         ></nz-statistic>
-        <ng-template #prefixTpl
-          ><img class="user-foto" src="/static/poke.png" alt="LOGO"
-        /></ng-template>
+      </nz-col>
+      <nz-col [nzSpan]="12">
+        <nz-statistic [nzValue]="amount" nzTitle="Total"></nz-statistic>
       </nz-col>
     </nz-row>
   </div>
