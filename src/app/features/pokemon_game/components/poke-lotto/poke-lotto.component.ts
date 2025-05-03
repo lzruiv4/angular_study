@@ -9,7 +9,7 @@ import { PokemonRecordService } from '../../services/pokemon-record.service';
 import { UserService } from '../../../user/service/user.service';
 import { CatchNewPokemonComponent } from '../catch-new-pokemon/catch-new-pokemon.component';
 import { IPokemonRecordInList } from '../../../../shared/models/IPokemen.model';
-import { Observable } from 'rxjs';
+import { filter, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-poke-lotto',
@@ -52,7 +52,11 @@ export class PokeLottoComponent implements OnInit {
   }
 
   openCatchPokemonDialog(): void {
-    this.pokemonRecordService.triggerRechargeModal();
+    this.user$.pipe(filter((user) => !!user)).subscribe((user) => {
+      if (user.pokemonCoin > 0) {
+        this.pokemonRecordService.triggerRechargeModal();
+      }
+    });
   }
 
   parseDate(dateStr: string): Date {
