@@ -1,13 +1,9 @@
 <div class="user-container" *ngIf="user$ | async as user">
-  <div class="user-foto-div">
-    <img class="user-foto" src="/static/poke.png" alt="LOGO" />
-  </div>
   <div class="user-info-div">
     <nz-descriptions
       nzTitle="User Info"
       nzBordered
       [nzColumn]="1"
-      class="nz-info"
     >
       <nz-descriptions-item nzTitle="Firstname">{{
         user.firstname
@@ -15,16 +11,12 @@
       <nz-descriptions-item nzTitle="Lastname">{{
         user.lastname
       }}</nz-descriptions-item>
-      <nz-descriptions-item nzTitle="Pokemon coins">{{
+      <nz-descriptions-item nzTitle="Coins">{{
         user.pokemonCoin
       }}</nz-descriptions-item>
-      <nz-descriptions-item nzTitle="Adresse">
-        Street
-        <br />
-        plz
-        <br />
-        ort
-      </nz-descriptions-item>
     </nz-descriptions>
+  </div>
+  <div class="user-foto-div">
+    <img class="user-foto" src="/static/poke.png" alt="LOGO" />
   </div>
 </div>

@@ -1,6 +1,14 @@
 <div class="lotto-container">
-  <div class="ball-coin-container">
-    <div class="lotto-ball" *ngIf="user$ | async as user">
+  <div *ngIf="user$ | async as user" class="ball-coin-container">
+    <nz-alert
+      nzType="warning"
+      nzMessage="Warning"
+      nzDescription="Please recharge."
+      nzShowIcon
+      *ngIf="user.pokemonCoin <= 0"
+      class="lotto-ball"
+    ></nz-alert>
+    <div class="lotto-ball">
       <img
         src="/static/poke.png"
         alt="LOGO"

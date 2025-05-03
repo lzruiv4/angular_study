@@ -10,6 +10,7 @@ import { UserService } from '../../../user/service/user.service';
 import { CatchNewPokemonComponent } from '../catch-new-pokemon/catch-new-pokemon.component';
 import { IPokemonRecordInList } from '../../../../shared/models/IPokemen.model';
 import { filter, Observable } from 'rxjs';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
 
 @Component({
   selector: 'app-poke-lotto',
@@ -20,6 +21,7 @@ import { filter, Observable } from 'rxjs';
     RechargeHistoryComponent,
     RechargeComponent,
     CatchNewPokemonComponent,
+    NzAlertModule,
   ],
   templateUrl: './poke-lotto.component.html',
   styleUrl: './poke-lotto.component.css',
@@ -30,6 +32,8 @@ export class PokeLottoComponent implements OnInit {
     private pokemonRecordService: PokemonRecordService,
     private userService: UserService
   ) {}
+
+  isWarningVisible = false;
 
   // Getter for user
   get user$() {

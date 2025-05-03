@@ -1,7 +1,9 @@
 <div class="home-container">
   <div class="user-record-div">
-    <nz-table
+    <!-- <nz-table
       #basicTable
+      *ngIf="pokemonRecordInList$ | async as data"
+      [nzData]="data"
       [nzPageSize]="6"
       [nzShowPagination]="true"
       [nzFrontPagination]="true"
@@ -10,11 +12,11 @@
     >
       <thead>
         <tr class="lotto-table-header">
-          <th [nzWidth]="'15%'" style="text-align: center">Date</th>
-          <th [nzWidth]="'85%'" style="text-align: center">Pokemons</th>
+          <th [nzWidth]="'15%'" [nzSortFn]="sortByDate">Date</th>
+          <th [nzWidth]="'85%'">Pokemons</th>
         </tr>
       </thead>
-      <!-- <tbody>
+      <tbody>
         @for (pokemonRecord of basicTable.data; track pokemonRecord.date) {
         <tr class="lotto-date-image-container">
           <td class="lotto-date">{{ pokemonRecord.date }}</td>
@@ -28,8 +30,8 @@
           </td>
         </tr>
         }
-      </tbody> -->
-    </nz-table>
+      </tbody>
+    </nz-table> -->
   </div>
   <div class="user-div"><app-user-info /></div>
 </div>

@@ -3,9 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 200px;
-  width: 300px;
-  gap: 20px;
+  min-width: 300px;
+  width: 500px;
+  height: 90%;
+  gap: 40px;
 }
 
 .user-foto {
@@ -22,12 +23,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 40px;
-  max-width: 90%;
-}
-
-.nz-info {
-  width: 500px;
+  width: 75%;
 }
 
 .user-foto-div {
@@ -36,5 +32,46 @@
   justify-content: center;
   align-items: center;
   max-width: 90%;
-  margin: 20px;
+  margin: 5px;
+}
+
+:host ::ng-deep .ant-descriptions-bordered {
+  background-color: #fcf9f4;
+  border-radius: 8px;
+  overflow: hidden;
+  font: 15px;
+  /* border: 1px solid #e6decf; */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  width: 90%;
+  height: 90%;
+}
+
+:host ::ng-deep .ant-descriptions-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 12px;
+  text-align: center;
+  color: #333;
+}
+
+:host ::ng-deep .ant-descriptions-item-label {
+  min-width: 100px;
+  min-height: 50px;
+  height: 50px;
+  background-color: #f2e8d7;
+  font-weight: bold;
+  color: #555;
+  font-weight: 30px;
+  width: 100px;
+}
+
+:host ::ng-deep .ant-descriptions-item-content {
+  min-width: 100px;
+  min-height: 50px;
+  height: 50px;
+  width: 200px;
+  color: #333;
+  background-color: #fff;
+  padding: 8px 12px;
+  word-break: break-word;
 }
