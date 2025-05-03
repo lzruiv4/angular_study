@@ -1,0 +1,25 @@
+.home-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+
+.user-record-div {
+  min-width: 500px;
+  width: 700px;
+  max-width: 1000px;
+  min-height: 500px;
+  height: 700px;
+  max-height: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,15 +1,29 @@
 .user-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px;
+  width: 300px;
   gap: 20px;
 }
 
-.user-info {
-  flex: 2 400px;
+.user-foto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 270px;
+}
+
+.user-info-div {
+  /* flex: 2 400px; */
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 40px;
+  max-width: 90%;
 }
 
 .nz-info {
@@ -17,13 +31,10 @@
 }
 
 .user-foto-div {
-  flex: 1 200px;
+  /* flex: 1 200px; */
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.user-foto {
-  width: 250px;
-  height: 270px;
+  max-width: 90%;
+  margin: 20px;
 }

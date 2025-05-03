@@ -9,8 +9,8 @@
     >
       <thead>
         <tr class="left-header">
-          <th [nzWidth]="'40%'" style="text-align: center">Image</th>
-          <th [nzWidth]="'60%'" style="text-align: center">Name</th>
+          <th [nzWidth]="'100px'" style="text-align: center">Image</th>
+          <th [nzWidth]="'300px'" style="text-align: center">Name</th>
         </tr>
       </thead>
       <tbody>
@@ -27,7 +27,7 @@
       </tbody>
     </nz-table>
   </div>
-  <div class="pokeball-div">
+  <div class="poke-ball-div">
     <img
       [src]="
         selectedPokemon.biggerImage
@@ -35,7 +35,7 @@
           : '/static/poke.png'
       "
       alt="LOGO"
-      class="pokeball"
+      class="poke-ball"
     />
   </div>
 </div>

@@ -1,3 +1,35 @@
 <div class="home-container">
-  <app-user-info />
+  <div class="user-record-div">
+    <nz-table
+      #basicTable
+      [nzPageSize]="6"
+      [nzShowPagination]="true"
+      [nzFrontPagination]="true"
+      [nzScroll]="{ x: '50%' }"
+      [nzBordered]="true"
+    >
+      <thead>
+        <tr class="lotto-table-header">
+          <th [nzWidth]="'15%'" style="text-align: center">Date</th>
+          <th [nzWidth]="'85%'" style="text-align: center">Pokemons</th>
+        </tr>
+      </thead>
+      <!-- <tbody>
+        @for (pokemonRecord of basicTable.data; track pokemonRecord.date) {
+        <tr class="lotto-date-image-container">
+          <td class="lotto-date">{{ pokemonRecord.date }}</td>
+          <td class="lotto-images">
+            @for (poke of pokemonRecord.pokemonRecordsInTheSameDay; track
+            poke.pokemonId) {
+            <div class="img-div">
+              <img class="right-img" [src]="poke.image" alt="LOGO" />
+            </div>
+            }
+          </td>
+        </tr>
+        }
+      </tbody> -->
+    </nz-table>
+  </div>
+  <div class="user-div"><app-user-info /></div>
 </div>

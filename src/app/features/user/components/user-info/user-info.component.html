@@ -1,5 +1,8 @@
 <div class="user-container" *ngIf="user$ | async as user">
-  <div class="user-info">
+  <div class="user-foto-div">
+    <img class="user-foto" src="/static/poke.png" alt="LOGO" />
+  </div>
+  <div class="user-info-div">
     <nz-descriptions
       nzTitle="User Info"
       nzBordered
@@ -23,8 +26,5 @@
         ort
       </nz-descriptions-item>
     </nz-descriptions>
-  </div>
-  <div class="user-foto-div">
-    <img class="user-foto" src="/static/poke.png" alt="LOGO" />
   </div>
 </div>
