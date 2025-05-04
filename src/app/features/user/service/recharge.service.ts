@@ -5,6 +5,7 @@ import {
   catchError,
   map,
   Observable,
+  of,
   Subject,
   switchMap,
   tap,
@@ -71,21 +72,21 @@ export class RechargeService {
       );
   }
 
-  getAllRechargeRecordsByUserId() {
-    this.rechargeRecordsHttp
+  getAllRechargeRecordsByUserId(): Observable<IRechargeRecordDTO[]> {
+    return this.rechargeRecordsHttp
       .get<IRechargeRecordDTO[]>(
         RECHARGE_RECORD_API + '?userId=' + CURRENT_USER_ID
       )
       .pipe(
         tap((records) => {
-          console.log('sdfsa', records);
+          // console.log('sdfsa', records);
           this.rechargeRecordsSubject.next(records);
         }),
         catchError((error) => {
-          console.error('', error);
+          console.error('Get all recharge record by user id wrong.', error);
+          this.rechargeRecordsSubject.next([]);
           throw error;
         })
-      )
-      .subscribe();
+      );
   }
 }

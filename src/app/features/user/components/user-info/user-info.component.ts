@@ -27,7 +27,7 @@ import { Observable } from 'rxjs';
 export class UserInfoComponent implements OnInit {
   amount = POKEMON_AMOUNT;
 
-  captured: Observable<number> | undefined;
+  captured!: Observable<number>;
 
   constructor(
     private userService: UserService,
@@ -41,9 +41,5 @@ export class UserInfoComponent implements OnInit {
 
   get user$() {
     return this.userService.user$;
-  }
-
-  get pokemonRecords$() {
-    return this.pokemonRecordService.pokemonRecords$;
   }
 }

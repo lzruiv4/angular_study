@@ -3,7 +3,8 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 100px;
+  padding: 40px;
+  gap: 50px;
 }
 
 .user-record-div {
@@ -14,12 +15,17 @@
   height: 700px;
   max-height: 900px;
   display: flex;
+  padding: 40px;
+  margin: 20px 5px;
   justify-content: center;
   align-items: center;
+  /* overflow-y: scroll; */
 }
 
 .user-div {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 350px;
+  width: 400px;
 }

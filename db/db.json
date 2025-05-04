@@ -14,7 +14,7 @@
       "firstname": "Melanie1",
       "createdAt": "2024-04-30 19:22:20.134051",
       "lastname": "Chen",
-      "pokemonCoin": 1
+      "pokemonCoin": 3
     }
   ],
   "pokemonRecords": [
@@ -171,6 +171,20 @@
       "captureTime": "2025-05-03T21:25:26.849Z",
       "userId": "user2",
       "isRelease": false
+    },
+    {
+      "id": "f921",
+      "pokemonId": "223",
+      "captureTime": "2025-05-04T14:11:21.298Z",
+      "userId": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "1adb",
+      "pokemonId": "345",
+      "captureTime": "2025-05-04T14:20:31.219Z",
+      "userId": "user2",
+      "isRelease": false
     }
   ],
   "rechargeRecords": [
@@ -222,6 +236,34 @@
       "amountRecharge": 1,
       "currentPokemonCoin": 1,
       "rechargeAt": "2025-05-03T21:27:33.850Z"
+    },
+    {
+      "id": "b7ba",
+      "userId": "user2",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 2,
+      "rechargeAt": "2025-05-04T13:44:30.801Z"
+    },
+    {
+      "id": "5600",
+      "userId": "user2",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 3,
+      "rechargeAt": "2025-05-04T14:05:56.314Z"
+    },
+    {
+      "id": "e606",
+      "userId": "user2",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 3,
+      "rechargeAt": "2025-05-04T14:15:05.152Z"
+    },
+    {
+      "id": "b1cd",
+      "userId": "user2",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 4,
+      "rechargeAt": "2025-05-04T14:20:24.600Z"
     }
   ]
 }

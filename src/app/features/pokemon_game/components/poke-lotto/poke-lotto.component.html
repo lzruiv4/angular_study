@@ -73,7 +73,7 @@
           <td class="lotto-date">{{ pokemonRecord.date }}</td>
           <td class="lotto-images">
             @for (poke of pokemonRecord.pokemonRecordsInTheSameDay; track
-            poke.pokemonId) {
+            $index) {
             <div class="img-div">
               <img class="right-img" [src]="poke.image" alt="LOGO" />
             </div>
