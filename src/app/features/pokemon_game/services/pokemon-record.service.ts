@@ -20,11 +20,9 @@ import {
   POKEMON_AMOUNT,
   POKEMON_RECORDS_API,
 } from '../../../core/constants/Pokomon-API';
-import Dayjs from 'dayjs';
 import { HttpClient } from '@angular/common/http';
 import { CURRENT_USER_ID } from '../../../core/constants/User-API';
 import dayjs from 'dayjs';
-import { DateTime } from 'luxon';
 
 @Injectable({
   providedIn: 'root',
