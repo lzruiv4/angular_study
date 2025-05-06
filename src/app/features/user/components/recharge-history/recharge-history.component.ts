@@ -37,4 +37,8 @@ export class RechargeHistoryComponent implements OnInit {
     // console.log('Button cancel clicked!');
     this.isChargeHistoryVisible = false;
   }
+
+  trackByFun(index: number, item: any) {
+    return item.index;
+  }
 }

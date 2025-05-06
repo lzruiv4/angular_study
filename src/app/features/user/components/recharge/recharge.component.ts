@@ -6,6 +6,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { UserService } from '../../service/user.service';
 import { filter, switchMap, take } from 'rxjs';
 import { IRechargeRecordDTO } from '@/shared/models/IRechargeRecord.model';
+import { CURRENT_USER_ID } from '@/core/constants/User-API';
 
 @Component({
   selector: 'app-recharge',
@@ -84,8 +85,9 @@ export class RechargeComponent implements OnInit {
         take(1),
         filter((user) => !!user),
         switchMap((user) => {
+          // console.log(user);
           const newRechargeRecordDTO: IRechargeRecordDTO = {
-            userId: user.userId!,
+            userId: CURRENT_USER_ID,
             amountRecharge: Number(this.selectOption),
             currentPokemonCoin: user.pokemonCoin + Number(this.selectOption),
             rechargeAt: new Date(),

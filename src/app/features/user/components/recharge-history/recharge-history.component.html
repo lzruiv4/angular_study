@@ -9,7 +9,7 @@
       <div class="timeline_content">
         <nz-timeline>
           <nz-timeline-item
-            *ngFor="let record of rechargeRecords; ngForTrackBy: index"
+            *ngFor="let record of rechargeRecords; trackBy: trackByFun"
           >
             The current balance is
             {{ record.currentPokemonCoin - record.amountRecharge }}, recharge
