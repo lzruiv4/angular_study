@@ -227,6 +227,20 @@
       "captureTime": "2025-05-06T14:28:12.013Z",
       "userId": "user2",
       "isRelease": false
+    },
+    {
+      "id": "00f2",
+      "pokemonId": "163",
+      "captureTime": "2025-05-06T20:13:46.878Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "a3f1",
+      "pokemonId": "295",
+      "captureTime": "2025-05-06T20:14:16.309Z",
+      "userId": "ad1",
+      "isRelease": false
     }
   ],
   "rechargeRecords": [
@@ -334,6 +348,20 @@
       "amountRecharge": 1,
       "currentPokemonCoin": 1,
       "rechargeAt": "2025-05-06T14:28:18.158Z"
+    },
+    {
+      "id": "4e8d",
+      "userId": "ad1",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 1,
+      "rechargeAt": "2025-05-06T20:13:58.481Z"
+    },
+    {
+      "id": "bb0e",
+      "userId": "ad1",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 1,
+      "rechargeAt": "2025-05-06T20:14:24.395Z"
     }
   ]
 }
