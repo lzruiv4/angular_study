@@ -5,7 +5,7 @@
       nzMessage="Warning"
       nzDescription="Please recharge."
       nzShowIcon
-      *ngIf="user.pokemonCoin <= 0"
+      [hidden]="user.pokemonCoin > 0"
       class="lotto-ball"
     ></nz-alert>
     <div class="lotto-ball">

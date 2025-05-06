@@ -11,8 +11,6 @@ import { IPokemonRecord } from '@/shared/models/IPokemen.model';
 import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
-type HomeObjectType = IRechargeRecord | IPokemonRecord;
-
 type HomeObject =
   | {
       homeObjectDate: Date;

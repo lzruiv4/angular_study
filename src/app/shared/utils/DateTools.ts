@@ -7,3 +7,6 @@ export function sortMapByDateDesc(
 
   return new Map(sortedEntries);
 }
+
+
+export const DATE_PIPE:string = "yyyy-mm-dd hh:mm:ss"
