@@ -67,7 +67,6 @@ export class PokemonRecordService {
         })
       ),
       tap((record) => {
-        // console.log('ppp: ', record);
         this.pokemonRecordsSubject.next(record);
       }),
       catchError((err) => {
@@ -95,7 +94,6 @@ export class PokemonRecordService {
       userId: CURRENT_USER_ID,
       isRelease: false,
     };
-    console.log('123sss : ', newPokemonDTO);
     return this.pokemonRecordsHttp
       .post<IPokemonRecordDTO>(POKEMON_RECORDS_API, newPokemonDTO)
       .pipe(
@@ -110,7 +108,7 @@ export class PokemonRecordService {
           } as IPokemonRecord;
         }),
         tap((poke) => {
-          console.log('You captured a ', poke.pokemonId); //TODO
+          // console.log('You captured a ', poke.pokemonId); //TODO
           const old = this.pokemonRecordsSubject.getValue() ?? [];
           this.pokemonRecordsSubject.next([...old, poke]);
           this.groupByRecords();
@@ -144,7 +142,6 @@ export class PokemonRecordService {
         map.forEach((pokemonRecordsInTheSameDay, date) => {
           result.push({ date, pokemonRecordsInTheSameDay });
         });
-        // console.log('asd', result);
         return result.sort(
           (a, b) =>
             dayjs(b.date, 'DD-MM-YYYY').valueOf() -

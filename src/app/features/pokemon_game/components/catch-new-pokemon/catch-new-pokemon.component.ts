@@ -58,7 +58,7 @@ export class CatchNewPokemonComponent implements OnInit {
 
     this.pokemonRecordService.captureNewPokemon().subscribe({
       next: (response) => {
-        console.log('Captured successful:', response);
+        // console.log('Captured successful:', response);
       },
       error: (error) => {
         console.error('Error during capturing :', error);

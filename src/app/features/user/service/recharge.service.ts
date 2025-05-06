@@ -55,13 +55,11 @@ export class RechargeService {
   ): Observable<IRechargeRecord> {
     const newRechargeRecordDTO: IRechargeRecordDTO =
       mapModelToDto(newRechargeRecord);
-    console.log('dto: ', newRechargeRecord);
     return this.rechargeRecordsHttp
       .post<IRechargeRecordDTO>(RECHARGE_RECORD_API, newRechargeRecordDTO)
       .pipe(
         map((model) => mapDtoToModel(model)),
         tap((record) => {
-          console.log('Response from backend : ', record);
           const old = this.rechargeRecordsSubject.getValue() ?? [];
           this.rechargeRecordsSubject.next([...old, record]);
         }),
@@ -79,7 +77,6 @@ export class RechargeService {
       )
       .pipe(
         tap((records) => {
-          // console.log('sdfsa', records);
           this.rechargeRecordsSubject.next(records);
         }),
         catchError((error) => {

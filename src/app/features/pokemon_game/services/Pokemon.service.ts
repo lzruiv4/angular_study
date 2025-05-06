@@ -27,7 +27,6 @@ export class PokemonService {
         const requests = pokemonDto.map((pokemon) =>
           this.pokemonHttp.get<any>(pokemon.url).pipe(
             map((res) => {
-              // console.log('asdf', res);
               return {
                 id: res.id,
                 name: res.name,

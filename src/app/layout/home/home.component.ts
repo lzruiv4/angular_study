@@ -81,6 +81,6 @@ export class HomeComponent implements OnInit {
       })
     );
 
-    console.log(this.combined$.pipe().subscribe((d) => console.log(d)));
+    // console.log(this.combined$.pipe().subscribe((d) => console.log(d)));
   }
 }
