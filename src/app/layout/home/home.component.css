@@ -4,22 +4,45 @@
   justify-content: center;
   align-items: center;
   /* padding: 40px; */
-  gap: 50px;
+  gap: 100px;
 }
 
 .user-record-div {
   min-width: 500px;
   width: 700px;
-  /* max-width: 1000px; */
   min-height: 500px;
-  height: 700px;
-  max-height: 900px;
+  height: 900px;
+  max-height: 1200px;
   display: flex;
-  padding: 40px;
-  margin: 20px 5px;
   justify-content: center;
   align-items: center;
-  /* overflow-y: scroll; */
+  padding: 40px;
+  border-radius: 20px; /* 圆角 */
+  box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.1); /* 柔和的阴影 */
+  /* font-family: "Segoe"; */
+  color: #333; /* 文字颜色 */
+  font-size: 20px;
+  overflow-y: auto;
+}
+
+/* 自定义滚动条样式 */
+.user-record-div::-webkit-scrollbar {
+  width: 8px; /* 滚动条的宽度 */
+}
+
+.user-record-div::-webkit-scrollbar-track {
+  background: #f0f0f0; /* 滚动条轨道的背景颜色 */
+  border-radius: 10px; /* 轨道的圆角 */
+}
+
+.user-record-div::-webkit-scrollbar-thumb {
+  background-color: #007bff; /* 滚动条的颜色 */
+  border-radius: 10px; /* 滚动条的圆角 */
+  border: 2px solid #f0f0f0; /* 滚动条与轨道之间的间隙 */
+}
+
+.user-record-div::-webkit-scrollbar-thumb:hover {
+  background-color: #0056b3; /* 滚动条悬停时的颜色 */
 }
 
 .user-div {

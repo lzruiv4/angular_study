@@ -1,12 +1,12 @@
 {
   "users": [
     {
-      "id": "ad1",
       "username": "ad1-username",
-      "firstname": "Jack",
       "createdAt": "2023-04-30 19:22:20.134051",
+      "firstname": "Jack",
       "lastname": "Chen",
-      "pokemonCoin": 1
+      "pokemonCoin": 0,
+      "id": "ad1"
     },
     {
       "id": "user2",
@@ -98,35 +98,35 @@
     {
       "id": "b058",
       "pokemonId": "456",
-      "captureTime": "2025-05-03T19:41:52.079Z",
+      "captureTime": "2025-01-03T19:41:52.079Z",
       "userId": "user2",
       "isRelease": false
     },
     {
       "id": "0562",
       "pokemonId": "276",
-      "captureTime": "2025-05-03T19:41:54.962Z",
+      "captureTime": "2025-02-03T19:41:54.962Z",
       "userId": "user2",
       "isRelease": false
     },
     {
       "id": "c3e5",
       "pokemonId": "419",
-      "captureTime": "2025-05-03T19:41:57.627Z",
+      "captureTime": "2023-05-03T19:41:57.627Z",
       "userId": "user2",
       "isRelease": false
     },
     {
       "id": "5903",
       "pokemonId": "189",
-      "captureTime": "2025-05-03T19:42:00.549Z",
+      "captureTime": "2025-04-03T19:42:00.549Z",
       "userId": "user2",
       "isRelease": false
     },
     {
       "id": "0137",
       "pokemonId": "460",
-      "captureTime": "2025-05-03T19:42:03.644Z",
+      "captureTime": "2022-05-03T19:42:03.644Z",
       "userId": "user2",
       "isRelease": false
     },
@@ -239,6 +239,104 @@
       "id": "a3f1",
       "pokemonId": "295",
       "captureTime": "2025-05-06T20:14:16.309Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "0c7b",
+      "pokemonId": "311",
+      "captureTime": "2023-05-06T21:50:20.872Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "5355",
+      "pokemonId": "54",
+      "captureTime": "2021-03-06T21:50:29.780Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "f1d9",
+      "pokemonId": "226",
+      "captureTime": "2025-05-06T21:50:41.183Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "52ad",
+      "pokemonId": "42",
+      "captureTime": "2025-05-06T22:53:03.024Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "5ef6",
+      "pokemonId": "453",
+      "captureTime": "2022-05-06T22:55:00.089Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "61d2",
+      "pokemonId": "151",
+      "captureTime": "2025-03-06T22:55:03.410Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "f0c0",
+      "pokemonId": "492",
+      "captureTime": "2023-05-06T22:55:06.396Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "8811",
+      "pokemonId": "180",
+      "captureTime": "2022-05-06T22:55:09.545Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "33b9",
+      "pokemonId": "20",
+      "captureTime": "2025-05-06T23:13:23.699Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "c824",
+      "pokemonId": "85",
+      "captureTime": "2025-05-06T23:18:28.725Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "bb14",
+      "pokemonId": "107",
+      "captureTime": "2025-05-06T23:18:31.243Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "dbe5",
+      "pokemonId": "222",
+      "captureTime": "2025-05-06T23:18:33.885Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "27b2",
+      "pokemonId": "177",
+      "captureTime": "2025-05-06T23:18:36.788Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "fc3f",
+      "pokemonId": "92",
+      "captureTime": "2025-05-06T23:18:43.885Z",
       "userId": "ad1",
       "isRelease": false
     }
@@ -362,6 +460,84 @@
       "amountRecharge": 1,
       "currentPokemonCoin": 1,
       "rechargeAt": "2025-05-06T20:14:24.395Z"
+    },
+    {
+      "id": "8782",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 2,
+      "rechargeAt": "2025-05-06T21:37:19.136Z"
+    },
+    {
+      "id": "d508",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 3,
+      "rechargeAt": "2025-05-06T21:38:13.922Z"
+    },
+    {
+      "id": "836c",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 4,
+      "rechargeAt": "2025-05-06T21:40:13.915Z"
+    },
+    {
+      "id": "317c",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 5,
+      "rechargeAt": "2025-05-06T21:42:57.646Z"
+    },
+    {
+      "id": "48ac",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 6,
+      "rechargeAt": "2025-05-06T21:47:03.018Z"
+    },
+    {
+      "id": "cc94",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 7,
+      "rechargeAt": "2025-05-06T21:48:49.176Z"
+    },
+    {
+      "id": "c351",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 8,
+      "rechargeAt": "2025-05-06T21:50:03.593Z"
+    },
+    {
+      "id": "c03a",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 6,
+      "rechargeAt": "2025-05-06T21:56:56.053Z"
+    },
+    {
+      "id": "0986",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 7,
+      "rechargeAt": "2025-05-06T21:57:06.949Z"
+    },
+    {
+      "id": "603d",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 8,
+      "rechargeAt": "2025-05-06T22:52:27.419Z"
+    },
+    {
+      "id": "f9d5",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 9,
+      "rechargeAt": "2025-05-06T22:52:35.429Z"
+    },
+    {
+      "id": "5fec",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 9,
+      "rechargeAt": "2025-05-06T22:53:52.836Z"
+    },
+    {
+      "id": "8fc6",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 1,
+      "rechargeAt": "2025-05-06T23:18:41.606Z"
     }
   ]
 }

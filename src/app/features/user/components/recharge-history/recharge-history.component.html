@@ -4,17 +4,23 @@
   (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()"
 >
-  <ng-container *nzModalContent>
+  <ng-container *nzModalContent class="timeline_windows">
     <ng-container *ngIf="rechargeRecords$ | async as rechargeRecords">
-      <nz-timeline>
-        <nz-timeline-item *ngFor="let record of rechargeRecords">
-          The current balance is
-          {{ (record.currentPokemonCoin ?? 0) - record.amountRecharge }},
-          recharge {{ record.amountRecharge }}, and the new balance is
-          {{ record.currentPokemonCoin }}.
-          {{ record.rechargeAt | date : date_pipe }}
-        </nz-timeline-item>
-      </nz-timeline>
+      <div class="timeline_content">
+        <nz-timeline>
+          <nz-timeline-item
+            *ngFor="let record of rechargeRecords; ngForTrackBy: index"
+          >
+            The current balance is
+            {{ record.currentPokemonCoin - record.amountRecharge }}, recharge
+            {{ record.amountRecharge }}, and the new balance is
+            {{ record.currentPokemonCoin }}.
+            <div style="font-size: 12px; color: gray; margin-top: 4px">
+              {{ record.rechargeAt | date : date_pipe }}
+            </div>
+          </nz-timeline-item>
+        </nz-timeline>
+      </div>
     </ng-container>
   </ng-container>
 </nz-modal>

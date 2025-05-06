@@ -1,0 +1,33 @@
+.timeline_content {
+  width: 100%;
+  /* max-width: 700px; 最大宽度，避免过大 */
+  max-height: 500px;
+  background-color: white;
+  border-radius: 12px; /* 圆角 */
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 柔和的阴影 */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333; /* 文字颜色 */
+  /* font-size: 20px; */
+  overflow-y: auto;
+}
+
+/* 自定义滚动条样式 */
+.timeline_content::-webkit-scrollbar {
+  width: 8px; /* 滚动条的宽度 */
+}
+
+.timeline_content::-webkit-scrollbar-track {
+  background: #f0f0f0; /* 滚动条轨道的背景颜色 */
+  border-radius: 10px; /* 轨道的圆角 */
+}
+
+.timeline_content::-webkit-scrollbar-thumb {
+  background-color: #007bff; /* 滚动条的颜色 */
+  border-radius: 10px; /* 滚动条的圆角 */
+  border: 2px solid #f0f0f0; /* 滚动条与轨道之间的间隙 */
+}
+
+.timeline_content::-webkit-scrollbar-thumb:hover {
+  background-color: #0056b3; /* 滚动条悬停时的颜色 */
+}

@@ -10,6 +10,7 @@ import { IRechargeRecord } from '@/shared/models/IRechargeRecord.model';
 import { IPokemonRecord } from '@/shared/models/IPokemen.model';
 import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { DATE_PIPE } from '@/shared/utils/DateTools';
 
 type HomeObject =
   | {
@@ -41,6 +42,8 @@ export class HomeComponent implements OnInit {
   pokemonRecords$!: Observable<IPokemonRecord[]>;
 
   combined$!: Observable<HomeObject[]>;
+
+  date_pipe = DATE_PIPE;
 
   constructor(
     private rechargeService: RechargeService,
@@ -80,7 +83,5 @@ export class HomeComponent implements OnInit {
         );
       })
     );
-
-    // console.log(this.combined$.pipe().subscribe((d) => console.log(d)));
   }
 }

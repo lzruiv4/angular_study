@@ -5,9 +5,7 @@ import {
   catchError,
   map,
   Observable,
-  of,
   Subject,
-  switchMap,
   tap,
   throwError,
 } from 'rxjs';
@@ -42,23 +40,20 @@ export class RechargeService {
     this.openRechargeHistory.next();
   }
 
-  private rechargeRecordsSubject = new BehaviorSubject<
-    IRechargeRecord[] | null
-  >([]);
-  rechargeRecords$: Observable<IRechargeRecord[] | null> =
-    this.rechargeRecordsSubject.asObservable();
+  private rechargeRecordsSubject = new BehaviorSubject<IRechargeRecord[] | []>(
+    []
+  );
+  rechargeRecords$ = this.rechargeRecordsSubject.asObservable();
 
   constructor(private rechargeRecordsHttp: HttpClient) {}
 
   createNewRechargeRecord(
-    newRechargeRecord: IRechargeRecord
+    newRechargeRecordDTO: IRechargeRecordDTO
   ): Observable<IRechargeRecord> {
-    const newRechargeRecordDTO: IRechargeRecordDTO =
-      mapModelToDto(newRechargeRecord);
     return this.rechargeRecordsHttp
-      .post<IRechargeRecordDTO>(RECHARGE_RECORD_API, newRechargeRecordDTO)
+      .post<IRechargeRecord>(RECHARGE_RECORD_API, newRechargeRecordDTO)
       .pipe(
-        map((model) => mapDtoToModel(model)),
+        // map((model) => mapDtoToModel(model)),
         tap((record) => {
           const old = this.rechargeRecordsSubject.getValue() ?? [];
           this.rechargeRecordsSubject.next([...old, record]);
@@ -70,9 +65,9 @@ export class RechargeService {
       );
   }
 
-  getAllRechargeRecordsByUserId(): Observable<IRechargeRecordDTO[]> {
+  getAllRechargeRecordsByUserId(): Observable<IRechargeRecord[]> {
     return this.rechargeRecordsHttp
-      .get<IRechargeRecordDTO[]>(
+      .get<IRechargeRecord[]>(
         RECHARGE_RECORD_API + '?userId=' + CURRENT_USER_ID
       )
       .pipe(
