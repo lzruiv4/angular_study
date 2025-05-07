@@ -24,6 +24,16 @@
   overflow-y: auto;
 }
 
+::ng-deep .ant-timeline-item-content {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444;
+  background-color: #fffdf8;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 3px solid #409eff;
+}
+
 /* 自定义滚动条样式 */
 .user-record-div::-webkit-scrollbar {
   width: 8px; /* 滚动条的宽度 */
