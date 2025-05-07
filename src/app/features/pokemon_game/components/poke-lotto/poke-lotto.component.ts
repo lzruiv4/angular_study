@@ -40,11 +40,15 @@ export class PokeLottoComponent implements OnInit {
     return this.userService.user$;
   }
 
+  // get pokemonRecordInList$() {
+  //   return this.pokemonRecordService.pokemonRecordInList$;
+  // }
+
   pokemonRecordInList$!: Observable<IPokemonRecordInList[]>;
 
   ngOnInit(): void {
     this.pokemonRecordInList$ = this.pokemonRecordService.groupByRecords();
-    this.userService.getUserInfo().subscribe();
+    // this.userService.getUserInfo().subscribe();
   }
 
   openRechargeHistory(): void {

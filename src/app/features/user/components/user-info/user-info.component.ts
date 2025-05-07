@@ -8,7 +8,6 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { POKEMON_AMOUNT } from '@/core/constants/Pokomon-API';
 import { PokemonRecordService } from '@/features/pokemon_game/services/pokemon-record.service';
-import { map } from 'rxjs/internal/operators/map';
 import { Observable } from 'rxjs';
 
 @Component({

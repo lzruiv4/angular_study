@@ -26,7 +26,7 @@ export class RechargeHistoryComponent implements OnInit {
     this.rechargeService.showRechargeHistoryModal$.subscribe(() => {
       this.isChargeHistoryVisible = true;
     });
-    this.rechargeService.getAllRechargeRecordsByUserId().subscribe();
+    // this.rechargeService.getAllRechargeRecordsByUserId().subscribe();
   }
 
   handleOk(): void {

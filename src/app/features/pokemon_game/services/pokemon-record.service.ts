@@ -32,7 +32,7 @@ export class PokemonRecordService {
 
   constructor(
     private pokemonRecordsHttp: HttpClient,
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
   ) {
     this.pokemonService
       .getPokemonDTOs()
@@ -48,42 +48,44 @@ export class PokemonRecordService {
   getAllPokemonRecordsByCurrentUserId(): Observable<IPokemonRecord[]> {
     return combineLatest([
       this.pokemonRecordsHttp.get<IPokemonRecordDTO[]>(
-        POKEMON_RECORDS_API + '?userId=' + CURRENT_USER_ID
+        POKEMON_RECORDS_API + '?userId=' + CURRENT_USER_ID,
       ),
       this.pokemonService.pokemons$,
     ]).pipe(
       map(([pokemonRecordDTOs, pokemons]) =>
-        pokemonRecordDTOs.map((pokemonRecordDTO) => {
-          const imageUrl = pokemons.find(
-            (pokemon) => pokemon.id.toString() === pokemonRecordDTO.pokemonId
-          )?.image;
-          return {
-            pokemonCaptureRecordId: pokemonRecordDTO.id,
-            pokemonId: pokemonRecordDTO.pokemonId,
-            captureTime: pokemonRecordDTO.captureTime,
-            image: imageUrl,
-            isRelease: pokemonRecordDTO.isRelease,
-          } as IPokemonRecord;
-        })
+        pokemonRecordDTOs
+          .filter((record) => !record.isRelease)
+          .map((pokemonRecordDTO) => {
+            const imageUrl = pokemons.find(
+              (pokemon) => pokemon.id.toString() === pokemonRecordDTO.pokemonId,
+            )?.image;
+            return {
+              pokemonCaptureRecordId: pokemonRecordDTO.id,
+              pokemonId: pokemonRecordDTO.pokemonId,
+              captureTime: pokemonRecordDTO.captureTime,
+              image: imageUrl,
+              isRelease: pokemonRecordDTO.isRelease,
+            } as IPokemonRecord;
+          }),
       ),
       tap((record) => {
         this.pokemonRecordsSubject.next(record);
       }),
       catchError((err) => {
         console.error(
-          'Something is wrong in getAllPokemonRecordsByCurrentUserId '
+          'Something is wrong in getAllPokemonRecordsByCurrentUserId ',
         );
         throw err;
-      })
+      }),
     );
   }
 
   getUniquePokemonCount(): Observable<number> {
     return this.pokemonRecords$.pipe(
       map((pokemonRecords) =>
-        pokemonRecords.map((pokemonRecord) => pokemonRecord.pokemonId)
+        pokemonRecords.map((pokemonRecord) => pokemonRecord.pokemonId),
       ),
-      map((ids) => new Set(ids).size)
+      map((ids) => new Set(ids).size),
     );
   }
 
@@ -116,7 +118,7 @@ export class PokemonRecordService {
         catchError((err) => {
           console.error('Error occurred during create : ', err);
           return throwError(() => err);
-        })
+        }),
       );
   }
 
@@ -145,7 +147,7 @@ export class PokemonRecordService {
         return result.sort(
           (a, b) =>
             dayjs(b.date, 'DD-MM-YYYY').valueOf() -
-            dayjs(a.date, 'DD-MM-YYYY').valueOf()
+            dayjs(a.date, 'DD-MM-YYYY').valueOf(),
         );
       })
     );

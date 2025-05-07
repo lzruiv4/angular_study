@@ -51,10 +51,6 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.rechargeRecords$ =
-      this.rechargeService.getAllRechargeRecordsByUserId();
-    this.pokemonRecords$ =
-      this.pokemonRecordService.getAllPokemonRecordsByCurrentUserId();
     this.combined$ = combineLatest([
       (this.rechargeRecords$ =
         this.rechargeService.getAllRechargeRecordsByUserId()),
