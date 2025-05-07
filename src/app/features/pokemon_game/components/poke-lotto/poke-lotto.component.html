@@ -18,9 +18,12 @@
       <app-catch-new-pokemon />
     </div>
     <div class="pokemon-coin-container">
-      <a class="game-info" *ngIf="user$ | async as user; else loading"
-        >Coin: {{ user.pokemonCoin }}</a
-      >
+      <div class="coin-container">
+        <a class="game-info" *ngIf="user$ | async as user; else loading">
+          {{ user.pokemonCoin }}
+        </a>
+        <img src="/static/coin.png" style="width: auto; height: 50px" />
+      </div>
       <div class="button-container">
         <button
           nz-button

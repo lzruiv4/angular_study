@@ -32,16 +32,16 @@
   margin: 5px;
 }
 
-::ng-deep .ant-descriptions-bordered {
+:host ::ng-deep .ant-descriptions-bordered {
   background-color: #021024;
   padding-top: 20px;
   border-radius: 8px;
   overflow: hidden;
-  /* font: 20px; */
-  /* border: 1px solid #e6decf; */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   width: 90%;
   height: 90%;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
 :host ::ng-deep .ant-descriptions-title {

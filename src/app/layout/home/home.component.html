@@ -18,7 +18,11 @@
           <div>
             <div *ngIf="record.homeObjectType === 'RECHARGE_RECORD'">
               <span style="font-size: 17px"
-                >Recharged {{ record.homeObject.amountRecharge }} coins.</span
+                >Recharged {{ record.homeObject.amountRecharge }}
+                <img
+                  src="/static/coin.png"
+                  style="width: auto; height: 20px"
+                />.</span
               >
             </div>
             <div *ngIf="record.homeObjectType === 'POKEMON_RECORD'">

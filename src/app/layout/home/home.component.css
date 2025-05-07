@@ -18,7 +18,7 @@
   justify-content: center;
   align-items: center;
   padding: 40px;
-  box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
   color: #333; /* 文字颜色 */
   font-size: 20px;
   overflow-y: auto;
@@ -31,7 +31,7 @@
   background-color: #fffdf8;
   padding: 6px 10px;
   border-radius: 4px;
-  border: 3px solid #409eff;
+  border: 3px solid #002346;
 }
 
 /* 自定义滚动条样式 */

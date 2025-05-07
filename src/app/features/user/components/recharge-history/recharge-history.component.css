@@ -33,6 +33,7 @@
 }
 
 ::ng-deep .ant-timeline-item-content {
+  
   font-size: 14px;
   line-height: 1.5;
   color: #444;
