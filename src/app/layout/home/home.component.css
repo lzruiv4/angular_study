@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   /* padding: 40px; */
+  margin: 0 30px;
   gap: 100px;
 }
 
@@ -17,7 +18,7 @@
   justify-content: center;
   align-items: center;
   padding: 40px;
-  border-radius: 20px; /* 圆角 */
+  /* border-radius: 20px; */
   box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.1); /* 柔和的阴影 */
   /* font-family: "Segoe"; */
   color: #333; /* 文字颜色 */

@@ -4,6 +4,7 @@ import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 import { RechargeService } from '../../service/recharge.service';
 import { CommonModule } from '@angular/common';
 import { DATE_PIPE } from '@/shared/utils/DateTools';
+import { IRechargeRecord } from '@/shared/models/IRechargeRecord.model';
 
 @Component({
   selector: 'app-recharge-history',
@@ -25,7 +26,7 @@ export class RechargeHistoryComponent implements OnInit {
     this.rechargeService.showRechargeHistoryModal$.subscribe(() => {
       this.isChargeHistoryVisible = true;
     });
-    this.rechargeService.getAllRechargeRecordsByUserId();
+    this.rechargeService.getAllRechargeRecordsByUserId().subscribe();
   }
 
   handleOk(): void {
@@ -38,7 +39,7 @@ export class RechargeHistoryComponent implements OnInit {
     this.isChargeHistoryVisible = false;
   }
 
-  trackByFun(index: number, item: any) {
-    return item.index;
+  trackByFun(index: number, item: IRechargeRecord) {
+    return item.rechargeAt;
   }
 }

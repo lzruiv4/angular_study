@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import {
   BehaviorSubject,
   catchError,
-  map,
   Observable,
   Subject,
   tap,
@@ -12,8 +11,6 @@ import {
 import {
   IRechargeRecord,
   IRechargeRecordDTO,
-  mapDtoToModel,
-  mapModelToDto,
 } from '../../../shared/models/IRechargeRecord.model';
 import { RECHARGE_RECORD_API } from '../../../core/constants/Recharge-API';
 import { CURRENT_USER_ID } from '../../../core/constants/User-API';
@@ -41,14 +38,14 @@ export class RechargeService {
   }
 
   private rechargeRecordsSubject = new BehaviorSubject<IRechargeRecord[] | []>(
-    []
+    [],
   );
   rechargeRecords$ = this.rechargeRecordsSubject.asObservable();
 
   constructor(private rechargeRecordsHttp: HttpClient) {}
 
   createNewRechargeRecord(
-    newRechargeRecordDTO: IRechargeRecordDTO
+    newRechargeRecordDTO: IRechargeRecordDTO,
   ): Observable<IRechargeRecord> {
     return this.rechargeRecordsHttp
       .post<IRechargeRecord>(RECHARGE_RECORD_API, newRechargeRecordDTO)
@@ -56,29 +53,36 @@ export class RechargeService {
         // map((model) => mapDtoToModel(model)),
         tap((record) => {
           const old = this.rechargeRecordsSubject.getValue() ?? [];
-          this.rechargeRecordsSubject.next([...old, record]);
+          this.rechargeRecordsSubject.next(this.recordsSort([...old, record]));
         }),
         catchError((err) => {
           console.error('Error occurred during create : ', err);
           return throwError(() => err);
-        })
+        }),
       );
   }
 
   getAllRechargeRecordsByUserId(): Observable<IRechargeRecord[]> {
     return this.rechargeRecordsHttp
-      .get<IRechargeRecord[]>(
-        RECHARGE_RECORD_API + '?userId=' + CURRENT_USER_ID
-      )
+      .get<
+        IRechargeRecord[]
+      >(RECHARGE_RECORD_API + '?userId=' + CURRENT_USER_ID)
       .pipe(
         tap((records) => {
-          this.rechargeRecordsSubject.next(records);
+          this.rechargeRecordsSubject.next(this.recordsSort(records));
         }),
         catchError((error) => {
           console.error('Get all recharge record by user id wrong.', error);
           this.rechargeRecordsSubject.next([]);
           throw error;
-        })
+        }),
       );
+  }
+
+  recordsSort(records: IRechargeRecord[]): IRechargeRecord[] {
+    return records.sort(
+      (a, b) =>
+        new Date(b.rechargeAt!).getTime() - new Date(a.rechargeAt!).getTime(),
+    );
   }
 }
