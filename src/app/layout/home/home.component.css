@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   /* padding: 40px; */
-  margin: 0 30px;
+  margin: 40px;
   gap: 100px;
 }
 
@@ -12,15 +12,13 @@
   min-width: 500px;
   width: 700px;
   min-height: 500px;
-  height: 900px;
-  max-height: 1200px;
+  height: 800px;
+  max-height: 900px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px;
-  /* border-radius: 20px; */
-  box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.1); /* 柔和的阴影 */
-  /* font-family: "Segoe"; */
+  box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.1);
   color: #333; /* 文字颜色 */
   font-size: 20px;
   overflow-y: auto;

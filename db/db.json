@@ -14,7 +14,7 @@
       "firstname": "Melanie1",
       "createdAt": "2024-04-30 19:22:20.134051",
       "lastname": "Chen",
-      "pokemonCoin": 6
+      "pokemonCoin": 4
     }
   ],
   "pokemonRecords": [
@@ -338,6 +338,20 @@
       "pokemonId": "92",
       "captureTime": "2025-05-06T23:18:43.885Z",
       "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "5721",
+      "pokemonId": "269",
+      "captureTime": "2025-05-07T14:33:27.295Z",
+      "userId": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "47e2",
+      "pokemonId": "56",
+      "captureTime": "2025-05-07T14:51:12.739Z",
+      "userId": "user2",
       "isRelease": false
     }
   ],

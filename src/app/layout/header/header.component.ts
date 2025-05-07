@@ -10,10 +10,6 @@ import { HEADER_LIST } from '../../core/constants/PageSetting';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   menuList = HEADER_LIST;
-
-  constructor() {}
-
-  ngOnInit() {}
 }
