@@ -7,17 +7,21 @@
 }
 
 a {
-  padding: 8px 16px;
-  color: antiquewhite;
+  margin: 8px 16px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: rgb(254, 243, 228);
   display: inline-block;
   transition: all 0.3s ease;
   transform-origin: center center;
   font-size: 30px;
   font-weight: bold;
-  margin-right: 30px;
+  margin: 5px 30px;
 }
 
 a.active {
+  margin: 10px 20px;
+  padding: 5px 10px;
   border-radius: 10px;
   transform: scale(1.2);
   font-size: 40px;
@@ -25,6 +29,8 @@ a.active {
 }
 
 a:hover {
+  margin: 5px 10px;
+  padding: 5px 10px;
   transform: scale(1.1);
   border-radius: 10px;
   font-size: 35px;
@@ -33,12 +39,16 @@ a:hover {
 
 nz-header {
   display: flex;
-  /* flex-wrap: wrap; */
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 99%;
   height: 100px;
   flex-wrap: nowrap;
   white-space: nowrap;
-  overflow-x: auto;
+  border-radius: 12px;
+  margin: 10px;
+  /* 外发光浅蓝阴影 */
+  box-shadow:
+    0 4px 8px rgba(255, 255, 255, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
 }

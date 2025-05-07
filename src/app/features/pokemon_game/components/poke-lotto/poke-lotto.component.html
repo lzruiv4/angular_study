@@ -55,31 +55,33 @@
       #basicTable
       *ngIf="pokemonRecordInList$ | async as data"
       [nzData]="data"
-      [nzPageSize]="6"
+      [nzPageSize]="5"
       [nzShowPagination]="true"
       [nzFrontPagination]="true"
       [nzScroll]="{ x: '50%' }"
       [nzBordered]="true"
     >
       <thead>
-        <tr class="lotto-table-header">
-          <th [nzWidth]="'15%'" [nzSortFn]="sortByDate">Date</th>
-          <th [nzWidth]="'85%'">Pokemons</th>
+        <tr>
+          <th [nzWidth]="'17%'" [nzSortFn]="sortByDate">Date</th>
+          <th [nzWidth]="'83%'">Pokemons</th>
         </tr>
       </thead>
       <tbody>
         @for (pokemonRecord of basicTable.data; track pokemonRecord.date) {
-        <tr class="lotto-date-image-container">
-          <td class="lotto-date">{{ pokemonRecord.date }}</td>
-          <td class="lotto-images">
-            @for (poke of pokemonRecord.pokemonRecordsInTheSameDay; track
-            $index) {
-            <div class="img-div">
-              <img class="right-img" [src]="poke.image" alt="LOGO" />
-            </div>
-            }
-          </td>
-        </tr>
+          <tr>
+            <td class="lotto-date">{{ pokemonRecord.date }}</td>
+            <td class="lotto-images">
+              @for (
+                poke of pokemonRecord.pokemonRecordsInTheSameDay;
+                track $index
+              ) {
+                <div class="img-div">
+                  <img class="right-img" [src]="poke.image" alt="LOGO" />
+                </div>
+              }
+            </td>
+          </tr>
         }
       </tbody>
     </nz-table>

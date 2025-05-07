@@ -37,6 +37,8 @@
 .button-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
 }
 
@@ -69,47 +71,50 @@
 }
 
 .game-info {
-  color: rgb(0, 52, 221);
+  color: rgb(0, 15, 63);
   font-size: 50px;
   font-weight: bold;
   text-shadow: 0 0 2px rgb(81, 81, 81);
 }
 
 .pokemons-history-div {
-  /* flex: 2 500px; */
   min-width: 500px;
-  width: 1000px;
-  height: 900px;
-  max-height: 1000px;
-  margin: 20px;
-  padding-right: 20px;
+  max-width: 1000px;
+  max-height: 800px;
+  margin: 20px 50px;
+  padding-right: 50px;
 }
 
-.lotto-table-header {
-  text-align: center;
-  font-size: 25px;
-  background-color: transparent;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  background-color: #e8dcc8;
+.lotto-date-image-container:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+::ng-deep .ant-table-thead > tr > th {
+  background-color: #021024;
+  color: #fdfdfd;
+  font-size: 30px;
   font-weight: bold;
-  color: #333;
-  padding: 12px 10px;
-  border-bottom: 2px solid #d0c4b0;
+  text-align: center;
 }
 
-.ant-table-tbody > tr > td {
-  background-color: #fcf9f4;
+.ant-table-tbody > tr {
+  /* background-color: #f2fefe; */
   font-size: 20px;
-  color: #444;
+  color: #000000;
   padding: 10px;
   border-bottom: 1px solid #e8e1d3;
   vertical-align: middle;
+  border-radius: 40px;
+  margin: 5px;
 }
 
 /* 悬停行高亮 */
 .ant-table-tbody > tr:hover > td {
   background-color: #f3ebe0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition: background-color 0.7s ease;
 }
 
@@ -134,20 +139,23 @@
 }
 
 .img-div {
-  width: 100px;
+  min-width: 100px;
   height: 100px;
+  margin: 1px 10px;
+  box-sizing: border-box;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .right-img {
   width: auto;
-  height: 80px;
+  height: 100%;
   transition: transform 0.2s;
 }
 
-.right-img:hover {
+.img-div:hover {
   transform: scale(1.2);
   border-radius: 40%;
   background-color: rgb(216, 216, 216);
@@ -155,18 +163,19 @@
 }
 
 [nz-button] {
+  background-color: #001529;
   margin-right: 20px;
   margin-bottom: 20px;
   font-size: 20px;
   width: 200px;
   height: 70px;
-  box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.1);
 }
 
 [nz-button]:hover {
-  /* transform: scale(1.1); */
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 6px 16px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    0 6px 16px rgba(0, 0, 0, 0.06);
   border-radius: 10px;
-  background-color: rgb(251, 166, 166);
+  background-color: rgb(249, 138, 138);
 }
