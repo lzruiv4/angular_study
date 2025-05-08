@@ -4,32 +4,28 @@
 >
   @for (record of data; track $index) {
     <nz-timeline-item
-      [nzPosition]="
-        record.homeObjectType === 'RECHARGE_RECORD' ? 'right' : 'left'
-      "
-      [nzColor]="record.homeObjectType === 'RECHARGE_RECORD' ? 'blue' : 'green'"
-      [nzDot]="
-        record.homeObjectType === 'RECHARGE_RECORD' ? coin : pokemon_ball
-      "
+      [nzPosition]="record.recordType === 'RECHARGE_RECORD' ? 'right' : 'left'"
+      [nzColor]="record.recordType === 'RECHARGE_RECORD' ? 'blue' : 'green'"
+      [nzDot]="record.recordType === 'RECHARGE_RECORD' ? coin : pokemon_ball"
     >
       <div>
-        <div *ngIf="record.homeObjectType === 'RECHARGE_RECORD'">
+        <div *ngIf="record.recordType === 'RECHARGE_RECORD'">
           <span>
-            Recharged {{ record.homeObject.amountRecharge }} coins, now is
-            {{ record.homeObject.currentPokemonCoin }} coins.
+            Recharged {{ record.recordObject.amountRecharge }} coins, now is
+            {{ record.recordObject.currentPokemonCoin }} coins.
           </span>
         </div>
-        <div *ngIf="record.homeObjectType === 'POKEMON_RECORD'">
+        <div *ngIf="record.recordType === 'POKEMON_RECORD'">
           <span>
             Congratulation, you got a
             <img
-              [src]="record.homeObject.image"
+              [src]="record.recordObject.image"
               style="width: auto; height: 30px"
             />.
           </span>
         </div>
         <div class="time-class">
-          {{ record.homeObjectDate | date: date_pipe }}
+          {{ record.recordDate | date: date_pipe }}
         </div>
       </div></nz-timeline-item
     >

@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private rechargeService: RechargeService,
-    private pokemonRecordService: PokemonRecordService
+    private pokemonRecordService: PokemonRecordService,
   ) {}
 
   ngOnInit(): void {
@@ -35,24 +35,23 @@ export class HomeComponent implements OnInit {
       map(([rechargeRecords, pokemonRecords]) => {
         const rechargeRecordMappe: IRecord[] = rechargeRecords.map(
           (rechargeRecord) => ({
-            homeObjectDate: rechargeRecord.rechargeAt!,
-            homeObjectType: 'RECHARGE_RECORD',
-            homeObject: rechargeRecord,
-          })
+            recordDate: rechargeRecord.rechargeAt!,
+            recordType: 'RECHARGE_RECORD',
+            recordObject: rechargeRecord,
+          }),
         );
         const pokemonRecordMappe: IRecord[] = pokemonRecords.map(
           (pokemonRecord) => ({
-            homeObjectDate: pokemonRecord.captureTime!,
-            homeObjectType: 'POKEMON_RECORD',
-            homeObject: pokemonRecord,
-          })
+            recordDate: pokemonRecord.captureTime!,
+            recordType: 'POKEMON_RECORD',
+            recordObject: pokemonRecord,
+          }),
         );
         return [...rechargeRecordMappe, ...pokemonRecordMappe].sort(
           (a, b) =>
-            new Date(b.homeObjectDate).getTime() -
-            new Date(a.homeObjectDate).getTime()
+            new Date(b.recordDate).getTime() - new Date(a.recordDate).getTime(),
         );
-      })
+      }),
     );
   }
 }

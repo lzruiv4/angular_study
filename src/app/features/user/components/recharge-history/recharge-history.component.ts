@@ -28,15 +28,14 @@ export class RechargeHistoryComponent implements OnInit {
       map((rechargeRecords) => {
         const rechargeRecordMappe: IRecord[] = rechargeRecords.map(
           (rechargeRecord) => ({
-            homeObjectDate: rechargeRecord.rechargeAt!,
-            homeObjectType: 'RECHARGE_RECORD',
-            homeObject: rechargeRecord,
+            recordDate: rechargeRecord.rechargeAt!,
+            recordType: 'RECHARGE_RECORD',
+            recordObject: rechargeRecord,
           }),
         );
         return rechargeRecordMappe.sort(
           (a, b) =>
-            new Date(b.homeObjectDate).getTime() -
-            new Date(a.homeObjectDate).getTime(),
+            new Date(b.recordDate).getTime() - new Date(a.recordDate).getTime(),
         );
       }),
     );

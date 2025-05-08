@@ -3,12 +3,12 @@ import { IRechargeRecord } from './IRechargeRecord.model';
 
 export type IRecord =
   | {
-      homeObjectDate: Date;
-      homeObjectType: 'RECHARGE_RECORD';
-      homeObject: IRechargeRecord;
+      recordDate: Date;
+      recordType: 'RECHARGE_RECORD';
+      recordObject: IRechargeRecord;
     }
   | {
-      homeObjectDate: Date;
-      homeObjectType: 'POKEMON_RECORD';
-      homeObject: IPokemonRecord;
+      recordDate: Date;
+      recordType: 'POKEMON_RECORD';
+      recordObject: IPokemonRecord;
     };

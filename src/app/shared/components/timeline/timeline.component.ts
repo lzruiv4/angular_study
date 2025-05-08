@@ -12,7 +12,8 @@ import { Observable } from 'rxjs';
   styleUrl: './timeline.component.css',
 })
 export class TimelineComponent {
+  [x: string]: any;
   @Input() combined$!: Observable<IRecord[]>;
-  @Input() isCustom?: boolean = false;
+  @Input() isCustom?: boolean = false; // parameter for choice table type. custom or left
   date_pipe = DATE_PIPE;
 }
