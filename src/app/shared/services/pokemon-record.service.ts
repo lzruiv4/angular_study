@@ -30,6 +30,18 @@ import dayjs from 'dayjs';
 export class PokemonRecordService {
   pokemons: IPokemon[] = [];
 
+  // Get all record from db
+  private pokemonRecordsSubject = new BehaviorSubject<IPokemonRecord[]>([]);
+  pokemonRecords$: Observable<IPokemonRecord[]> =
+    this.pokemonRecordsSubject.asObservable();
+
+  // What will be showed in table (Pokemon Lotto)
+  private pokemonRecordInListSubject = new BehaviorSubject<
+    IPokemonRecordInList[]
+  >([]);
+  pokemonRecordInList$: Observable<IPokemonRecordInList[]> =
+    this.pokemonRecordInListSubject.asObservable();
+
   constructor(
     private pokemonRecordsHttp: HttpClient,
     private pokemonService: PokemonService,
@@ -39,11 +51,6 @@ export class PokemonRecordService {
       .subscribe((item) => (this.pokemons = item));
     this.getAllPokemonRecordsByCurrentUserId().subscribe();
   }
-
-  // Get all record from db
-  private pokemonRecordsSubject = new BehaviorSubject<IPokemonRecord[]>([]);
-  pokemonRecords$: Observable<IPokemonRecord[]> =
-    this.pokemonRecordsSubject.asObservable();
 
   getAllPokemonRecordsByCurrentUserId(): Observable<IPokemonRecord[]> {
     return combineLatest([
@@ -58,7 +65,7 @@ export class PokemonRecordService {
           .map((pokemonRecordDTO) => {
             const imageUrl = pokemons.find(
               (pokemon) => pokemon.id.toString() === pokemonRecordDTO.pokemonId,
-            )?.image;
+            )?.biggerImage;
             return {
               pokemonCaptureRecordId: pokemonRecordDTO.id,
               pokemonId: pokemonRecordDTO.pokemonId,
@@ -122,13 +129,6 @@ export class PokemonRecordService {
       );
   }
 
-  // What will be showed in table (Pokemon Lotto)
-  private pokemonRecordInListSubject = new BehaviorSubject<
-    IPokemonRecordInList[]
-  >([]);
-  pokemonRecordInList$: Observable<IPokemonRecordInList[]> =
-    this.pokemonRecordInListSubject.asObservable();
-
   groupByRecords(): Observable<IPokemonRecordInList[]> {
     return this.pokemonRecords$.pipe(
       map((records) => {
@@ -155,7 +155,8 @@ export class PokemonRecordService {
 
   getPokemonImageUrl(pokemonId: string): string {
     return (
-      this.pokemons.find((pokemon) => pokemonId == pokemon.id)?.image ?? ''
+      this.pokemons.find((pokemon) => pokemonId == pokemon.id)?.biggerImage ??
+      ''
     );
   }
 

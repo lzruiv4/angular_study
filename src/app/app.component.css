@@ -1,18 +1,11 @@
 .app-header {
-  height: 100px; /* 固定 header 高度 */
-  flex-shrink: 0;
+  height: 100px;
 }
 
 .main-content {
-  flex-grow: 1; /* 占据剩余空间 */
-  overflow: auto; /* 超出可滚动 */
+  overflow: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-:host {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  height: 85vh;
 }

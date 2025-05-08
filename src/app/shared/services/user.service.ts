@@ -20,7 +20,7 @@ export class UserService {
       catchError((err) => {
         console.error('Get user info failed: ', err);
         return of(null as unknown as IUser);
-      })
+      }),
     );
   }
 
@@ -45,7 +45,7 @@ export class UserService {
         catchError((error) => {
           console.error('Error occurred during update:', error);
           throw error;
-        })
+        }),
       );
   }
 }
