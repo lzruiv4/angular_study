@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { PokedexComponent } from './features/pokemon_game/components/pokedex/pokedex.component';
+import { PokedexComponent } from './components/pokemon-game/pokedex/pokedex.component';
 import { HomeComponent } from './layout/home/home.component';
-import { PokeLottoComponent } from './features/pokemon_game/components/poke-lotto/poke-lotto.component';
+import { PokeLottoComponent } from './components/pokemon-game/poke-lotto/poke-lotto.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

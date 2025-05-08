@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
-import { IUser, IUserDTO } from '../../../shared/models/IUser.model';
 import { HttpClient } from '@angular/common/http';
-import { CURRENT_USER_ID, USER_API } from '../../../core/constants/User-API';
+import { IUser, IUserDTO } from '../models/IUser.model';
+import { CURRENT_USER_ID, USER_API } from '@/core/constants/User-API';
 
 @Injectable({
   providedIn: 'root',

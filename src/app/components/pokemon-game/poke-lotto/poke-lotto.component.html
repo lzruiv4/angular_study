@@ -19,7 +19,7 @@
     </div>
     <div class="pokemon-coin-container">
       <div class="coin-container">
-        <a class="game-info" *ngIf="user$ | async as user; else loading">
+        <a class="game-info" *ngIf="user$ | async as user">
           {{ user.pokemonCoin }}
         </a>
         <img src="/static/coin.png" style="width: auto; height: 50px" />
@@ -48,10 +48,6 @@
       </div>
     </div>
   </div>
-
-  <ng-template #loading>
-    <a class="game-info">Coin: loading...</a>
-  </ng-template>
 
   <div class="pokemons-history-div">
     <nz-table

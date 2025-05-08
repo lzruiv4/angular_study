@@ -14,14 +14,14 @@ import {
   IPokemonRecord,
   IPokemonRecordDTO,
   IPokemonRecordInList,
-} from '../../../shared/models/IPokemen.model';
+} from '../models/IPokemen.model';
 import { PokemonService } from './Pokemon.service';
 import {
   POKEMON_AMOUNT,
   POKEMON_RECORDS_API,
-} from '../../../core/constants/Pokomon-API';
+} from '../../core/constants/Pokomon-API';
 import { HttpClient } from '@angular/common/http';
-import { CURRENT_USER_ID } from '../../../core/constants/User-API';
+import { CURRENT_USER_ID } from '../../core/constants/User-API';
 import dayjs from 'dayjs';
 
 @Injectable({
@@ -149,7 +149,7 @@ export class PokemonRecordService {
             dayjs(b.date, 'DD-MM-YYYY').valueOf() -
             dayjs(a.date, 'DD-MM-YYYY').valueOf(),
         );
-      })
+      }),
     );
   }
 

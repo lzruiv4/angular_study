@@ -10,8 +10,8 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
-import { IPokemon, IPokemonDTO } from '../../../shared/models/IPokemen.model';
-import { POKEMON_API } from '../../../core/constants/Pokomon-API';
+import { IPokemon, IPokemonDTO } from '../models/IPokemen.model';
+import { POKEMON_API } from '../../core/constants/Pokomon-API';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {
@@ -49,13 +49,13 @@ export class PokemonService {
             catchError((error) => {
               console.error('There is an error in the request data.', error);
               return of(null);
-            })
-          )
+            }),
+          ),
         );
         return forkJoin(requests);
       }),
       map((results) => results.filter((p) => p !== null)),
-      tap((pokemon) => this.pokemonsSubject.next(pokemon))
+      tap((pokemon) => this.pokemonsSubject.next(pokemon)),
     );
   }
 }

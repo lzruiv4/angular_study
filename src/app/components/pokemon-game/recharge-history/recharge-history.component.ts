@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NzModalModule } from 'ng-zorro-antd/modal';
-import { RechargeService } from '../../service/recharge.service';
+import { RechargeService } from '../../../shared/services/recharge.service';
 import { CommonModule } from '@angular/common';
 import { IRechargeRecord } from '@/shared/models/IRechargeRecord.model';
 import { map, Observable } from 'rxjs';
 import { IRecord } from '@/shared/models/ITimelineObject.model';
-import { TimelineComponent } from '../../../../shared/components/timeline/timeline.component';
+import { TimelineComponent } from '../../../shared/components/timeline/timeline.component';
 import { RecordType } from '@/shared/models/RecordType.enum';
 
 @Component({

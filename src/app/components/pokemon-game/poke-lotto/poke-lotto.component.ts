@@ -2,15 +2,15 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { RechargeService } from '../../../user/service/recharge.service';
-import { RechargeHistoryComponent } from '../../../user/components/recharge-history/recharge-history.component';
-import { RechargeComponent } from '../../../user/components/recharge/recharge.component';
-import { PokemonRecordService } from '../../services/pokemon-record.service';
-import { UserService } from '../../../user/service/user.service';
+import { RechargeService } from '../../../shared/services/recharge.service';
+import { RechargeHistoryComponent } from '../recharge-history/recharge-history.component';
+import { RechargeComponent } from '../recharge/recharge.component';
+import { PokemonRecordService } from '../../../shared/services/pokemon-record.service';
 import { CatchNewPokemonComponent } from '../catch-new-pokemon/catch-new-pokemon.component';
-import { IPokemonRecordInList } from '../../../../shared/models/IPokemen.model';
+import { IPokemonRecordInList } from '../../../shared/models/IPokemen.model';
 import { filter, Observable } from 'rxjs';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { UserService } from '@/shared/services/user.service';
 
 @Component({
   selector: 'app-poke-lotto',
@@ -30,7 +30,7 @@ export class PokeLottoComponent implements OnInit {
   constructor(
     private rechargeService: RechargeService,
     private pokemonRecordService: PokemonRecordService,
-    private userService: UserService
+    private userService: UserService,
   ) {}
 
   isWarningVisible = false;

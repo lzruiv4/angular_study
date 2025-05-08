@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { RechargeService } from '../../service/recharge.service';
+import { RechargeService } from '../../../shared/services/recharge.service';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { FormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
-import { UserService } from '../../service/user.service';
 import { filter, switchMap, take } from 'rxjs';
 import { IRechargeRecordDTO } from '@/shared/models/IRechargeRecord.model';
 import { CURRENT_USER_ID } from '@/core/constants/User-API';
+import { UserService } from '@/shared/services/user.service';
 
 @Component({
   selector: 'app-recharge',
@@ -26,7 +26,7 @@ export class RechargeComponent implements OnInit {
 
   constructor(
     private rechargeService: RechargeService,
-    private userService: UserService
+    private userService: UserService,
   ) {}
 
   ngOnInit(): void {
@@ -66,7 +66,7 @@ export class RechargeComponent implements OnInit {
           };
           console.log('nach: ', newUser);
           return this.userService.updateUser(newUser);
-        })
+        }),
       )
       .subscribe({
         next: (response) => {
@@ -93,9 +93,9 @@ export class RechargeComponent implements OnInit {
             rechargeAt: new Date(),
           };
           return this.rechargeService.createNewRechargeRecord(
-            newRechargeRecordDTO
+            newRechargeRecordDTO,
           );
-        })
+        }),
       )
       .subscribe({
         next: (response) => {

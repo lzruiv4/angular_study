@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInfoComponent } from '../../features/user/components/user-info/user-info.component';
-import { PokemonRecordService } from '@/features/pokemon_game/services/pokemon-record.service';
-import { RechargeService } from '@/features/user/service/recharge.service';
+import { UserInfoComponent } from '../../components/user/user-info/user-info.component';
+import { PokemonRecordService } from '@/shared/services/pokemon-record.service';
+import { RechargeService } from '@/shared/services/recharge.service';
 import { combineLatest, map, Observable } from 'rxjs';
 import { IRechargeRecord } from '@/shared/models/IRechargeRecord.model';
 import { IPokemonRecord } from '@/shared/models/IPokemen.model';

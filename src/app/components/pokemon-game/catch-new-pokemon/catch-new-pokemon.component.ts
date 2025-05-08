@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzSelectModule } from 'ng-zorro-antd/select';
-import { PokemonRecordService } from '../../services/pokemon-record.service';
-import { UserService } from '../../../user/service/user.service';
+import { PokemonRecordService } from '../../../shared/services/pokemon-record.service';
 import { filter, switchMap, take } from 'rxjs';
+import { UserService } from '@/shared/services/user.service';
 
 @Component({
   selector: 'app-catch-new-pokemon',
@@ -21,7 +21,7 @@ export class CatchNewPokemonComponent implements OnInit {
 
   constructor(
     private pokemonRecordService: PokemonRecordService,
-    private userService: UserService
+    private userService: UserService,
   ) {}
 
   ngOnInit(): void {
@@ -44,7 +44,7 @@ export class CatchNewPokemonComponent implements OnInit {
             ...user,
             pokemonCoin: user.pokemonCoin - 1,
           });
-        })
+        }),
       )
       .subscribe({
         next: (response) => {
