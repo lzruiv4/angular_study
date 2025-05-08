@@ -1,18 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UserInfoComponent } from '../../features/user/components/user-info/user-info.component';
-import { CommonModule } from '@angular/common';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzTableModule } from 'ng-zorro-antd/table';
 import { PokemonRecordService } from '@/features/pokemon_game/services/pokemon-record.service';
 import { RechargeService } from '@/features/user/service/recharge.service';
 import { combineLatest, map, Observable } from 'rxjs';
 import { IRechargeRecord } from '@/shared/models/IRechargeRecord.model';
 import { IPokemonRecord } from '@/shared/models/IPokemen.model';
-import { NzTimelineModule } from 'ng-zorro-antd/timeline';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { DATE_PIPE } from '@/shared/utils/DateTools';
+import { TimelineComponent } from '@/shared/components/timeline/timeline.component';
 
-type HomeObject =
+export type HomeObject =
   | {
       homeObjectDate: Date;
       homeObjectType: 'RECHARGE_RECORD';
@@ -26,14 +21,7 @@ type HomeObject =
 
 @Component({
   selector: 'app-home',
-  imports: [
-    CommonModule,
-    NzTableModule,
-    NzButtonModule,
-    UserInfoComponent,
-    NzTimelineModule,
-    NzIconModule,
-  ],
+  imports: [UserInfoComponent, TimelineComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -42,8 +30,6 @@ export class HomeComponent implements OnInit {
   pokemonRecords$!: Observable<IPokemonRecord[]>;
 
   combined$!: Observable<HomeObject[]>;
-
-  date_pipe = DATE_PIPE;
 
   constructor(
     private rechargeService: RechargeService,
