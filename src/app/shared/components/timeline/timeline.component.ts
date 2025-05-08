@@ -1,4 +1,4 @@
-import { HomeObject } from '@/layout/home/home.component';
+import { IRecord } from '@/shared/models/ITimelineObject.model';
 import { DATE_PIPE } from '@/shared/utils/DateTools';
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
   styleUrl: './timeline.component.css',
 })
 export class TimelineComponent {
-  @Input() combined$!: Observable<HomeObject[]>;
+  @Input() combined$!: Observable<IRecord[]>;
+  @Input() isCustom?: boolean = false;
   date_pipe = DATE_PIPE;
 }

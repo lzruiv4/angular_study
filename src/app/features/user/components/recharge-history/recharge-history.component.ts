@@ -1,24 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { NzModalModule } from 'ng-zorro-antd/modal';
-import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 import { RechargeService } from '../../service/recharge.service';
 import { CommonModule } from '@angular/common';
-import { DATE_PIPE } from '@/shared/utils/DateTools';
 import { IRechargeRecord } from '@/shared/models/IRechargeRecord.model';
+import { map, Observable } from 'rxjs';
+import { IRecord } from '@/shared/models/ITimelineObject.model';
+import { TimelineComponent } from '../../../../shared/components/timeline/timeline.component';
 
 @Component({
   selector: 'app-recharge-history',
-  imports: [CommonModule, NzModalModule, NzTimelineModule],
+  imports: [CommonModule, NzModalModule, TimelineComponent],
   templateUrl: './recharge-history.component.html',
   styleUrl: './recharge-history.component.css',
 })
 export class RechargeHistoryComponent implements OnInit {
   isChargeHistoryVisible: boolean = false;
-  date_pipe: string = DATE_PIPE;
 
-  get rechargeRecords$() {
-    return this.rechargeService.rechargeRecords$;
-  }
+  rechargeRecords$!: Observable<IRecord[]>;
 
   constructor(private rechargeService: RechargeService) {}
 
@@ -26,7 +24,22 @@ export class RechargeHistoryComponent implements OnInit {
     this.rechargeService.showRechargeHistoryModal$.subscribe(() => {
       this.isChargeHistoryVisible = true;
     });
-    // this.rechargeService.getAllRechargeRecordsByUserId().subscribe();
+    this.rechargeRecords$ = this.rechargeService.rechargeRecords$.pipe(
+      map((rechargeRecords) => {
+        const rechargeRecordMappe: IRecord[] = rechargeRecords.map(
+          (rechargeRecord) => ({
+            homeObjectDate: rechargeRecord.rechargeAt!,
+            homeObjectType: 'RECHARGE_RECORD',
+            homeObject: rechargeRecord,
+          }),
+        );
+        return rechargeRecordMappe.sort(
+          (a, b) =>
+            new Date(b.homeObjectDate).getTime() -
+            new Date(a.homeObjectDate).getTime(),
+        );
+      }),
+    );
   }
 
   handleOk(): void {

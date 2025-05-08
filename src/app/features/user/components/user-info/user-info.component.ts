@@ -30,7 +30,7 @@ export class UserInfoComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private pokemonRecordService: PokemonRecordService
+    private pokemonRecordService: PokemonRecordService,
   ) {}
 
   ngOnInit(): void {

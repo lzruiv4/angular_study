@@ -14,7 +14,7 @@
       "firstname": "Melanie1",
       "createdAt": "2024-04-30 19:22:20.134051",
       "lastname": "Chen",
-      "pokemonCoin": 5
+      "pokemonCoin": 11
     }
   ],
   "pokemonRecords": [
@@ -608,6 +608,20 @@
       "amountRecharge": 1,
       "currentPokemonCoin": 5,
       "rechargeAt": "2025-05-07T23:01:57.294Z"
+    },
+    {
+      "id": "de92",
+      "userId": "user2",
+      "amountRecharge": 5,
+      "currentPokemonCoin": 10,
+      "rechargeAt": "2025-05-08T15:15:21.317Z"
+    },
+    {
+      "id": "e469",
+      "userId": "user2",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 11,
+      "rechargeAt": "2025-05-08T15:40:08.700Z"
     }
   ]
 }

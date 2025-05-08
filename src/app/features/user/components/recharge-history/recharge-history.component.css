@@ -1,14 +1,10 @@
 .timeline_content {
-  width: 100%;
-  /* max-width: 700px; 最大宽度，避免过大 */
-  max-height: 500px;
-  background-color: white;
-  border-radius: 12px; /* 圆角 */
+  max-width: 100%;
+  max-height: 700px;
   padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 柔和的阴影 */
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #333; /* 文字颜色 */
-  /* font-size: 20px; */
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
 }
 
@@ -30,15 +26,4 @@
 
 .timeline_content::-webkit-scrollbar-thumb:hover {
   background-color: #0056b3; /* 滚动条悬停时的颜色 */
-}
-
-::ng-deep .ant-timeline-item-content {
-  
-  font-size: 14px;
-  line-height: 1.5;
-  color: #444;
-  background-color: #fffdf8;
-  padding: 6px 10px;
-  border-radius: 4px;
-  border-left: 3px solid #409eff;
 }

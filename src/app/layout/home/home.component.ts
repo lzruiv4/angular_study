@@ -6,18 +6,7 @@ import { combineLatest, map, Observable } from 'rxjs';
 import { IRechargeRecord } from '@/shared/models/IRechargeRecord.model';
 import { IPokemonRecord } from '@/shared/models/IPokemen.model';
 import { TimelineComponent } from '@/shared/components/timeline/timeline.component';
-
-export type HomeObject =
-  | {
-      homeObjectDate: Date;
-      homeObjectType: 'RECHARGE_RECORD';
-      homeObject: IRechargeRecord;
-    }
-  | {
-      homeObjectDate: Date;
-      homeObjectType: 'POKEMON_RECORD';
-      homeObject: IPokemonRecord;
-    };
+import { IRecord } from '@/shared/models/ITimelineObject.model';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +18,7 @@ export class HomeComponent implements OnInit {
   rechargeRecords$!: Observable<IRechargeRecord[]>;
   pokemonRecords$!: Observable<IPokemonRecord[]>;
 
-  combined$!: Observable<HomeObject[]>;
+  combined$!: Observable<IRecord[]>;
 
   constructor(
     private rechargeService: RechargeService,
@@ -44,14 +33,14 @@ export class HomeComponent implements OnInit {
         this.pokemonRecordService.getAllPokemonRecordsByCurrentUserId()),
     ]).pipe(
       map(([rechargeRecords, pokemonRecords]) => {
-        const rechargeRecordMappe: HomeObject[] = rechargeRecords.map(
+        const rechargeRecordMappe: IRecord[] = rechargeRecords.map(
           (rechargeRecord) => ({
             homeObjectDate: rechargeRecord.rechargeAt!,
             homeObjectType: 'RECHARGE_RECORD',
             homeObject: rechargeRecord,
           })
         );
-        const pokemonRecordMappe: HomeObject[] = pokemonRecords.map(
+        const pokemonRecordMappe: IRecord[] = pokemonRecords.map(
           (pokemonRecord) => ({
             homeObjectDate: pokemonRecord.captureTime!,
             homeObjectType: 'POKEMON_RECORD',
