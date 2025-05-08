@@ -1,0 +1,4 @@
+export enum RecordType {
+  RECHARGE_RECORD = 'RECHARGE_RECORD',
+  POKEMON_RECORD = 'POKEMON_RECORD',
+}

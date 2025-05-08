@@ -1,4 +1,5 @@
 import { IRecord } from '@/shared/models/ITimelineObject.model';
+import { RecordType } from '@/shared/models/RecordType.enum';
 import { DATE_PIPE } from '@/shared/utils/DateTools';
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
@@ -15,5 +16,6 @@ export class TimelineComponent {
   [x: string]: any;
   @Input() combined$!: Observable<IRecord[]>;
   @Input() isCustom?: boolean = false; // parameter for choice table type. custom or left
+  recordType = RecordType;
   date_pipe = DATE_PIPE;
 }

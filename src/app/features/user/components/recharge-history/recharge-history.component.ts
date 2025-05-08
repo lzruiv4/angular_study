@@ -6,6 +6,7 @@ import { IRechargeRecord } from '@/shared/models/IRechargeRecord.model';
 import { map, Observable } from 'rxjs';
 import { IRecord } from '@/shared/models/ITimelineObject.model';
 import { TimelineComponent } from '../../../../shared/components/timeline/timeline.component';
+import { RecordType } from '@/shared/models/RecordType.enum';
 
 @Component({
   selector: 'app-recharge-history',
@@ -29,7 +30,7 @@ export class RechargeHistoryComponent implements OnInit {
         const rechargeRecordMappe: IRecord[] = rechargeRecords.map(
           (rechargeRecord) => ({
             recordDate: rechargeRecord.rechargeAt!,
-            recordType: 'RECHARGE_RECORD',
+            recordType: RecordType.RECHARGE_RECORD,
             recordObject: rechargeRecord,
           }),
         );

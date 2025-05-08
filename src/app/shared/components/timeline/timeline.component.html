@@ -4,18 +4,24 @@
 >
   @for (record of data; track $index) {
     <nz-timeline-item
-      [nzPosition]="record.recordType === 'RECHARGE_RECORD' ? 'right' : 'left'"
-      [nzColor]="record.recordType === 'RECHARGE_RECORD' ? 'blue' : 'green'"
-      [nzDot]="record.recordType === 'RECHARGE_RECORD' ? coin : pokemon_ball"
+      [nzPosition]="
+        record.recordType === recordType.RECHARGE_RECORD ? 'right' : 'left'
+      "
+      [nzColor]="
+        record.recordType === recordType.RECHARGE_RECORD ? 'blue' : 'green'
+      "
+      [nzDot]="
+        record.recordType === recordType.RECHARGE_RECORD ? coin : pokemon_ball
+      "
     >
       <div>
-        <div *ngIf="record.recordType === 'RECHARGE_RECORD'">
+        <div *ngIf="record.recordType === recordType.RECHARGE_RECORD">
           <span>
             Recharged {{ record.recordObject.amountRecharge }} coins, now is
             {{ record.recordObject.currentPokemonCoin }} coins.
           </span>
         </div>
-        <div *ngIf="record.recordType === 'POKEMON_RECORD'">
+        <div *ngIf="record.recordType === recordType.POKEMON_RECORD">
           <span>
             Congratulation, you got a
             <img

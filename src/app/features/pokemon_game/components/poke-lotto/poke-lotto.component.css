@@ -164,8 +164,8 @@
 }
 
 .right-img {
-  width: auto;
-  height: 100%;
+  width: 90%;
+  height: auto;
   transition: transform 0.2s;
 }
 

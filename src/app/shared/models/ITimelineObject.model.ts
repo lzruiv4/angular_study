@@ -1,14 +1,15 @@
 import { IPokemonRecord } from './IPokemen.model';
 import { IRechargeRecord } from './IRechargeRecord.model';
+import { RecordType } from './RecordType.enum';
 
 export type IRecord =
   | {
       recordDate: Date;
-      recordType: 'RECHARGE_RECORD';
+      recordType?: RecordType.RECHARGE_RECORD;
       recordObject: IRechargeRecord;
     }
   | {
       recordDate: Date;
-      recordType: 'POKEMON_RECORD';
+      recordType?: RecordType.POKEMON_RECORD;
       recordObject: IPokemonRecord;
     };
