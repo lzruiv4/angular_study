@@ -171,7 +171,7 @@
 }
 
 .img-div:hover {
-  transform: scale(1.2);
+  transform: scale(1.5);
   border-radius: 40%;
   background-color: rgb(216, 216, 216);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);

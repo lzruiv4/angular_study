@@ -3,7 +3,6 @@ import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 import { CommonModule } from '@angular/common';
 import { NzGridModule } from 'ng-zorro-antd/grid';
-import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { POKEMON_AMOUNT } from '@/core/constants/Pokomon-API';
 import { PokemonRecordService } from '@/shared/services/pokemon-record.service';
@@ -17,7 +16,6 @@ import { UserService } from '@/shared/services/user.service';
     NzBadgeModule,
     NzDescriptionsModule,
     NzGridModule,
-    NzIconModule,
     NzStatisticModule,
   ],
   templateUrl: './user-info.component.html',
@@ -34,7 +32,6 @@ export class UserInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getUserInfo().subscribe();
     this.captured = this.pokemonRecordService.getUniquePokemonCount();
   }
 

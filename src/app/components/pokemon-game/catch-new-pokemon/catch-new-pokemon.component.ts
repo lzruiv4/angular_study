@@ -25,8 +25,8 @@ export class CatchNewPokemonComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getUserInfo().subscribe((user) => {
-      if (user.pokemonCoin > 0) {
+    this.user$.subscribe((user) => {
+      if (user!.pokemonCoin > 0) {
         this.pokemonRecordService.showDialog$.subscribe(() => {
           this.isDialogVisible = true;
         });

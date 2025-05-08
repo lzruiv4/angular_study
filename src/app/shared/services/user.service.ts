@@ -11,9 +11,11 @@ export class UserService {
   private userSubject = new BehaviorSubject<IUser | null>(null);
   user$ = this.userSubject.asObservable();
 
+  private isLoaded = false;
+
   constructor(private userHttp: HttpClient) {}
 
-  getUserInfo(): Observable<IUser> {
+  private getUserInfo(): Observable<IUser> {
     // TODO: By login feature can this testUser be changed
     return this.userHttp.get<IUser>(USER_API + '/' + CURRENT_USER_ID).pipe(
       tap((user) => this.userSubject.next(user)),
@@ -22,6 +24,13 @@ export class UserService {
         return of(null as unknown as IUser);
       }),
     );
+  }
+
+  loadUserInfo() {
+    if (!this.isLoaded) {
+      this.isLoaded = true;
+      this.getUserInfo().subscribe();
+    }
   }
 
   updateUser(newUserDTO: IUserDTO): Observable<IUser> {
