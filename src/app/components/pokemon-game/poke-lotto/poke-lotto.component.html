@@ -8,44 +8,40 @@
       [hidden]="user.pokemonCoin > 0"
       class="lotto-ball"
     ></nz-alert>
-    <div class="lotto-ball">
-      <img
-        src="/static/poke.png"
-        alt="LOGO"
-        [ngClass]="user.pokemonCoin > 0 ? 'poke-ball' : 'no_ball_animation'"
-        (click)="openCatchPokemonDialog()"
-      />
-      <app-catch-new-pokemon />
+    <img
+      src="/static/poke.png"
+      alt="LOGO"
+      [ngClass]="user.pokemonCoin > 0 ? 'poke-ball' : 'no_ball_animation'"
+      (click)="openCatchPokemonDialog()"
+    />
+    <app-catch-new-pokemon />
+    <div class="coin-container">
+      <a class="game-info" *ngIf="user$ | async as user">
+        {{ user.pokemonCoin }}
+      </a>
+      <app-image imagePath="/static/coin.png" imageSize="50" />
     </div>
-    <div class="pokemon-coin-container">
-      <div class="coin-container">
-        <a class="game-info" *ngIf="user$ | async as user">
-          {{ user.pokemonCoin }}
-        </a>
-        <img src="/static/coin.png" style="width: auto; height: 50px" />
-      </div>
-      <div class="button-container">
-        <button
-          nz-button
-          nzShape="round"
-          nzType="primary"
-          nzDanger
-          (click)="openRecharge()"
-        >
-          Recharge
-        </button>
-        <app-recharge />
-        <button
-          nz-button
-          nzShape="round"
-          nzType="primary"
-          nzDanger
-          (click)="openRechargeHistory()"
-        >
-          Recharge History
-        </button>
-        <app-recharge-history />
-      </div>
+    <div class="button-container">
+      <button
+        nz-button
+        nzShape="round"
+        nzType="primary"
+        nzDanger
+        (click)="openRecharge()"
+      >
+        Recharge
+      </button>
+      <app-recharge />
+      <button
+        nz-button
+        nzShape="round"
+        nzType="primary"
+        nzDanger
+        (click)="openRechargeHistory()"
+      >
+        Recharge History
+      </button>
+      <app-recharge-history />
     </div>
   </div>
 

@@ -20,7 +20,9 @@
           [nzValue]="(captured | async) ?? 0"
           [nzPrefix]="prefixTpl"
           ><ng-template #prefixTpl
-            ><img class="user-foto" src="/static/poke.png" /></ng-template
+            ><app-image
+              imagePath="/static/poke.png"
+              imageSize="15" /></ng-template
         ></nz-statistic>
       </nz-col>
       <nz-col [nzSpan]="12">

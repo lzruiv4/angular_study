@@ -3,11 +3,12 @@ import { IPokemon } from '../../../shared/models/IPokemen.model';
 import { CommonModule } from '@angular/common';
 import { PokemonService } from '@/shared/services/Pokemon.service';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { ImageComponent } from '@/shared/components/image/image.component';
 
 @Component({
   standalone: true, // After angular 17 can one use this. But module is not used.
   selector: 'app-pokedex',
-  imports: [CommonModule, NzTableModule],
+  imports: [CommonModule, NzTableModule, ImageComponent],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.css',
 })

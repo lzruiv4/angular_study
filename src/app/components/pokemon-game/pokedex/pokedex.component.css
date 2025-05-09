@@ -1,5 +1,7 @@
 .pokedex-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   margin: 15px;
   gap: 100px;
@@ -8,13 +10,14 @@
 }
 
 .pokedex {
+  /* flex: 1; */
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 500px;
+  /* width: 500px; */
   margin: 20px;
-  min-width: 300px;
-  max-height: 80%;
+  /* min-width: 300px; */
+  /* max-height: 80%; */
 }
 
 .left-header {
@@ -61,18 +64,25 @@
 }
 
 .poke-ball-div {
+  /* flex: 2; */
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 600px;
+  max-width: 1000px;
+  max-height: 600px;
+  width: 500px;
 }
 
-.poke-ball {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 600px;
-  max-height: 600px;
-  width: auto;
-  height: 90%;
+::ng-deep .ant-table {
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.1),
+    0 3px 8px rgba(0, 0, 0, 0.06);
+}
+
+::ng-deep .ant-table-thead > tr > th {
+  background-color: #021024;
+  color: #fdfdfd;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
 }

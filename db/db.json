@@ -13,7 +13,7 @@
       "createdAt": "2024-04-30 19:22:20.134051",
       "firstname": "Melanie1",
       "lastname": "Chen",
-      "pokemonCoin": 6,
+      "pokemonCoin": 4,
       "id": "user2"
     }
   ],
@@ -21,21 +21,21 @@
     {
       "id": "f102",
       "pokemonId": "314",
-      "captureTime": "2025-05-08T23:40:14.729Z",
+      "captureTime": "2023-05-08T23:40:14.729Z",
       "userId": "user2",
       "isRelease": false
     },
     {
       "id": "adb3",
       "pokemonId": "241",
-      "captureTime": "2025-05-08T23:40:21.477Z",
+      "captureTime": "2022-05-08T23:40:21.477Z",
       "userId": "user2",
       "isRelease": false
     },
     {
       "id": "d036",
       "pokemonId": "165",
-      "captureTime": "2025-05-08T23:40:34.963Z",
+      "captureTime": "2024-05-08T23:40:34.963Z",
       "userId": "user2",
       "isRelease": false
     },
@@ -49,14 +49,35 @@
     {
       "id": "cd97",
       "pokemonId": "44",
-      "captureTime": "2025-05-09T00:05:44.270Z",
+      "captureTime": "2023-01-09T00:05:44.270Z",
       "userId": "user2",
       "isRelease": false
     },
     {
       "id": "3b51",
       "pokemonId": "407",
-      "captureTime": "2025-05-09T00:11:12.402Z",
+      "captureTime": "2023-02-09T00:11:12.402Z",
+      "userId": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "5081",
+      "pokemonId": "241",
+      "captureTime": "2024-01-09T18:05:57.622Z",
+      "userId": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "1874",
+      "pokemonId": "26",
+      "captureTime": "2024-01-09T18:06:02.739Z",
+      "userId": "user2",
+      "isRelease": false
+    },
+    {
+      "id": "a02b",
+      "pokemonId": "378",
+      "captureTime": "2024-05-09T21:12:25.298Z",
       "userId": "user2",
       "isRelease": false
     }
@@ -75,6 +96,13 @@
       "amountRecharge": 1,
       "currentPokemonCoin": 7,
       "rechargeAt": "2025-05-09T00:10:49.719Z"
+    },
+    {
+      "id": "48c7",
+      "userId": "user2",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 5,
+      "rechargeAt": "2025-05-09T18:06:14.540Z"
     }
   ]
 }

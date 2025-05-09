@@ -11,7 +11,7 @@ import { CatchNewPokemonComponent } from '../catch-new-pokemon/catch-new-pokemon
 import { filter, Observable } from 'rxjs';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { UserService } from '@/shared/services/user.service';
-import { IPokemonRecordInList } from '@/shared/models/IPokemen.model';
+import { ImageComponent } from '@/shared/components/image/image.component';
 
 @Component({
   selector: 'app-poke-lotto',
@@ -23,6 +23,7 @@ import { IPokemonRecordInList } from '@/shared/models/IPokemen.model';
     RechargeComponent,
     CatchNewPokemonComponent,
     NzAlertModule,
+    ImageComponent
   ],
   templateUrl: './poke-lotto.component.html',
   styleUrl: './poke-lotto.component.css',

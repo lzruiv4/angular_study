@@ -8,6 +8,7 @@ import { POKEMON_AMOUNT } from '@/core/constants/Pokomon-API';
 import { PokemonRecordService } from '@/shared/services/pokemon-record.service';
 import { Observable } from 'rxjs';
 import { UserService } from '@/shared/services/user.service';
+import { ImageComponent } from '@/shared/components/image/image.component';
 
 @Component({
   selector: 'app-user-info',
@@ -17,6 +18,7 @@ import { UserService } from '@/shared/services/user.service';
     NzDescriptionsModule,
     NzGridModule,
     NzStatisticModule,
+    ImageComponent,
   ],
   templateUrl: './user-info.component.html',
   styleUrl: './user-info.component.css',

@@ -11,7 +11,7 @@
         record.recordType === recordType.RECHARGE_RECORD ? 'blue' : 'green'
       "
       [nzDot]="
-        record.recordType === recordType.RECHARGE_RECORD ? coin : pokemon_ball
+        record.recordType === recordType.RECHARGE_RECORD ? coin : pokemon
       "
     >
       <div>
@@ -39,9 +39,9 @@
 </nz-timeline>
 
 <ng-template #coin
-  ><img src="/static/coin.png" class="timeline-coin"
+  ><app-image imagePath="/static/coin.png" imageSize="20"
 /></ng-template>
 
-<ng-template #pokemon_ball
-  ><img src="/static/poke.png" class="timeline-coin"
+<ng-template #pokemon
+  ><app-image imagePath="/static/poke.png" imageSize="20"
 /></ng-template>
