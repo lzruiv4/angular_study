@@ -30,6 +30,8 @@ import dayjs from 'dayjs';
 export class PokemonRecordService {
   pokemons: IPokemon[] = [];
 
+  private isLoad: boolean = false;
+
   // Get all record from db
   private pokemonRecordsSubject = new BehaviorSubject<IPokemonRecord[]>([]);
   pokemonRecords$: Observable<IPokemonRecord[]> =
@@ -129,7 +131,7 @@ export class PokemonRecordService {
       );
   }
 
-  groupByRecords(): Observable<IPokemonRecordInList[]> {
+  private groupByRecords(): Observable<IPokemonRecordInList[]> {
     return this.pokemonRecords$.pipe(
       map((records) => {
         const map = new Map<string, IPokemonRecord[]>();
@@ -150,7 +152,12 @@ export class PokemonRecordService {
             dayjs(a.date, 'DD-MM-YYYY').valueOf(),
         );
       }),
+      tap((records) => this.pokemonRecordInListSubject.next(records)),
     );
+  }
+
+  getPokemonRecordsInTable() {
+    this.groupByRecords().subscribe();
   }
 
   getPokemonImageUrl(pokemonId: string): string {

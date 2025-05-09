@@ -11,7 +11,7 @@ export class UserService {
   private userSubject = new BehaviorSubject<IUser | null>(null);
   user$ = this.userSubject.asObservable();
 
-  private isLoaded = false;
+  private isLoad = false;
 
   constructor(private userHttp: HttpClient) {}
 
@@ -27,8 +27,8 @@ export class UserService {
   }
 
   loadUserInfo() {
-    if (!this.isLoaded) {
-      this.isLoaded = true;
+    if (!this.isLoad) {
+      this.isLoad = true;
       this.getUserInfo().subscribe();
     }
   }

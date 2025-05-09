@@ -46,25 +46,9 @@ export class CatchNewPokemonComponent implements OnInit {
           });
         }),
       )
-      .subscribe({
-        next: (response) => {
-          console.log('Update successful:', response);
-        },
-        error: (error) => {
-          console.error('Error updating user:', error);
-          alert('An error occurred while updating the user.');
-        },
-      });
+      .subscribe();
 
-    this.pokemonRecordService.captureNewPokemon().subscribe({
-      next: (response) => {
-        console.log('Captured successful:', response);
-      },
-      error: (error) => {
-        console.error('Error during capturing :', error);
-        alert('An error occurred while capturing a new pokemon.');
-      },
-    });
+    this.pokemonRecordService.captureNewPokemon().subscribe();
     this.isDialogVisible = false;
   }
 

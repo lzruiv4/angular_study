@@ -3,7 +3,7 @@ import { RechargeService } from '../../../shared/services/recharge.service';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { FormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
-import { filter, switchMap } from 'rxjs';
+import { filter, map, switchMap, take } from 'rxjs';
 import { IRechargeRecordDTO } from '@/shared/models/IRechargeRecord.model';
 import { CURRENT_USER_ID } from '@/core/constants/User-API';
 import { UserService } from '@/shared/services/user.service';
@@ -56,7 +56,7 @@ export class RechargeComponent implements OnInit {
   updateUserInfo(): void {
     this.user$
       .pipe(
-        // take(1),
+        take(1),
         filter((user) => !!user),
         switchMap((user) => {
           // console.log('vor: ', user);
@@ -68,21 +68,13 @@ export class RechargeComponent implements OnInit {
           return this.userService.updateUser(newUser);
         }),
       )
-      .subscribe({
-        next: (response) => {
-          console.log('Update successful:', response);
-        },
-        error: (error) => {
-          console.error('Error updating user:', error);
-          alert('An error occurred while updating the user.');
-        },
-      });
+      .subscribe();
   }
 
   createNewRechargeRecord(): void {
     this.user$
       .pipe(
-        // take(1),
+        take(1),
         filter((user) => !!user),
         switchMap((user) => {
           // console.log(user);
@@ -97,14 +89,6 @@ export class RechargeComponent implements OnInit {
           );
         }),
       )
-      .subscribe({
-        next: (response) => {
-          console.log('Create successful:', response);
-        },
-        error: (error) => {
-          console.error('Error creating :', error);
-          alert('An error occurred while creating a new record.');
-        },
-      });
+      .subscribe();
   }
 }

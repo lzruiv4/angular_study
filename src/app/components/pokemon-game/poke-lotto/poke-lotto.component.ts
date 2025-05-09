@@ -7,10 +7,11 @@ import { RechargeHistoryComponent } from '../recharge-history/recharge-history.c
 import { RechargeComponent } from '../recharge/recharge.component';
 import { PokemonRecordService } from '../../../shared/services/pokemon-record.service';
 import { CatchNewPokemonComponent } from '../catch-new-pokemon/catch-new-pokemon.component';
-import { IPokemonRecordInList } from '../../../shared/models/IPokemen.model';
+// import { IPokemonRecordInList } from '../../../shared/models/IPokemen.model';
 import { filter, Observable } from 'rxjs';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { UserService } from '@/shared/services/user.service';
+import { IPokemonRecordInList } from '@/shared/models/IPokemen.model';
 
 @Component({
   selector: 'app-poke-lotto',
@@ -40,10 +41,12 @@ export class PokeLottoComponent implements OnInit {
     return this.userService.user$;
   }
 
-  pokemonRecordInList$!: Observable<IPokemonRecordInList[]>;
+  get pokemonRecordInList$() {
+    return this.pokemonRecordService.pokemonRecordInList$;
+  }
 
   ngOnInit(): void {
-    this.pokemonRecordInList$ = this.pokemonRecordService.groupByRecords();
+    this.pokemonRecordService.getPokemonRecordsInTable();
   }
 
   openRechargeHistory(): void {
