@@ -14,10 +14,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 500px; */
+  width: 500px;
+  padding: 40px;
   margin: 20px;
-  /* min-width: 300px; */
-  /* max-height: 80%; */
 }
 
 .left-header {
@@ -27,8 +26,7 @@
 }
 
 .left-image-name-container {
-  min-height: 80px;
-  height: 80px;
+  height: 60px;
   transition:
     transform 0.5s ease,
     box-shadow 0.3s ease;
@@ -44,15 +42,7 @@
 }
 
 .left-image {
-  width: 80px;
-  height: 80px;
   text-align: center;
-  vertical-align: middle;
-}
-
-.left-img {
-  width: auto;
-  height: 75px;
 }
 
 .left-name {
@@ -60,11 +50,9 @@
   font-weight: bold;
   padding-left: 20px;
   text-align: left;
-  vertical-align: middle;
 }
 
 .poke-ball-div {
-  /* flex: 2; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,6 +62,7 @@
 }
 
 ::ng-deep .ant-table {
+  width: 400px;
   box-shadow:
     0 2px 6px rgba(0, 0, 0, 0.1),
     0 3px 8px rgba(0, 0, 0, 0.06);
@@ -85,4 +74,9 @@
   font-size: 30px;
   font-weight: bold;
   text-align: center;
+}
+
+::ng-deep .ant-table-tbody > tr > td {
+  height: 80px;
+  padding: 1px 20px;
 }

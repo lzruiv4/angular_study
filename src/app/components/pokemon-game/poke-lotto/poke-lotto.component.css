@@ -107,9 +107,9 @@
   text-align: center;
 }
 
-.ant-table-tbody > tr {
-  /* background-color: #f2fefe; */
+::ng-deep .ant-table-tbody > tr {
   font-size: 20px;
+  font-weight: bold;
   color: #000000;
   padding: 10px;
   border-bottom: 1px solid #e8e1d3;

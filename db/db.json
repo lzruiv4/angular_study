@@ -13,7 +13,7 @@
       "createdAt": "2024-04-30 19:22:20.134051",
       "firstname": "Melanie1",
       "lastname": "Chen",
-      "pokemonCoin": 4,
+      "pokemonCoin": 5,
       "id": "user2"
     }
   ],
@@ -103,6 +103,13 @@
       "amountRecharge": 1,
       "currentPokemonCoin": 5,
       "rechargeAt": "2025-05-09T18:06:14.540Z"
+    },
+    {
+      "id": "7fdb",
+      "userId": "user2",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 5,
+      "rechargeAt": "2025-05-09T22:24:50.640Z"
     }
   ]
 }

@@ -4,17 +4,7 @@
   justify-content: center;
   align-items: center;
   min-width: 300px;
-  /* width: 500px; */
   gap: 40px;
-}
-
-.user-foto {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
-  width: 15px;
-  height: 15px;
 }
 
 .user-info-div {
