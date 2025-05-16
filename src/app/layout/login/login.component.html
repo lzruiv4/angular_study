@@ -1,0 +1,12 @@
+<form (submit)="onSubmit()">
+  <div>
+    <label>用户名</label>
+    <input [(ngModel)]="username" name="username" required />
+  </div>
+  <div>
+    <label>密码</label>
+    <input type="password" [(ngModel)]="password" name="password" required />
+  </div>
+  <button type="submit">登录</button>
+  <div *ngIf="errorMessage" style="color: red">{{ errorMessage }}</div>
+</form>

@@ -8,6 +8,8 @@ import { IPokemonRecord } from '@/shared/models/IPokemen.model';
 import { TimelineComponent } from '@/shared/components/timeline/timeline.component';
 import { IRecord } from '@/shared/models/ITimelineObject.model';
 import { RecordType } from '@/shared/models/RecordType.enum';
+import { UserService } from '@/shared/services/user.service';
+import { AuthService } from '@/core/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -24,35 +26,43 @@ export class HomeComponent implements OnInit {
   constructor(
     private rechargeService: RechargeService,
     private pokemonRecordService: PokemonRecordService,
+    private userService: UserService,
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
-    this.combined$ = combineLatest([
-      (this.rechargeRecords$ =
-        this.rechargeService.getAllRechargeRecordsByUserId()),
-      (this.pokemonRecords$ =
-        this.pokemonRecordService.getAllPokemonRecordsByCurrentUserId()),
-    ]).pipe(
-      map(([rechargeRecords, pokemonRecords]) => {
-        const rechargeRecordMappe: IRecord[] = rechargeRecords.map(
-          (rechargeRecord) => ({
-            recordDate: rechargeRecord.rechargeAt!,
-            recordType: RecordType.RECHARGE_RECORD,
-            recordObject: rechargeRecord,
-          }),
-        );
-        const pokemonRecordMappe: IRecord[] = pokemonRecords.map(
-          (pokemonRecord) => ({
-            recordDate: pokemonRecord.captureTime!,
-            recordType: RecordType.POKEMON_RECORD,
-            recordObject: pokemonRecord,
-          }),
-        );
-        return [...rechargeRecordMappe, ...pokemonRecordMappe].sort(
-          (a, b) =>
-            new Date(b.recordDate).getTime() - new Date(a.recordDate).getTime(),
-        );
-      }),
-    );
+    if (this.authService.getUserId()) {
+      this.userService.loadUserInfo();
+      this.combined$ = combineLatest([
+        (this.rechargeRecords$ =
+          this.rechargeService.getAllRechargeRecordsByUserId()),
+        (this.pokemonRecords$ =
+          this.pokemonRecordService.getAllPokemonRecordsByCurrentUserId()),
+      ]).pipe(
+        map(([rechargeRecords, pokemonRecords]) => {
+          const rechargeRecordMappe: IRecord[] = rechargeRecords.map(
+            (rechargeRecord) => ({
+              recordDate: rechargeRecord.rechargeAt!,
+              recordType: RecordType.RECHARGE_RECORD,
+              recordObject: rechargeRecord,
+            }),
+          );
+          const pokemonRecordMappe: IRecord[] = pokemonRecords.map(
+            (pokemonRecord) => ({
+              recordDate: pokemonRecord.captureTime!,
+              recordType: RecordType.POKEMON_RECORD,
+              recordObject: pokemonRecord,
+            }),
+          );
+          return [...rechargeRecordMappe, ...pokemonRecordMappe].sort(
+            (a, b) =>
+              new Date(b.recordDate).getTime() -
+              new Date(a.recordDate).getTime(),
+          );
+        }),
+      );
+    } else {
+      console.warn('User info is loading...');
+    }
   }
 }

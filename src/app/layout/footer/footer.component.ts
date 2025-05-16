@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzFooterComponent } from 'ng-zorro-antd/layout';
-import { FOOTER_MESSAGE } from '../../core/constants/PageSetting';
+import { FOOTER_MESSAGE } from '../../core/constants/Header-Setting';
 
 @Component({
   selector: 'app-footer',

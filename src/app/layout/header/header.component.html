@@ -2,7 +2,7 @@
   <img class="logo" src="/static/poke.png" />
   <nav>
     <a
-      *ngFor="let item of menuList"
+      *ngFor="let item of menuList; trackBy: trackByPath"
       [routerLink]="item.path"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"

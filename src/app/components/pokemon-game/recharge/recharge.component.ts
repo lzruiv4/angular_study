@@ -5,8 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { filter, map, switchMap, take } from 'rxjs';
 import { IRechargeRecordDTO } from '@/shared/models/IRechargeRecord.model';
-import { CURRENT_USER_ID } from '@/core/constants/User-API';
+// import { CURRENT_USER_ID } from '@/core/constants/User-API';
 import { UserService } from '@/shared/services/user.service';
+import { AuthService } from '@/core/services/auth.service';
 
 @Component({
   selector: 'app-recharge',
@@ -27,6 +28,7 @@ export class RechargeComponent implements OnInit {
   constructor(
     private rechargeService: RechargeService,
     private userService: UserService,
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -79,7 +81,7 @@ export class RechargeComponent implements OnInit {
         switchMap((user) => {
           // console.log(user);
           const newRechargeRecordDTO: IRechargeRecordDTO = {
-            userId: CURRENT_USER_ID,
+            userId: this.authService.getUserId()!,
             amountRecharge: Number(this.selectOption),
             currentPokemonCoin: user.pokemonCoin + Number(this.selectOption),
             rechargeAt: new Date(),

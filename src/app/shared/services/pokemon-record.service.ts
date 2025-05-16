@@ -21,8 +21,9 @@ import {
   POKEMON_RECORDS_API,
 } from '../../core/constants/Pokomon-API';
 import { HttpClient } from '@angular/common/http';
-import { CURRENT_USER_ID } from '../../core/constants/User-API';
+// import { CURRENT_USER_ID } from '../../core/constants/User-API';
 import dayjs from 'dayjs';
+import { AuthService } from '@/core/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -47,6 +48,7 @@ export class PokemonRecordService {
   constructor(
     private pokemonRecordsHttp: HttpClient,
     private pokemonService: PokemonService,
+    private authService: AuthService,
   ) {
     this.pokemonService
       .getPokemonDTOs()
@@ -57,7 +59,7 @@ export class PokemonRecordService {
   getAllPokemonRecordsByCurrentUserId(): Observable<IPokemonRecord[]> {
     return combineLatest([
       this.pokemonRecordsHttp.get<IPokemonRecordDTO[]>(
-        POKEMON_RECORDS_API + '?userId=' + CURRENT_USER_ID,
+        POKEMON_RECORDS_API + '?userId=' + this.authService.getUserId(),
       ),
       this.pokemonService.pokemons$,
     ]).pipe(
@@ -99,10 +101,16 @@ export class PokemonRecordService {
   }
 
   captureNewPokemon(): Observable<IPokemonRecord> {
+    const id = this.authService.getUserId();
+    if (id) {
+      console.log('User ID:', id);
+    } else {
+      console.warn('User ID not set yet');
+    }
     const newPokemonDTO: IPokemonRecordDTO = {
       pokemonId: (Math.floor(Math.random() * POKEMON_AMOUNT) + 1).toString(),
       captureTime: new Date(),
-      userId: CURRENT_USER_ID,
+      userId: id!,
       isRelease: false,
     };
     return this.pokemonRecordsHttp

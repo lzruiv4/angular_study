@@ -5,7 +5,7 @@
       "createdAt": "2023-04-30 19:22:20.134051",
       "firstname": "Jack",
       "lastname": "Chen",
-      "pokemonCoin": 0,
+      "pokemonCoin": 5,
       "id": "ad1"
     },
     {
@@ -80,6 +80,27 @@
       "captureTime": "2024-05-09T21:12:25.298Z",
       "userId": "user2",
       "isRelease": false
+    },
+    {
+      "id": "ff80",
+      "pokemonId": "208",
+      "captureTime": "2025-05-12T13:32:38.730Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "8e04",
+      "pokemonId": "146",
+      "captureTime": "2025-05-12T14:14:19.473Z",
+      "userId": "ad1",
+      "isRelease": false
+    },
+    {
+      "id": "641b",
+      "pokemonId": "135",
+      "captureTime": "2025-05-12T14:15:22.389Z",
+      "userId": "ad1",
+      "isRelease": false
     }
   ],
   "rechargeRecords": [
@@ -110,6 +131,34 @@
       "amountRecharge": 1,
       "currentPokemonCoin": 5,
       "rechargeAt": "2025-05-09T22:24:50.640Z"
+    },
+    {
+      "id": "9b99",
+      "userId": "ad1",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 1,
+      "rechargeAt": "2025-05-10T13:32:35.329Z"
+    },
+    {
+      "id": "deea",
+      "userId": "ad1",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 1,
+      "rechargeAt": "2025-05-12T13:41:58.439Z"
+    },
+    {
+      "id": "41ef",
+      "userId": "ad1",
+      "amountRecharge": 1,
+      "currentPokemonCoin": 1,
+      "rechargeAt": "2025-05-12T14:14:49.423Z"
+    },
+    {
+      "id": "17bd",
+      "userId": "ad1",
+      "amountRecharge": 5,
+      "currentPokemonCoin": 6,
+      "rechargeAt": "2025-05-12T14:15:09.147Z"
     }
   ]
 }

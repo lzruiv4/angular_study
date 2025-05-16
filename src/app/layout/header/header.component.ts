@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NzHeaderComponent } from 'ng-zorro-antd/layout';
-import { HEADER_LIST } from '../../core/constants/PageSetting';
+import { HEADER_LIST } from '../../core/constants/Header-Setting';
 
 @Component({
   selector: 'app-header',
@@ -12,4 +12,8 @@ import { HEADER_LIST } from '../../core/constants/PageSetting';
 })
 export class HeaderComponent {
   menuList = HEADER_LIST;
+
+  trackByPath(index: number, item: any) {
+    return item.path;
+  }
 }
