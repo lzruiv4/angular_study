@@ -38,6 +38,8 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('authToken');
+    localStorage.clear();
+    window.location.href = '/login';
   }
 
   saveToken(token: string): void {

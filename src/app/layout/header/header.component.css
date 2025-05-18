@@ -6,6 +6,16 @@
   margin-right: 20px;
 }
 
+.logout {
+  width: auto;
+  height: 80px;
+}
+
+.logout:hover {
+  border-radius: 10px;
+  background-color: rgb(253, 174, 3);
+}
+
 a {
   margin: 8px 16px;
   padding-top: 5px;

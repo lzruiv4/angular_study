@@ -1,5 +1,12 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .login-form {
-  max-width: 300px;
+  max-width: 400px;
 }
 
 .login-form-margin {
@@ -7,9 +14,30 @@
 }
 
 .login-form-forgot {
-  float: right;
+  float: left;
 }
 
 .login-form-button {
-  width: 100%;
+  width: 400px;
+  border-radius: 5px;
+}
+
+.login-header {
+  display: flex;
+  color: antiquewhite;
+  font-size: 30px;
+  justify-content: left;
+  align-items: center;
+  width: 99%;
+  background-color: rgba(0, 92, 153, 0.85);
+  height: 70px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  padding-left: 20px;
+  /* 外发光浅蓝阴影 */
+  box-shadow:
+    0 4px 8px rgba(255, 255, 255, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
 }

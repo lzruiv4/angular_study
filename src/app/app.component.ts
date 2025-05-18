@@ -11,18 +11,17 @@ import { filter } from 'rxjs';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  showHeader = true;
+  currentRoute = '';
 
   constructor(private router: Router) {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        const hiddenRoutes = ['/login', '/register'];
-        this.showHeader = !hiddenRoutes.includes(event.urlAfterRedirects);
+        this.currentRoute = event.urlAfterRedirects;
       });
   }
-  // ngOnInit(): void {
-  //Make sure user info will be fetched
-  // this.userService.loadUserInfo();
-  // }
+
+  isAuthPage(): boolean {
+    return this.currentRoute === '/login' || this.currentRoute === '/register';
+  }
 }
