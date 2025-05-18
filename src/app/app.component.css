@@ -28,7 +28,8 @@ body {
 .main-content {
   flex: 1; /* 关键：占据剩余空间 */
   display: flex; /* 新增 */
-
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   overflow: auto;
 }

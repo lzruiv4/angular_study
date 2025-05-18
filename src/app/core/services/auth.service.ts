@@ -77,6 +77,6 @@ export class AuthService {
   }
 
   getUserId(): string | null {
-    return this.CURRENT_USER_ID ?? localStorage.getItem('userId'); // 从内存或localStorage中获取
+    return this.CURRENT_USER_ID ?? localStorage.getItem('userId');
   }
 }

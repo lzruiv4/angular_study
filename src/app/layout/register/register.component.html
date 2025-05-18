@@ -1,38 +1,106 @@
-<h2>注册</h2>
-<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
-  <div>
-    <label for="username">Username</label>
-    <input name="username" required [(ngModel)]="username" />
-    <!-- <div *ngIf="username.invalid && username.touched" style="color: red">
-      用户名是必填项
-    </div> -->
-  </div>
-
-  <div>
-    <label for="firstname">Firstname:</label>
-    <input type="text" name="firstname" required [(ngModel)]="firstname" />
-    <!-- <div *ngIf="firstname.invalid && firstname.touched" style="color: red">
-      用户名是必填项
-    </div> -->
-  </div>
-
-  <div>
-    <label for="lastname">Lastname:</label>
-    <input type="text" name="lastname" required [(ngModel)]="lastname" />
-    <!-- <div *ngIf="lastname.invalid && lastname.touched" style="color: red">
-      Lastname
-    </div> -->
-  </div>
-
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" name="password" required [(ngModel)]="password" />
-    <!-- <div *ngIf="password.invalid && password.touched" style="color: red">
-      密码至少6位
-    </div> -->
-  </div>
-
-  <button type="submit" [disabled]="registerForm.invalid">注册</button>
+<form
+  nz-form
+  [nzAutoTips]="autoTips"
+  [formGroup]="validateForm"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Username</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzValidatingTip="Validating...">
+      <input
+        nz-input
+        autocomplete="username"
+        formControlName="username"
+        placeholder="async validate try to write JasonWood"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Firstname</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input
+        nz-input
+        autocomplete="firstname"
+        formControlName="firstname"
+        placeholder="firstname"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Lastname</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input
+        nz-input
+        autocomplete="lastname"
+        formControlName="lastname"
+        placeholder="lastname"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <!-- <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Mobile</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input nz-input formControlName="mobile" placeholder="mobile" />
+    </nz-form-control>
+  </nz-form-item> -->
+  <!-- <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>E-mail</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input
+        nz-input
+        formControlName="email"
+        placeholder="email"
+        type="email"
+      />
+    </nz-form-control>
+  </nz-form-item> -->
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Password</nz-form-label>
+    <nz-form-control
+      [nzSpan]="12"
+      nzDisableAutoTips
+      nzErrorTip="Please input your password!"
+    >
+      <input
+        nz-input
+        type="password"
+        autocomplete="new-password"
+        formControlName="password"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Confirm Password</nz-form-label>
+    <nz-form-control
+      [nzSpan]="12"
+      nzDisableAutoTips
+      [nzErrorTip]="passwordErrorTpl"
+    >
+      <input
+        nz-input
+        autocomplete="new-password"
+        type="password"
+        formControlName="confirm"
+        placeholder="confirm your password"
+      />
+      <ng-template #passwordErrorTpl let-control>
+        @if (control.errors?.["required"]) {
+          Please confirm your password!
+        }
+        @if (control.errors?.["confirm"]) {
+          Password is inconsistent!
+        }
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control [nzOffset]="7" [nzSpan]="12">
+      <button nz-button nzType="primary">Submit</button>
+    </nz-form-control>
+    <nz-form-control [nzOffset]="7" [nzSpan]="12">
+      <button (click)="goBackToLogin()" nz-button nzType="primary">
+        Back to login
+      </button>
+    </nz-form-control>
+  </nz-form-item>
 </form>
-
-<div *ngIf="message" [style.color]="messageColor">{{ message }}</div>

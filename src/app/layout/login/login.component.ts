@@ -1,38 +1,71 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-// import { BrowserModule } from '@angular/platform-browser';
+import {
+  NonNullableFormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
 import { AuthService } from '@/core/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    NzFormModule,
+    NzInputModule,
+    ReactiveFormsModule,
+    NzButtonModule,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  username = '';
-  password = '';
-  errorMessage = '';
-
   constructor(
     private authService: AuthService,
     private router: Router,
   ) {}
 
-  onSubmit() {
-    this.authService.login(this.username, this.password).subscribe({
-      next: (res) => {
-        this.authService.saveToken(res.token);
-        this.router.navigate(['/home']);
+  private fb = inject(NonNullableFormBuilder);
+  validateForm = this.fb.group({
+    username: this.fb.control('', [Validators.required]),
+    password: this.fb.control('', [Validators.required]),
+    remember: this.fb.control(true),
+  });
 
-        console.log('sdfasdf: ', res.token);
-      },
-      error: (err) => {
-        this.errorMessage = '登录失败，请检查用户名或密码';
-        console.error('sss: ', err);
-      },
-    });
+  submitForm(): void {
+    if (this.validateForm.valid) {
+      // console.log(this.validateForm.getRawValue().password);
+      this.authService
+        .login(
+          this.validateForm.getRawValue().username,
+          this.validateForm.getRawValue().password,
+        )
+        .subscribe({
+          next: (res) => {
+            this.authService.saveToken(res.token);
+            this.router.navigate(['/home']);
+            console.log('submit', this.validateForm.value);
+          },
+          error: (err) => {
+            console.error('sss: ', err);
+          },
+        });
+    } else {
+      Object.values(this.validateForm.controls).forEach((control) => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+    }
+  }
+
+  goToRegister() {
+    this.router.navigate(['/register']);
   }
 }
