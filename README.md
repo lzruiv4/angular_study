@@ -2,7 +2,7 @@
 
 ##### almost done
 
-1. Display of Pokémon encyclopedia, the number to be displayed can be defined in `POKEMON_AMOUNT` in the `/src/app/core/constants/Pokomon.api.ts`
+1. Display of Pokémon encyclopedia, the number to be displayed can be defined in `POKEMON_AMOUNT` in the `/src/app/core/constants/API-Setting.ts`
 
 2. Pokémon can be captured randomly, which requires a pokemon coin
 
@@ -10,16 +10,21 @@
 
 ### UI
 
+#### Login and Logout
+
+<img src="public/markdown/login-ui.png" width="500px" height="auto"/>
+<img src="public/markdown/register-ui.png" width="500px" height="auto"/>
+
 #### Pokédex
 
-<img src="public/pokedex.png" width="500px" height="auto"/>
+<img src="public/markdown/pokedex.png" width="500px" height="auto"/>
 <!-- ![Pokédex] (public/pokedex.png) -->
 
 You can check all Pokémon Pokédex here
 
 #### Pokémon lotto
 
-<img src="public/lotto.png" width="500px" height="auto" />
+<img src="public/markdown/lotto.png" width="500px" height="auto" />
 
 1. Here you can randomly get a Pokémon, including legendary ones.
 2. Each time you spend one gold coin, if you don't have gold coins, you can recharge and check the recharge history.
@@ -43,27 +48,20 @@ To build the project run:
 ng build
 ```
 
-## Running unit tests
+<!-- ## Running unit tests
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
 ```bash
 ng test
-```
+``` -->
 
-### PS: Database use json-server
+## The database using json-server is now invalid because it cannot support the login feature.
 
-```
-npx json-server db/db.json
-```
+~~PS: Database use json-server~~ json server was removed on 05.18.2025
 
-or
+## Now please use my backend server with springboot
 
 ```
-npm run db
+sb_backend 👉 git@github.com:lzruiv4/sb_backend.git
 ```
-
-Runs the test-server.
-Open http://localhost:9009/users to view data in Browser.
-
-To install test-server, run: `npm install -g json-server`

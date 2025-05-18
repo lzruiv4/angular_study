@@ -19,9 +19,8 @@ import { PokemonService } from './Pokemon.service';
 import {
   POKEMON_AMOUNT,
   POKEMON_RECORDS_API,
-} from '../../core/constants/Pokomon-API';
+} from '@/core/constants/API-Setting';
 import { HttpClient } from '@angular/common/http';
-// import { CURRENT_USER_ID } from '../../core/constants/User-API';
 import dayjs from 'dayjs';
 import { AuthService } from '@/core/services/auth.service';
 

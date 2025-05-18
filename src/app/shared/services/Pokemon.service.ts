@@ -11,7 +11,7 @@ import {
   tap,
 } from 'rxjs';
 import { IPokemon, IPokemonDTO } from '../models/IPokemen.model';
-import { POKEMON_API } from '../../core/constants/Pokomon-API';
+import { POKEMON_API } from '@/core/constants/API-Setting';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {

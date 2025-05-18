@@ -4,7 +4,7 @@ import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 import { CommonModule } from '@angular/common';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
-import { POKEMON_AMOUNT } from '@/core/constants/Pokomon-API';
+import { POKEMON_AMOUNT } from '@/core/constants/API-Setting';
 import { PokemonRecordService } from '@/shared/services/pokemon-record.service';
 import { Observable } from 'rxjs';
 import { UserService } from '@/shared/services/user.service';

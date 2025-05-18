@@ -1,35 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-
-interface LoginResponse {
-  userId: string;
-  token: string;
-}
-
-interface RegisterResponseDTO {
-  userID: string;
-  username: string;
-  firstname: string;
-  lastname: string;
-  password: string;
-}
+import { LOGIN_URL, REGISTER_URL } from '../constants/API-Setting';
+import {
+  LoginResponseDTO,
+  RegisterResponseDTO,
+} from '@/shared/models/ILoginAndRegister.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private loginUrl = 'http://localhost:9090/api/auth/login';
-  private registerUrl = 'http://localhost:9090/api/auth/register';
-
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<LoginResponse> {
+  login(username: string, password: string): Observable<LoginResponseDTO> {
     return this.http
-      .post<LoginResponse>(this.loginUrl, { username, password })
+      .post<LoginResponseDTO>(LOGIN_URL, { username, password })
       .pipe(
         tap((response) => {
-          console.log('sdfa ', response);
+          // console.log('sdfa ', response);
           this.saveToken(response.token);
           this.setUserId(response.userId);
         }),
@@ -58,7 +47,7 @@ export class AuthService {
   ): Observable<RegisterResponseDTO> {
     const roles = ['ROLE_USER'];
     return this.http
-      .post<RegisterResponseDTO>(this.registerUrl, {
+      .post<RegisterResponseDTO>(REGISTER_URL, {
         username,
         firstname,
         lastname,

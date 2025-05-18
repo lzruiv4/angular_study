@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { IUser, IUserDTO } from '../models/IUser.model';
-import { USER_API } from '@/core/constants/User-API';
+import { USER_API } from '@/core/constants/API-Setting';
 import { AuthService } from '@/core/services/auth.service';
 
 @Injectable({
