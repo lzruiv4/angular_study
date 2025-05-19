@@ -1,4 +1,12 @@
-# AngularFirst
+# Angular pokemon
+
+## Quickly start
+
+The project can currently use docker to set up the backend. You only need to enter the `npm run setup_backend` command in the console to complete the backend deployment.
+
+If the deployment is complete, after stopping the container, you can start the container by running the `npm run sb_server` command.
+
+Prerequisite: Make sure you have installed docker
 
 ##### almost done
 
