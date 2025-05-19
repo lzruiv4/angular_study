@@ -25,6 +25,8 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  isLoading: boolean = false;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -38,6 +40,7 @@ export class LoginComponent {
   });
 
   submitForm(): void {
+    this.isLoading = true;
     if (this.validateForm.valid) {
       // console.log(this.validateForm.getRawValue().password);
       this.authService
@@ -53,6 +56,7 @@ export class LoginComponent {
           },
           error: (err) => {
             console.error('sss: ', err);
+            this.isLoading = false;
           },
         });
     } else {

@@ -12,7 +12,7 @@
         nz-input
         autocomplete="username"
         formControlName="username"
-        placeholder="async validate try to write JasonWood"
+        placeholder="username"
       />
     </nz-form-control>
   </nz-form-item>
@@ -67,6 +67,7 @@
         type="password"
         autocomplete="new-password"
         formControlName="password"
+        placeholder="password"
       />
     </nz-form-control>
   </nz-form-item>
@@ -97,7 +98,9 @@
   <nz-form-item>
     <nz-form-control [nzOffset]="7" [nzSpan]="12">
       <div style="display: flex; gap: 50px">
-        <button nz-button nzType="primary">Submit</button>
+        <button nz-button nzType="primary" [nzLoading]="isLoading">
+          Submit
+        </button>
         <button (click)="goBackToLogin()" nz-button nzType="primary">
           Back to login
         </button>

@@ -32,6 +32,8 @@ import { RoleType } from '@/models/enums/RoleType.enum';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent implements OnInit, OnDestroy {
+  isLoading = false; // wait for backend response
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -84,6 +86,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   submitForm(): void {
+    this.isLoading = true;
     if (this.validateForm.valid) {
       this.authService
         .register(
