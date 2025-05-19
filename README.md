@@ -20,8 +20,8 @@ Prerequisite: Make sure you have installed docker
 
 #### Login and Logout
 
-<img src="public/markdown/login-ui.png" width="500px" height="auto"/>
-<img src="public/markdown/register-ui.png" width="500px" height="auto"/>
+<img src="public/markdown/login.png" width="500px" height="auto"/>
+<img src="public/markdown/register.png" width="500px" height="auto"/>
 
 #### Pokédex
 

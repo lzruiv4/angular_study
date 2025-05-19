@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 10px;
 }
 
 .login-form {
@@ -33,9 +34,9 @@
   width: 100%;
   background-color: rgb(0, 21, 41);
   height: 70px;
+  border-radius: 5px;
   flex-wrap: nowrap;
   white-space: nowrap;
-  /* border-radius: 12px; */
   margin-bottom: 30px;
   padding-left: 20px;
   /* 外发光浅蓝阴影 */
@@ -43,8 +44,3 @@
     0 4px 8px rgba(255, 255, 255, 0.1),
     0 0 0 1px rgba(255, 255, 255, 0.05);
 }
-
-/* [nz-button] {
-  background-color: black;
-  height: 40px;
-} */
