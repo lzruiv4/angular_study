@@ -3,11 +3,13 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 3000 --host 0.0.0.0",
+    "start": "ng serve --port 4200 --host 0.0.0.0 --no-hmr",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:angular_first": "node dist/angular_first/server/server.mjs"
+    "serve:ssr:angular_first": "node dist/angular_first/server/server.mjs",
+    "setup_backend": "docker compose -f backend/docker-compose.yaml up -d",
+    "sb_server": "docker start dev-postgres-db sb-backend-app"
   },
   "private": true,
   "dependencies": {
