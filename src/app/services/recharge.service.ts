@@ -13,7 +13,7 @@ import {
   IRechargeRecordDTO,
 } from '../models/IRechargeRecord.model';
 import { RECHARGE_RECORD_API } from '@/core/constants/API-Setting';
-import { AuthService } from '@/core/services/auth.service';
+import { AuthService } from '@/services/auth.service';
 // import { CURRENT_USER_ID } from '../../core/constants/User-API';
 
 @Injectable({ providedIn: 'root' })

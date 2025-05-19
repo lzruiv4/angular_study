@@ -15,7 +15,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { AuthService } from '@/core/services/auth.service';
+import { AuthService } from '@/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({

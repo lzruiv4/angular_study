@@ -1,5 +1,5 @@
-import { IRecord } from '@/shared/models/ITimelineObject.model';
-import { RecordType } from '@/shared/models/RecordType.enum';
+import { IRecord } from '@/models/ITimelineObject.model';
+import { RecordType } from '@/models/enums/RecordType.enum';
 import { DATE_PIPE } from '@/shared/utils/DateTools';
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';

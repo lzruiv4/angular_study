@@ -1,6 +1,6 @@
 import { Injectable, Type } from '@angular/core';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
-import { DialogComponent } from '../components/dialog/dialog.component';
+import { DialogComponent } from '../shared/base-components/dialog/dialog.component';
 
 @Injectable({
   providedIn: 'root',

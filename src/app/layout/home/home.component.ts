@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { UserInfoComponent } from '../../components/user/user-info/user-info.component';
-import { PokemonRecordService } from '@/shared/services/pokemon-record.service';
-import { RechargeService } from '@/shared/services/recharge.service';
+import { PokemonRecordService } from '@/services/pokemon-record.service';
+import { RechargeService } from '@/services/recharge.service';
 import { combineLatest, map, Observable } from 'rxjs';
-import { IRechargeRecord } from '@/shared/models/IRechargeRecord.model';
-import { IPokemonRecord } from '@/shared/models/IPokemen.model';
-import { TimelineComponent } from '@/shared/components/timeline/timeline.component';
-import { IRecord } from '@/shared/models/ITimelineObject.model';
-import { RecordType } from '@/shared/models/RecordType.enum';
-import { UserService } from '@/shared/services/user.service';
-import { AuthService } from '@/core/services/auth.service';
+import { IRechargeRecord } from '@/models/IRechargeRecord.model';
+import { IPokemonRecord } from '@/models/IPokemen.model';
+import { TimelineComponent } from '@/shared/base-components/timeline/timeline.component';
+import { IRecord } from '@/models/ITimelineObject.model';
+import { RecordType } from '@/models/enums/RecordType.enum';
+import { UserService } from '@/services/user.service';
+import { AuthService } from '@/services/auth.service';
 
 @Component({
   selector: 'app-home',

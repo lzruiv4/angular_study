@@ -3,7 +3,7 @@ import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { IUser, IUserDTO } from '../models/IUser.model';
 import { USER_API } from '@/core/constants/API-Setting';
-import { AuthService } from '@/core/services/auth.service';
+import { AuthService } from '@/services/auth.service';
 
 @Injectable({
   providedIn: 'root',

@@ -22,7 +22,7 @@ import {
 } from '@/core/constants/API-Setting';
 import { HttpClient } from '@angular/common/http';
 import dayjs from 'dayjs';
-import { AuthService } from '@/core/services/auth.service';
+import { AuthService } from '@/services/auth.service';
 
 @Injectable({
   providedIn: 'root',

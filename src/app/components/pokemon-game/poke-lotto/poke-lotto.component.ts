@@ -2,16 +2,16 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { RechargeService } from '../../../shared/services/recharge.service';
+import { RechargeService } from '../../../services/recharge.service';
 import { RechargeHistoryComponent } from '../recharge-history/recharge-history.component';
 import { RechargeComponent } from '../recharge/recharge.component';
-import { PokemonRecordService } from '../../../shared/services/pokemon-record.service';
+import { PokemonRecordService } from '../../../services/pokemon-record.service';
 import { CatchNewPokemonComponent } from '../catch-new-pokemon/catch-new-pokemon.component';
 // import { IPokemonRecordInList } from '../../../shared/models/IPokemen.model';
 import { filter, Observable } from 'rxjs';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
-import { UserService } from '@/shared/services/user.service';
-import { ImageComponent } from '@/shared/components/image/image.component';
+import { UserService } from '@/services/user.service';
+import { ImageComponent } from '@/shared/base-components/image/image.component';
 
 @Component({
   selector: 'app-poke-lotto',
@@ -23,7 +23,7 @@ import { ImageComponent } from '@/shared/components/image/image.component';
     RechargeComponent,
     CatchNewPokemonComponent,
     NzAlertModule,
-    ImageComponent
+    ImageComponent,
   ],
   templateUrl: './poke-lotto.component.html',
   styleUrl: './poke-lotto.component.css',

@@ -2,9 +2,9 @@ import { Routes } from '@angular/router';
 import { PokedexComponent } from './components/pokemon-game/pokedex/pokedex.component';
 import { HomeComponent } from './layout/home/home.component';
 import { PokeLottoComponent } from './components/pokemon-game/poke-lotto/poke-lotto.component';
-import { LoginComponent } from './layout/login/login.component';
-import { RegisterComponent } from './layout/register/register.component';
-import { AuthGuard } from './guards/auth.guard';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },

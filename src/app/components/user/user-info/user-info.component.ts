@@ -5,10 +5,10 @@ import { CommonModule } from '@angular/common';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { POKEMON_AMOUNT } from '@/core/constants/API-Setting';
-import { PokemonRecordService } from '@/shared/services/pokemon-record.service';
+import { PokemonRecordService } from '@/services/pokemon-record.service';
 import { Observable } from 'rxjs';
-import { UserService } from '@/shared/services/user.service';
-import { ImageComponent } from '@/shared/components/image/image.component';
+import { UserService } from '@/services/user.service';
+import { ImageComponent } from '@/shared/base-components/image/image.component';
 
 @Component({
   selector: 'app-user-info',

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzSelectModule } from 'ng-zorro-antd/select';
-import { PokemonRecordService } from '../../../shared/services/pokemon-record.service';
+import { PokemonRecordService } from '../../../services/pokemon-record.service';
 import { filter, switchMap, take } from 'rxjs';
-import { UserService } from '@/shared/services/user.service';
+import { UserService } from '@/services/user.service';
 
 @Component({
   selector: 'app-catch-new-pokemon',

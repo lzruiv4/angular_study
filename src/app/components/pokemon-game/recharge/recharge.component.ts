@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { RechargeService } from '../../../shared/services/recharge.service';
+import { RechargeService } from '../../../services/recharge.service';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { FormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { filter, map, switchMap, take } from 'rxjs';
-import { IRechargeRecordDTO } from '@/shared/models/IRechargeRecord.model';
+import { IRechargeRecordDTO } from '@/models/IRechargeRecord.model';
 // import { CURRENT_USER_ID } from '@/core/constants/User-API';
-import { UserService } from '@/shared/services/user.service';
-import { AuthService } from '@/core/services/auth.service';
+import { UserService } from '@/services/user.service';
+import { AuthService } from '@/services/auth.service';
 
 @Component({
   selector: 'app-recharge',

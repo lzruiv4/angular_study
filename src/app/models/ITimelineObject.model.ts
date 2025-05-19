@@ -1,6 +1,6 @@
 import { IPokemonRecord } from './IPokemen.model';
 import { IRechargeRecord } from './IRechargeRecord.model';
-import { RecordType } from './RecordType.enum';
+import { RecordType } from './enums/RecordType.enum';
 
 export type IRecord =
   | {

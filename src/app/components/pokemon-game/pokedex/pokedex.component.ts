@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IPokemon } from '../../../shared/models/IPokemen.model';
+import { IPokemon } from '../../../models/IPokemen.model';
 import { CommonModule } from '@angular/common';
-import { PokemonService } from '@/shared/services/Pokemon.service';
+import { PokemonService } from '@/services/Pokemon.service';
 import { NzTableModule } from 'ng-zorro-antd/table';
-import { ImageComponent } from '@/shared/components/image/image.component';
+import { ImageComponent } from '@/shared/base-components/image/image.component';
 
 @Component({
   standalone: true, // After angular 17 can one use this. But module is not used.
