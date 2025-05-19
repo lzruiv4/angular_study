@@ -6,6 +6,7 @@ import {
   UserLoginDTO,
   UserRegisterDTO,
 } from '@/models/ILoginAndRegister.model';
+import { RoleType } from '@/models/enums/RoleType.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,6 @@ export class AuthService {
   login(username: string, password: string): Observable<UserLoginDTO> {
     return this.http.post<UserLoginDTO>(LOGIN_URL, { username, password }).pipe(
       tap((response) => {
-        // console.log('sdfa ', response);
         this.saveToken(response.token);
         this.setUserId(response.userId);
       }),
@@ -42,8 +42,8 @@ export class AuthService {
     firstname: string,
     lastname: string,
     password: string,
+    roles: RoleType[],
   ): Observable<UserRegisterDTO> {
-    const roles = ['ROLE_USER'];
     return this.http
       .post<UserRegisterDTO>(REGISTER_URL, {
         username,

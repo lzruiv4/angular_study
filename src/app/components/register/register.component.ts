@@ -17,6 +17,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { AuthService } from '@/services/auth.service';
 import { Router } from '@angular/router';
+import { RoleType } from '@/models/enums/RoleType.enum';
 
 @Component({
   selector: 'app-register',
@@ -38,23 +39,19 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   private fb = inject(NonNullableFormBuilder);
   private destroy$ = new Subject<void>();
+
   validateForm = this.fb.group({
     username: this.fb.control(
       '',
       [
         MyValidators.required,
         MyValidators.maxLength(12),
-        MyValidators.minLength(6),
+        // MyValidators.minLength(6),
       ],
       // [this.usernameAsyncValidator],
     ),
     firstname: this.fb.control('', [MyValidators.required]),
     lastname: this.fb.control('', [MyValidators.required]),
-    // firstname: this.fb.control('', [
-    //   MyValidators.required,
-    //   MyValidators.mobile,
-    // ]),
-    // lastname: this.fb.control('', [MyValidators.required, MyValidators.email]),
     password: this.fb.control('', [MyValidators.required]),
     confirm: this.fb.control(''),
   });
@@ -68,9 +65,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
     en: {
       required: 'Input is required',
     },
-    default: {
-      email: '邮箱格式不正确/The input is not valid email',
-    },
+    // default: {
+    //   email: '邮箱格式不正确/The input is not valid email',
+    // },
   };
 
   ngOnInit(): void {
@@ -94,20 +91,17 @@ export class RegisterComponent implements OnInit, OnDestroy {
           this.validateForm.getRawValue().firstname,
           this.validateForm.getRawValue().lastname,
           this.validateForm.getRawValue().password,
+          [RoleType.ROLE_USER], // ROLE_ADMIN only in backend edited.
         )
         .subscribe({
           next: (res) => {
-            // this.message = '注册成功！请登录。';
-            // this.messageColor = 'green';
-
+            console.log('submit', res);
             this.router.navigate(['/login']);
           },
           error: (err) => {
-            // this.message = '注册失败：' + err.error.message || err.message;
-            // this.messageColor = 'red';
+            console.error('Register error: ', err);
           },
         });
-      console.log('submit', this.validateForm.value);
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {
@@ -122,25 +116,25 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.router.navigate(['/login']);
   }
 
-  usernameAsyncValidator(
-    control: AbstractControl,
-  ): Observable<ValidationErrors | null> {
-    return new Observable((observer: Observer<MyValidationErrors | null>) => {
-      setTimeout(() => {
-        if (control.value === 'JasonWood') {
-          observer.next({
-            duplicated: {
-              'zh-cn': `用户名已存在`,
-              en: `The username is redundant!`,
-            },
-          });
-        } else {
-          observer.next(null);
-        }
-        observer.complete();
-      }, 1000);
-    });
-  }
+  // usernameAsyncValidator(
+  //   control: AbstractControl,
+  // ): Observable<ValidationErrors | null> {
+  //   return new Observable((observer: Observer<MyValidationErrors | null>) => {
+  //     setTimeout(() => {
+  //       if (control.value === 'JasonWood') {
+  //         observer.next({
+  //           duplicated: {
+  //             'zh-cn': `用户名已存在`,
+  //             en: `The username is redundant!`,
+  //           },
+  //         });
+  //       } else {
+  //         observer.next(null);
+  //       }
+  //       observer.complete();
+  //     }, 1000);
+  //   });
+  // }
 
   confirmValidator(control: AbstractControl): ValidationErrors | null {
     if (!control.value) {
@@ -188,28 +182,28 @@ export class MyValidators extends Validators {
     };
   }
 
-  static mobile(control: AbstractControl): MyValidationErrors | null {
-    const value = control.value;
+  // static mobile(control: AbstractControl): MyValidationErrors | null {
+  //   const value = control.value;
 
-    if (isEmptyInputValue(value)) {
-      return null;
-    }
+  //   if (isEmptyInputValue(value)) {
+  //     return null;
+  //   }
 
-    return isMobile(value)
-      ? null
-      : {
-          mobile: {
-            'zh-cn': `手机号码格式不正确`,
-            en: `Mobile phone number is not valid`,
-          },
-        };
-  }
+  //   return isMobile(value)
+  //     ? null
+  //     : {
+  //         mobile: {
+  //           'zh-cn': `手机号码格式不正确`,
+  //           en: `Mobile phone number is not valid`,
+  //         },
+  //       };
+  // }
 }
 
-function isEmptyInputValue(value: NzSafeAny): boolean {
-  return value == null || value.length === 0;
-}
+// function isEmptyInputValue(value: NzSafeAny): boolean {
+//   return value == null || value.length === 0;
+// }
 
-function isMobile(value: string): boolean {
-  return typeof value === 'string' && /(^1\d{10}$)/.test(value);
-}
+// function isMobile(value: string): boolean {
+//   return typeof value === 'string' && /(^1\d{10}$)/.test(value);
+// }
