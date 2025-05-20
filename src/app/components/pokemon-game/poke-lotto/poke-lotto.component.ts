@@ -61,7 +61,7 @@ export class PokeLottoComponent implements OnInit {
   openCatchPokemonDialog(): void {
     this.user$.pipe(filter((user) => !!user)).subscribe((user) => {
       if (user.pokemonCoin > 0) {
-        this.pokemonRecordService.triggerRechargeModal();
+        this.pokemonRecordService.triggerCapturePokemonModal();
       }
     });
   }

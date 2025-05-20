@@ -17,6 +17,7 @@ export class AuthService {
   login(username: string, password: string): Observable<UserLoginDTO> {
     return this.http.post<UserLoginDTO>(LOGIN_URL, { username, password }).pipe(
       tap((response) => {
+        console.log(response.userId);
         this.saveToken(response.token);
         this.setUserId(response.userId);
       }),
@@ -55,17 +56,15 @@ export class AuthService {
       .pipe(tap((response) => console.log('Successful', response)));
   }
 
-  private CURRENT_USER_ID: string | null = null;
-
-  setUserId(userId: string) {
-    this.CURRENT_USER_ID = userId;
+  isLoggedIn(): boolean {
+    return !!this.getToken();
   }
 
-  isLoggedIn(): boolean {
-    return !!this.getUserId();
+  setUserId(userId: string) {
+    localStorage.setItem('userId', userId);
   }
 
   getUserId(): string | null {
-    return this.CURRENT_USER_ID ?? localStorage.getItem('userId');
+    return localStorage.getItem('userId');
   }
 }

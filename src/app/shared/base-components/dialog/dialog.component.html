@@ -1,8 +1,11 @@
-<nz-modal
-  [(nzVisible)]="isVisible"
+<!-- <nz-modal
   [nzTitle]="title"
+  [(nzVisible)]="isVisible"
   (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()"
 >
   <ng-template #modalHost></ng-template>
-</nz-modal>
+</nz-modal> -->
+
+<button nz-button nzType="primary" (click)="showConfirm()">Confirm</button>
+<button nz-button nzType="dashed" (click)="showDeleteConfirm()">Delete</button>

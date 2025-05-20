@@ -7,7 +7,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { NzModalModule, NzModalRef } from 'ng-zorro-antd/modal';
+import { NzModalModule, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-dialog',
@@ -15,32 +15,31 @@ import { NzModalModule, NzModalRef } from 'ng-zorro-antd/modal';
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.css',
 })
-export class DialogComponent implements AfterViewInit {
-  @Input() title: string = '';
-  @Input() contentComponent!: Type<any>;
-  @Input() contentParams: any = {};
+export class DialogComponent {
+  // @Input() title: string = '';
 
-  @ViewChild('modalHost', { read: ViewContainerRef })
-  modalHost!: ViewContainerRef;
+  // isVisible = true;
 
-  isVisible = true;
+  constructor(private modal: NzModalService) {}
 
-  innerComponentRef: ComponentRef<any> | null = null;
-
-  constructor(private modalRef: NzModalRef) {}
-
-  ngAfterViewInit(): void {
-    const componentRef = this.modalHost.createComponent(this.contentComponent);
-    Object.assign(componentRef.instance, this.contentParams);
-    this.innerComponentRef = componentRef;
+  showConfirm(): void {
+    this.modal.confirm({
+      nzTitle: '<i>Do you Want to delete these items?</i>',
+      nzContent: '<b>Some descriptions</b>',
+      nzOnOk: () => console.log('OK'),
+    });
   }
 
-  handleOk() {
-    const result = this.innerComponentRef?.instance?.getResult?.();
-    this.modalRef.close(result ?? true);
-  }
-
-  handleCancel() {
-    this.modalRef.close(null);
+  showDeleteConfirm(): void {
+    this.modal.confirm({
+      nzTitle: 'Are you sure delete this task?',
+      nzContent: '<b style="color: red;">Some descriptions</b>',
+      nzOkText: 'Yes',
+      nzOkType: 'primary',
+      nzOkDanger: true,
+      nzOnOk: () => console.log('OK'),
+      // nzCancelText: 'No',
+      // nzOnCancel: () => console.log('Cancel'),
+    });
   }
 }

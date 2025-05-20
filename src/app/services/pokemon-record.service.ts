@@ -21,7 +21,6 @@ import {
   POKEMON_RECORDS_API,
 } from '@/core/constants/API-Setting';
 import { HttpClient } from '@angular/common/http';
-import dayjs from 'dayjs';
 import { AuthService } from '@/services/auth.service';
 
 @Injectable({
@@ -101,16 +100,9 @@ export class PokemonRecordService {
 
   captureNewPokemon(): Observable<IPokemonRecord> {
     const id = this.authService.getUserId();
-    if (id) {
-      console.log('User ID:', id);
-    } else {
-      console.warn('User ID not set yet');
-    }
     const newPokemonDTO: IPokemonRecordDTO = {
       pokemonId: (Math.floor(Math.random() * POKEMON_AMOUNT) + 1).toString(),
-      captureTime: new Date(),
       userId: id!,
-      isRelease: false,
     };
     return this.pokemonRecordsHttp
       .post<IPokemonRecordDTO>(POKEMON_RECORDS_API, newPokemonDTO)
@@ -126,7 +118,6 @@ export class PokemonRecordService {
           } as IPokemonRecord;
         }),
         tap((poke) => {
-          // console.log('You captured a ', poke.pokemonId); //TODO
           const old = this.pokemonRecordsSubject.getValue() ?? [];
           this.pokemonRecordsSubject.next([...old, poke]);
           this.groupByRecords();
@@ -154,9 +145,7 @@ export class PokemonRecordService {
           result.push({ date, pokemonRecordsInTheSameDay });
         });
         return result.sort(
-          (a, b) =>
-            dayjs(b.date, 'DD-MM-YYYY').valueOf() -
-            dayjs(a.date, 'DD-MM-YYYY').valueOf(),
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
         );
       }),
       tap((records) => this.pokemonRecordInListSubject.next(records)),
@@ -178,7 +167,7 @@ export class PokemonRecordService {
   private openDialog = new Subject<void>();
   showDialog$ = this.openDialog.asObservable();
 
-  triggerRechargeModal() {
+  triggerCapturePokemonModal() {
     this.openDialog.next();
   }
 }
