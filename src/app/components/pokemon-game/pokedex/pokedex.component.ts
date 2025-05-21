@@ -10,7 +10,7 @@ import { ImageComponent } from '@/shared/base-components/image/image.component';
   selector: 'app-pokedex',
   imports: [CommonModule, NzTableModule, ImageComponent],
   templateUrl: './pokedex.component.html',
-  styleUrl: './pokedex.component.css',
+  styleUrl: './pokedex.component.less',
 })
 export class PokedexComponent implements OnInit {
   pokemons: IPokemon[] = [];

@@ -22,7 +22,7 @@ import { Router } from '@angular/router';
     NzButtonModule,
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrl: './login.component.less',
 })
 export class LoginComponent {
   isLoading: boolean = false;

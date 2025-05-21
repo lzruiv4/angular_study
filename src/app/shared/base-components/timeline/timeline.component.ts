@@ -11,7 +11,7 @@ import { ImageComponent } from '../image/image.component';
   selector: 'app-timeline',
   imports: [CommonModule, NzTimelineModule, ImageComponent],
   templateUrl: './timeline.component.html',
-  styleUrl: './timeline.component.css',
+  styleUrl: './timeline.component.less',
 })
 export class TimelineComponent {
   @Input() combined$!: Observable<IRecord[]>;

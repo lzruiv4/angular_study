@@ -15,7 +15,7 @@ import { AuthService } from '@/services/auth.service';
   selector: 'app-home',
   imports: [UserInfoComponent, TimelineComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  styleUrl: './home.component.less',
 })
 export class HomeComponent implements OnInit {
   rechargeRecords$!: Observable<IRechargeRecord[]>;

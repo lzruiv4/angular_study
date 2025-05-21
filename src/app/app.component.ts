@@ -8,7 +8,7 @@ import { filter, Subject, takeUntil } from 'rxjs';
   selector: 'app-root',
   imports: [CommonModule, HeaderComponent, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.less',
 })
 export class AppComponent implements OnDestroy {
   currentRoute = '';

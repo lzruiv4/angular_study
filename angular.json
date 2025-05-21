@@ -25,12 +25,12 @@
                 "output": "/static"
               }
             ],
-            "styles": [
-              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
-              "src/styles.css"
-            ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules"]
+            },
+            "styles": ["src/styles.less"],
             "scripts": [],
-            "allowedCommonJsDependencies": ["dayjs"]
+            "allowedCommonJsDependencies": []
           },
           "configurations": {
             "production": {
@@ -82,10 +82,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
-              "src/styles.css"
-            ],
+            "styles": ["src/styles.less"],
             "scripts": []
           }
         }

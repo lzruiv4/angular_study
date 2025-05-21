@@ -12,7 +12,7 @@ import { RecordType } from '@/models/enums/RecordType.enum';
   selector: 'app-recharge-history',
   imports: [CommonModule, NzModalModule, TimelineComponent],
   templateUrl: './recharge-history.component.html',
-  styleUrl: './recharge-history.component.css',
+  styleUrl: './recharge-history.component.less',
 })
 export class RechargeHistoryComponent implements OnInit {
   isChargeHistoryVisible: boolean = false;

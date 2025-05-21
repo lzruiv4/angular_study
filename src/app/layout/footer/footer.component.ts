@@ -6,7 +6,7 @@ import { FOOTER_MESSAGE } from '../../core/constants/Header-Setting';
   selector: 'app-footer',
   imports: [NzFooterComponent],
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css'],
+  styleUrls: ['./footer.component.less'],
 })
 export class FooterComponent implements OnInit {
   footer = FOOTER_MESSAGE;

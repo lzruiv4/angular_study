@@ -9,7 +9,7 @@ import { AuthService } from '@/services/auth.service';
   selector: 'app-header',
   imports: [NzHeaderComponent, CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+  styleUrls: ['./header.component.less'],
 })
 export class HeaderComponent {
   menuList = HEADER_LIST;

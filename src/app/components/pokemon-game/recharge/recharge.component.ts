@@ -13,7 +13,7 @@ import { AuthService } from '@/services/auth.service';
   selector: 'app-recharge',
   imports: [NzModalModule, FormsModule, NzSelectModule],
   templateUrl: './recharge.component.html',
-  styleUrl: './recharge.component.css',
+  styleUrl: './recharge.component.less',
 })
 export class RechargeComponent implements OnInit {
   isRechargeVisible = false;

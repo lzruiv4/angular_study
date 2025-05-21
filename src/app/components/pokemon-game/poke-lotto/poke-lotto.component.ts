@@ -26,7 +26,7 @@ import { ImageComponent } from '@/shared/base-components/image/image.component';
     ImageComponent,
   ],
   templateUrl: './poke-lotto.component.html',
-  styleUrl: './poke-lotto.component.css',
+  styleUrl: './poke-lotto.component.less',
 })
 export class PokeLottoComponent implements OnInit {
   constructor(

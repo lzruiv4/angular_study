@@ -13,7 +13,7 @@ import { NzModalModule, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
   selector: 'app-dialog',
   imports: [NzModalModule],
   templateUrl: './dialog.component.html',
-  styleUrl: './dialog.component.css',
+  styleUrl: './dialog.component.less',
 })
 export class DialogComponent {
   // @Input() title: string = '';

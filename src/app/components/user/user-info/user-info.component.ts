@@ -21,7 +21,7 @@ import { ImageComponent } from '@/shared/base-components/image/image.component';
     ImageComponent,
   ],
   templateUrl: './user-info.component.html',
-  styleUrl: './user-info.component.css',
+  styleUrl: './user-info.component.less',
 })
 export class UserInfoComponent implements OnInit {
   amount = POKEMON_AMOUNT;

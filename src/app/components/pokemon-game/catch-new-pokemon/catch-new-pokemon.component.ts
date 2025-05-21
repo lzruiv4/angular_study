@@ -10,7 +10,7 @@ import { UserService } from '@/services/user.service';
   selector: 'app-catch-new-pokemon',
   imports: [NzModalModule, FormsModule, NzSelectModule],
   templateUrl: './catch-new-pokemon.component.html',
-  styleUrl: './catch-new-pokemon.component.css',
+  styleUrl: './catch-new-pokemon.component.less',
 })
 export class CatchNewPokemonComponent implements OnInit {
   isDialogVisible = false;

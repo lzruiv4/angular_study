@@ -29,7 +29,7 @@ import { RoleType } from '@/models/enums/RoleType.enum';
     NzInputModule,
   ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
+  styleUrl: './register.component.less',
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   isLoading = false; // wait for backend response
