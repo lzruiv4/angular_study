@@ -17,7 +17,7 @@ export class AuthService {
   login(username: string, password: string): Observable<UserLoginDTO> {
     return this.http.post<UserLoginDTO>(LOGIN_URL, { username, password }).pipe(
       tap((response) => {
-        console.log(response.userId);
+        // console.log(response.userId);
         this.saveToken(response.token);
         this.setUserId(response.userId);
       }),

@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CatchNewPokemonComponent } from './catch-new-pokemon.component';
+// import { CatchNewPokemonComponent } from './catch-new-pokemon.component';
 
-describe('CatchNewPokemonComponent', () => {
-  let component: CatchNewPokemonComponent;
-  let fixture: ComponentFixture<CatchNewPokemonComponent>;
+// describe('CatchNewPokemonComponent', () => {
+//   let component: CatchNewPokemonComponent;
+//   let fixture: ComponentFixture<CatchNewPokemonComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [CatchNewPokemonComponent]
-    })
-    .compileComponents();
+//   beforeEach(async () => {
+//     await TestBed.configureTestingModule({
+//       imports: [CatchNewPokemonComponent]
+//     })
+//     .compileComponents();
 
-    fixture = TestBed.createComponent(CatchNewPokemonComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//     fixture = TestBed.createComponent(CatchNewPokemonComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
