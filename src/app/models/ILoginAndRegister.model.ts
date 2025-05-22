@@ -5,7 +5,7 @@ export interface UserLoginDTO {
   token: string;
 }
 export interface UserRegisterDTO {
-  userID: string;
+  userId: string;
   username: string;
   firstname: string;
   lastname: string;
