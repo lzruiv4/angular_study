@@ -10,15 +10,19 @@ import {
 import { AuthService } from './auth.service';
 import { UserRegisterDTO } from '@/models/ILoginAndRegister.model';
 import { RoleType } from '@/models/enums/RoleType.enum';
+import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 describe('AuthService', () => {
   let authService: AuthService;
   let httpMock: HttpTestingController;
+  let router: Router;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         AuthService,
+        RouterModule,
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
       ],
@@ -26,6 +30,8 @@ describe('AuthService', () => {
 
     authService = TestBed.inject(AuthService);
     httpMock = TestBed.inject(HttpTestingController);
+    router = TestBed.inject(Router);
+    spyOn(router, 'navigate');
   });
 
   afterEach(() => {
@@ -67,10 +73,28 @@ describe('AuthService', () => {
         expect(response.firstname).toEqual('firstname');
         expect(response.lastname).toEqual('lastname');
         expect(response.password).toEqual('password');
+        expect(response.roles).toEqual([RoleType.ROLE_USER]);
       });
 
     const req = httpMock.expectOne('http://localhost:9090/api/auth/register');
     expect(req.request.method).toBe('POST');
     req.flush(mockResponse);
   });
+
+  // it('should clean token and navigate to /login in logout', () => {
+  //   // const mockResponse = { userId: 'userId', token: 'token-from-backend' };
+  //   // expect(authService.isLoggedIn()).toBeFalse();
+  //   localStorage.setItem('authToken', 'token');
+  //   localStorage.setItem('userId', 'userId');
+  //   // authService.login('username', 'password').subscribe();
+  //   console.log(authService.isLoggedIn());
+  //   expect(authService.isLoggedIn()).toBeTrue();
+
+  //   // const req = httpMock.expectOne('http://localhost:9090/api/auth/login');
+  //   // expect(req.request.method).toBe('POST');
+  //   // req.flush(mockResponse);
+  //   // authService.logout();
+  //   // expect(localStorage.getItem('authToken')).toBeNull;
+  //   // expect(localStorage.getItem('userId')).toEqual('userId');
+  // });
 });
