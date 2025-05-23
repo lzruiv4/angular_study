@@ -1,4 +1,4 @@
-# ---------- 构建阶段 ----------
+# ---------- BUILD ----------
 FROM node:23-slim AS build
 WORKDIR /app
 COPY package*.json ./
@@ -7,7 +7,7 @@ RUN npm install
 COPY . .
 RUN npm run build -- --configuration production --project angular_first
 
-# 运行阶段
+# ---------- RUN ----------
 FROM nginx:alpine
 
 # 拷贝打包后的静态页面（注意 browser 子目录）

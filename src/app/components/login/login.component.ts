@@ -11,6 +11,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { AuthService } from '@/services/auth.service';
 import { Router } from '@angular/router';
+import { NzIconModule, provideNzIconsPatch } from 'ng-zorro-antd/icon';
+import { LockOutline, UserOutline } from '@ant-design/icons-angular/icons';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +22,9 @@ import { Router } from '@angular/router';
     NzInputModule,
     ReactiveFormsModule,
     NzButtonModule,
+    NzIconModule,
   ],
+  providers: [provideNzIconsPatch([UserOutline, LockOutline])],
   templateUrl: './login.component.html',
   styleUrl: './login.component.less',
 })

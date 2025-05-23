@@ -8,8 +8,8 @@
   >
     <nz-form-item>
       <nz-form-control nzErrorTip="Please input your username!">
-        <!-- <nz-input-group nzPrefixIcon="user"> -->
-        <nz-input-group>
+        <nz-input-group [nzPrefix]="prefixTemplateUser">
+          <!-- <nz-input-group> -->
           <input
             type="text"
             autocomplete="username"
@@ -17,13 +17,23 @@
             formControlName="username"
             placeholder="Username"
           />
+          <ng-template #prefixTemplateUser
+            ><nz-icon nzType="user"></nz-icon
+          ></ng-template>
+          <!-- <ng-template #suffixTemplateInfo>
+            <nz-icon
+              nz-tooltip
+              nzTooltipTitle="Extra information"
+              nzType="info-circle"
+            />
+          </ng-template> -->
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-control nzErrorTip="Please input your Password!">
-        <!-- <nz-input-group nzPrefixIcon="lock"> -->
-        <nz-input-group>
+        <nz-input-group nzPrefixIcon="lock">
+          <!-- <nz-input-group> -->
           <input
             type="password"
             autocomplete="current-password"
