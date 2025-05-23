@@ -8,7 +8,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { Observable, Observer, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -90,11 +90,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
     if (this.validateForm.valid) {
       this.authService
         .register(
-          this.validateForm.getRawValue().username,
-          this.validateForm.getRawValue().firstname,
-          this.validateForm.getRawValue().lastname,
-          this.validateForm.getRawValue().password,
-          [RoleType.ROLE_USER], // ROLE_ADMIN only in backend edited.
+          {
+            username: this.validateForm.getRawValue().username,
+            firstname: this.validateForm.getRawValue().firstname,
+            lastname: this.validateForm.getRawValue().lastname,
+            password: this.validateForm.getRawValue().password,
+            roles: [RoleType.ROLE_USER],
+          }, // ROLE_ADMIN only in backend edited.
         )
         .subscribe({
           next: (res) => {

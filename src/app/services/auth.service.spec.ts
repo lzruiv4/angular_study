@@ -8,7 +8,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { AuthService } from './auth.service';
-import { UserRegisterDTO } from '@/models/ILoginAndRegister.model';
+import { UserRegisterRequestDTO } from '@/models/ILoginAndRegister.model';
 import { RoleType } from '@/models/enums/RoleType.enum';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
@@ -54,8 +54,8 @@ describe('AuthService', () => {
   });
 
   it('should create a new user', () => {
-    const mockResponse: UserRegisterDTO = {
-      userId: 'userId',
+    const mockResponse: UserRegisterRequestDTO = {
+      // userId: 'userId',
       username: 'username',
       firstname: 'firstname',
       lastname: 'lastname',
@@ -64,16 +64,18 @@ describe('AuthService', () => {
     };
 
     authService
-      .register('username', 'firstname', 'lastname', 'password', [
-        RoleType.ROLE_USER,
-      ])
+      .register({
+        username: 'username',
+        firstname: 'firstname',
+        lastname: 'lastname',
+        password: 'password',
+        roles: [RoleType.ROLE_USER],
+      } as UserRegisterRequestDTO)
       .subscribe((response) => {
         expect(response.userId).not.toBeNull;
         expect(response.username).toEqual('username');
         expect(response.firstname).toEqual('firstname');
         expect(response.lastname).toEqual('lastname');
-        expect(response.password).toEqual('password');
-        expect(response.roles).toEqual([RoleType.ROLE_USER]);
       });
 
     const req = httpMock.expectOne('http://localhost:9090/api/auth/register');

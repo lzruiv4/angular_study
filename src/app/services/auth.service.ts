@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { LOGIN_URL, REGISTER_URL } from '../core/constants/API-Setting';
 import {
-  UserLoginDTO,
-  UserRegisterDTO,
+  UserLoginResponseTokenDTO,
+  UserRegisterRequestDTO,
+  UserRegisterResponseDTO,
 } from '@/models/ILoginAndRegister.model';
-import { RoleType } from '@/models/enums/RoleType.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -14,14 +14,18 @@ import { RoleType } from '@/models/enums/RoleType.enum';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<UserLoginDTO> {
-    return this.http.post<UserLoginDTO>(LOGIN_URL, { username, password }).pipe(
-      tap((response) => {
-        // console.log(response.userId);
-        this.saveToken(response.token);
-        this.setUserId(response.userId);
-      }),
-    );
+  login(
+    username: string,
+    password: string,
+  ): Observable<UserLoginResponseTokenDTO> {
+    return this.http
+      .post<UserLoginResponseTokenDTO>(LOGIN_URL, { username, password })
+      .pipe(
+        tap((response) => {
+          this.saveToken(response.token);
+          this.setUserId(response.userId);
+        }),
+      );
   }
 
   logout(): void {
@@ -39,21 +43,15 @@ export class AuthService {
   }
 
   register(
-    username: string,
-    firstname: string,
-    lastname: string,
-    password: string,
-    roles: RoleType[],
-  ): Observable<UserRegisterDTO> {
+    userRegisterRequestDTO: UserRegisterRequestDTO,
+  ): Observable<UserRegisterResponseDTO> {
     return this.http
-      .post<UserRegisterDTO>(REGISTER_URL, {
-        username,
-        firstname,
-        lastname,
-        password,
-        roles,
-      })
-      .pipe(tap((response) => console.log('Successful', response)));
+      .post<UserRegisterResponseDTO>(REGISTER_URL, userRegisterRequestDTO)
+      .pipe(
+        tap((userRegisterResponseDTO) =>
+          console.log('Successful', userRegisterResponseDTO),
+        ),
+      );
   }
 
   isLoggedIn(): boolean {
