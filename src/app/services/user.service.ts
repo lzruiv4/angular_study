@@ -20,7 +20,6 @@ export class UserService {
   ) {}
 
   private getUserInfo(): Observable<IUser> {
-    // TODO: By login feature can this testUser be changed
     return this.userHttp
       .get<IUser>(USER_API + '/' + this.authService.getUserId())
       .pipe(
@@ -45,7 +44,7 @@ export class UserService {
       .pipe(
         map((res) => {
           return {
-            id: res.userId,
+            id: res.id,
             username: res.username,
             createdAt: res.createdAt,
             firstname: res.firstname,
