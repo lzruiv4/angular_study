@@ -11,6 +11,7 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { RoleType } from '@/models/enums/RoleType.enum';
 
 describe('UserService', () => {
   let userService: UserService;
@@ -18,12 +19,13 @@ describe('UserService', () => {
 
   // simulating user info
   const mockUser: IUser = {
-    id: '123',
+    userId: '123',
     username: 'testuser',
     firstname: 'firstname',
     lastname: 'lastname',
     pokemonCoin: 100,
     createdAt: new Date(),
+    roles: [RoleType.ROLE_USER],
   };
 
   const mockUserDTO: IUserDTO = {
@@ -32,6 +34,8 @@ describe('UserService', () => {
     firstname: 'updatedFirstname',
     lastname: 'updatedLastname',
     pokemonCoin: 1,
+    createdAt: new Date(),
+    roles: [RoleType.ROLE_USER],
   };
 
   beforeEach(() => {
@@ -84,30 +88,27 @@ describe('UserService', () => {
   // test updateUser()
   describe('updateUser()', () => {
     it('should send PUT request and update user data', () => {
-      const updatedUser: IUser = {
-        id: mockUserDTO.userId,
+      const mockUpdatedUser: IUser = {
+        userId: mockUserDTO.userId,
         username: 'updatedUsername',
         firstname: 'updatedFirstname',
         lastname: 'updatedLastname',
         pokemonCoin: 1,
         createdAt: mockUser.createdAt,
+        roles: [RoleType.ROLE_USER],
       };
       // console.log('sdfadsf: ', updatedUser);
 
       userService.updateUser(mockUserDTO).subscribe((res) => {
-        expect(res).toEqual(updatedUser);
+        expect(res).toEqual(mockUpdatedUser);
       });
 
       const req = httpMock.expectOne(`${USER_API}/123`);
       expect(req.request.method).toBe('PUT');
-      req.flush({
-        id: '123',
-        ...mockUserDTO,
-        createdAt: mockUser.createdAt,
-      });
+      req.flush(mockUserDTO);
 
       userService.user$.subscribe((user) => {
-        expect(user).toEqual(updatedUser);
+        expect(user).toEqual(mockUpdatedUser);
       });
     });
 

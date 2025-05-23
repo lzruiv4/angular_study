@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { IUser, IUserDTO } from '../models/IUser.model';
+import { IUser, IUserDTO, mapDtoToModel } from '../models/IUser.model';
 import { USER_API } from '@/core/constants/API-Setting';
 import { AuthService } from '@/services/auth.service';
 
@@ -21,9 +21,9 @@ export class UserService {
 
   private getUserInfo(): Observable<IUser> {
     return this.userHttp
-      .get<IUser>(USER_API + '/' + this.authService.getUserId())
+      .get<IUserDTO>(USER_API + '/' + this.authService.getUserId())
       .pipe(
-        tap((user) => this.userSubject.next(user)),
+        tap((userDTO) => this.userSubject.next(mapDtoToModel(userDTO))),
         catchError((err) => {
           console.error('Get user info failed: ', err);
           return of(null as unknown as IUser);
@@ -40,21 +40,11 @@ export class UserService {
 
   updateUser(newUserDTO: IUserDTO): Observable<IUser> {
     return this.userHttp
-      .put<IUser>(`${USER_API}/${this.authService.getUserId()}`, newUserDTO)
+      .put<IUserDTO>(`${USER_API}/${this.authService.getUserId()}`, newUserDTO)
       .pipe(
-        map((res) => {
-          return {
-            id: res.id,
-            username: res.username,
-            createdAt: res.createdAt,
-            firstname: res.firstname,
-            lastname: res.lastname,
-            pokemonCoin: res.pokemonCoin,
-          } as IUser;
-        }),
-        tap((response) => {
-          this.userSubject.next(response);
-          console.log('Update successful: ', response);
+        tap((updatedUserDTO) => {
+          this.userSubject.next(updatedUserDTO);
+          console.log('Update successful: ', updatedUserDTO);
         }),
         catchError((error) => {
           console.error('Error occurred during update:', error);
