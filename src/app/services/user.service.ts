@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { IUser, IUserDTO, mapDtoToModel } from '../models/IUser.model';
 import { USER_API } from '@/core/constants/API-Setting';
