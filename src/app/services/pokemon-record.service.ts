@@ -10,7 +10,7 @@ import {
   throwError,
 } from 'rxjs';
 import {
-  IPokemon,
+  IPokemonWithNameAndFotos,
   IPokemonRecord,
   IPokemonRecordDTO,
   IPokemonRecordInList,
@@ -27,7 +27,7 @@ import { AuthService } from '@/services/auth.service';
   providedIn: 'root',
 })
 export class PokemonRecordService {
-  pokemons: IPokemon[] = [];
+  pokemons: IPokemonWithNameAndFotos[] = [];
 
   private isLoad: boolean = false;
 
@@ -61,15 +61,15 @@ export class PokemonRecordService {
       ),
       this.pokemonService.pokemons$,
     ]).pipe(
-      map(([pokemonRecordDTOs, pokemons]) =>
+      map(([pokemonRecordDTOs, pokemonWithNameAndFotos]) =>
         pokemonRecordDTOs
           .filter((record) => !record.isRelease)
           .map((pokemonRecordDTO) => {
-            const imageUrl = pokemons.find(
+            const imageUrl = pokemonWithNameAndFotos.find(
               (pokemon) => pokemon.id.toString() === pokemonRecordDTO.pokemonId,
             )?.biggerImage;
             return {
-              pokemonCaptureRecordId: pokemonRecordDTO.id,
+              pokemonCaptureRecordId: pokemonRecordDTO.pokemonCaptureRecordId,
               pokemonId: pokemonRecordDTO.pokemonId,
               captureTime: pokemonRecordDTO.captureTime,
               image: imageUrl,
@@ -99,22 +99,25 @@ export class PokemonRecordService {
   }
 
   captureNewPokemon(): Observable<IPokemonRecord> {
-    const id = this.authService.getUserId();
+    const userId = this.authService.getUserId();
     const newPokemonDTO: IPokemonRecordDTO = {
       pokemonId: (Math.floor(Math.random() * POKEMON_AMOUNT) + 1).toString(),
-      userId: id!,
+      userId: userId!,
     };
     return this.pokemonRecordsHttp
       .post<IPokemonRecordDTO>(POKEMON_RECORDS_API, newPokemonDTO)
       .pipe(
-        map((model) => {
+        map((pokemonRecordResponseDTO) => {
           return {
-            pokemonCaptureRecordId: model.id,
-            pokemonId: model.pokemonId,
-            captureTime: model.captureTime,
+            pokemonCaptureRecordId:
+              pokemonRecordResponseDTO.pokemonCaptureRecordId,
+            pokemonId: pokemonRecordResponseDTO.pokemonId,
+            captureTime: pokemonRecordResponseDTO.captureTime,
             image:
-              model.id !== null ? this.getPokemonImageUrl(model.pokemonId) : '',
-            isRelease: model.isRelease,
+              pokemonRecordResponseDTO.pokemonCaptureRecordId !== null
+                ? this.getPokemonImageUrl(pokemonRecordResponseDTO.pokemonId)
+                : undefined,
+            isRelease: pokemonRecordResponseDTO.isRelease,
           } as IPokemonRecord;
         }),
         tap((poke) => {

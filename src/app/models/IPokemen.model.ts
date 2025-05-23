@@ -1,9 +1,9 @@
-export interface IPokemonDTO {
+export interface IPokemonWithNameAndUrl {
   name: string;
   url: string;
 }
 
-export interface IPokemon {
+export interface IPokemonWithNameAndFotos {
   id: string;
   name: string;
   image: string;
@@ -11,7 +11,7 @@ export interface IPokemon {
 }
 
 export interface IPokemonRecordDTO {
-  id?: string;
+  pokemonCaptureRecordId?: string;
   pokemonId: string;
   captureTime?: Date;
   userId: string;

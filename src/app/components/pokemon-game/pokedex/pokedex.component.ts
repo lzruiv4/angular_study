@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IPokemon } from '../../../models/IPokemen.model';
+import { IPokemonWithNameAndFotos } from '../../../models/IPokemen.model';
 import { CommonModule } from '@angular/common';
 import { PokemonService } from '@/services/Pokemon.service';
 import { NzTableModule } from 'ng-zorro-antd/table';
@@ -13,16 +13,16 @@ import { ImageComponent } from '@/shared/base-components/image/image.component';
   styleUrl: './pokedex.component.less',
 })
 export class PokedexComponent implements OnInit {
-  pokemons: IPokemon[] = [];
+  pokemons: IPokemonWithNameAndFotos[] = [];
 
-  selectedPokemon: IPokemon = {
+  selectedPokemon: IPokemonWithNameAndFotos = {
     id: '',
     name: '',
     image: '',
     biggerImage: '',
   };
 
-  selectPokemon(pokemon: IPokemon): void {
+  selectPokemon(pokemon: IPokemonWithNameAndFotos): void {
     this.selectedPokemon = pokemon;
     // console.log(this.selectedPokemon);
   }
