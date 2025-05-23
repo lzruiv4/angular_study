@@ -3,12 +3,16 @@
 ## Quickly start
 
 #### Backend with springboot
+
 The project can currently use docker to set up the backend.
 You only need to give the following command in the terminal to deploy the backend with springboot.
+
 ```bash
 npm run setup_backend
 ```
+
 #### New Start the backend
+
 After the initial deployment, you can simply enter the following command in the terminal to quickly start the container next time.
 
 ```bash
@@ -23,6 +27,17 @@ To start the frontend UI, run:
 
 ```bash
 ng serve
+```
+
+#### Start with docker
+
+PS: Make sure the backend is running. And set the port to 4200
+
+```bash
+# build image
+docker build -t my-angular-app .
+# run the container
+docker run -d -p 4200:80 my-angular-app
 ```
 
 ## Almost done
@@ -65,12 +80,15 @@ ng test
 ```
 
 ## Update timelines
+
 #### 2025.05.18 -> The database using json-server is now invalid because it cannot support the login feature.
 
 ~~PS: Database use json-server~~ json server was removed on 05.18.2025
 
 #### 2025.05.01 -> Now please use my backend server with springboot
+
 sb_backend 👇
+
 ```
 git@github.com:lzruiv4/sb_backend.git
 ```

@@ -1,11 +1,18 @@
+# ---------- 构建阶段 ----------
+FROM node:23-slim AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+RUN npm run build -- --configuration production --project angular_first
+
+# 运行阶段
 FROM nginx:alpine
 
-# 复制项目里的 browser/static 文件夹到 nginx 目录
-COPY dist/angular_first /usr/share/nginx/html
-
-# 复制 nginx 配置文件
-COPY default.conf /etc/nginx/conf.d/default.conf
+# 拷贝打包后的静态页面（注意 browser 子目录）
+COPY --from=build /app/dist/angular_first/browser /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
-
 CMD ["nginx", "-g", "daemon off;"]
