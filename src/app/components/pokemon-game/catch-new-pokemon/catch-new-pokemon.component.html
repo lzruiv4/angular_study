@@ -3,6 +3,7 @@
   nzTitle="Pokemon lotto"
   (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()"
+  [nzOkLoading]="isOkLoading"
 >
   <ng-container *nzModalContent>
     Do you want to capture a new pokemon? This will cost you one pokemon coin.

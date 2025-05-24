@@ -14,6 +14,7 @@ import { UserService } from '@/services/user.service';
 })
 export class CatchNewPokemonComponent implements OnInit {
   isDialogVisible = false;
+  isOkLoading = false;
 
   get user$() {
     return this.userService.user$;
@@ -35,21 +36,25 @@ export class CatchNewPokemonComponent implements OnInit {
   }
 
   handleOk(): void {
-    this.user$
-      .pipe(
-        take(1),
-        filter((user) => !!user),
-        switchMap((user) => {
-          return this.userService.updateUser({
-            ...user,
-            pokemonCoin: user.pokemonCoin - 1,
-          });
-        }),
-      )
-      .subscribe();
+    this.isOkLoading = true;
+    setTimeout(() => {
+      this.user$
+        .pipe(
+          take(1),
+          filter((user) => !!user),
+          switchMap((user) => {
+            return this.userService.updateUser({
+              ...user,
+              pokemonCoin: user.pokemonCoin - 1,
+            });
+          }),
+        )
+        .subscribe();
 
-    this.pokemonRecordService.captureNewPokemon().subscribe();
-    this.isDialogVisible = false;
+      this.pokemonRecordService.captureNewPokemon().subscribe();
+      this.isDialogVisible = false;
+      this.isOkLoading = false;
+    }, 1000);
   }
 
   handleCancel(): void {

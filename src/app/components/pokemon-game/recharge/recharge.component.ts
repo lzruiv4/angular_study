@@ -17,6 +17,7 @@ import { AuthService } from '@/services/auth.service';
 })
 export class RechargeComponent implements OnInit {
   isRechargeVisible = false;
+  isOkLoading = false;
 
   selectOption: number = 0;
 

@@ -31,6 +31,14 @@ export class PokemonRecordService {
 
   private isLoad: boolean = false;
 
+  // For dialog
+  private openDialog = new Subject<void>();
+  showDialog$ = this.openDialog.asObservable();
+
+  triggerCapturePokemonModal() {
+    this.openDialog.next();
+  }
+
   // Get all record from db
   private pokemonRecordsSubject = new BehaviorSubject<IPokemonRecord[]>([]);
   pokemonRecords$: Observable<IPokemonRecord[]> =
@@ -164,13 +172,5 @@ export class PokemonRecordService {
       this.pokemons.find((pokemon) => pokemonId == pokemon.id)?.biggerImage ??
       ''
     );
-  }
-
-  // For dialog
-  private openDialog = new Subject<void>();
-  showDialog$ = this.openDialog.asObservable();
-
-  triggerCapturePokemonModal() {
-    this.openDialog.next();
   }
 }

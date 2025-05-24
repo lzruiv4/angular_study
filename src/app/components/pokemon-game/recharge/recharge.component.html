@@ -3,6 +3,7 @@
   nzTitle="Recharge pokemon coin"
   (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()"
+  [nzOkLoading]="isOkLoading"
 >
   <ng-container *nzModalContent>
     <nz-select
