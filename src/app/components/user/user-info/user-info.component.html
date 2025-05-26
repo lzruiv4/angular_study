@@ -1,6 +1,6 @@
 <div class="user-container" *ngIf="user$ | async as user">
   <div class="user-info-div">
-    <nz-descriptions nzTitle="User Info" nzBordered [nzColumn]="1">
+    <nz-descriptions [nzTitle]="user.username" nzBordered [nzColumn]="1">
       <nz-descriptions-item nzTitle="Firstname">{{
         user.firstname
       }}</nz-descriptions-item>

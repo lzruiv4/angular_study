@@ -15,10 +15,15 @@ export interface IUserDTO {
   username: string;
   firstname: string;
   lastname: string;
-  password?: string; // for password update
+  // password?: string; // for password update
   createdAt?: Date;
   pokemonCoin: number;
   roles: RoleType[];
+}
+
+export interface IPasswordUpdateDTO {
+  oldPassword: string;
+  newPassword: string;
 }
 
 export function mapDtoToModel(userDto: IUserDTO): IUser {

@@ -3,8 +3,8 @@
 // export const TEST_USER_ID = 'user2';
 
 // Springboot as backen
-export const SPRINGBOOT_BACKEND_BASE = 'http://localhost:9090/api';
-// export const SPRINGBOOT_BACKEND_BASE = 'http://192.168.0.160:9090/api';
+// export const SPRINGBOOT_BACKEND_BASE = 'http://localhost:9090/api';
+export const SPRINGBOOT_BACKEND_BASE = 'http://192.168.0.160:9090/api';
 
 export const USER_API = SPRINGBOOT_BACKEND_BASE + '/users';
 export const RECHARGE_RECORD_API = SPRINGBOOT_BACKEND_BASE + '/rechargeRecords';

@@ -9,7 +9,7 @@
     "test": "ng test",
     "serve:ssr:angular_first": "node dist/angular_first/server/server.mjs",
     "setup_backend": "docker compose -f backend/docker-compose.yaml up -d",
-    "sb_server": "docker start dev-postgres-db sb-backend-app"
+    "sb": "docker start dev-postgres-db sb-backend-app"
   },
   "private": true,
   "dependencies": {

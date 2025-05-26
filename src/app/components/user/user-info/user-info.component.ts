@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 import { CommonModule } from '@angular/common';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -14,7 +13,6 @@ import { ImageComponent } from '@/shared/base-components/image/image.component';
   selector: 'app-user-info',
   imports: [
     CommonModule,
-    NzBadgeModule,
     NzDescriptionsModule,
     NzGridModule,
     NzStatisticModule,
