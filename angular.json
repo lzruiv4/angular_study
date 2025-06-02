@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular_first": {
+    "sb-client-lotto": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular_first",
+            "outputPath": "dist/sb-client-lotto",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular_first:build:production"
+              "buildTarget": "sb-client-lotto:build:production"
             },
             "development": {
-              "buildTarget": "angular_first:build:development"
+              "buildTarget": "sb-client-lotto:build:development"
             }
           },
           "defaultConfiguration": "development"

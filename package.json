@@ -1,5 +1,5 @@
 {
-  "name": "angular-first",
+  "name": "sb-client-lotto",
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
@@ -7,13 +7,14 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:angular_first": "node dist/angular_first/server/server.mjs",
+    "serve:ssr:angular_first": "node dist/sb-client-lotto/server/server.mjs",
     "setup-backend": "docker compose -f backend/docker-compose.yaml up -d",
     "backend": "docker start dev-postgres-db sb-backend-app",
-    "setup:docker": "docker build -t my-angular-app . && docker run -d -p 4200:80 my-angular-app"
+    "setup-frontend-docker": "docker build -t sb-client-lotto . && docker run -d -p 4200:80 sb-client-lotto"
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^19.2.14",
     "@angular/common": "^19.2.0",
     "@angular/compiler": "^19.2.0",
     "@angular/core": "^19.2.0",
