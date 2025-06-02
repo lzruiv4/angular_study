@@ -52,20 +52,20 @@ docker run -d -p 4200:80 my-angular-app
 
 #### Login and Logout
 
-<img src="public/markdown/login.png" width="500px" height="auto"/>
+<img src="public/markdown/login.png" width="100%" height="auto"/>
 
-<img src="public/markdown/register.png" width="500px" height="auto"/>
+<img src="public/markdown/register.png" width="100%" height="auto"/>
 
 #### Pokédex
 
-<img src="public/markdown/pokedex.png" width="500px" height="auto"/>
+<img src="public/markdown/pokedex.png" width="100%" height="auto"/>
 <!-- ![Pokédex] (public/pokedex.png) -->
 
 You can check all Pokémon Pokédex here
 
 #### Pokémon lotto
 
-<img src="public/markdown/lotto.png" width="500px" height="auto" />
+<img src="public/markdown/lotto.png" width="100%" height="auto" />
 
 1. Here you can randomly get a Pokémon, including legendary.
 2. Each time you spend one gold coin, if you don't have gold coins, you can recharge and check the recharge history.
