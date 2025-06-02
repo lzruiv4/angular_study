@@ -8,8 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:angular_first": "node dist/angular_first/server/server.mjs",
-    "setup_backend": "docker compose -f backend/docker-compose.yaml up -d",
-    "sb": "docker start dev-postgres-db sb-backend-app"
+    "setup-backend": "docker compose -f backend/docker-compose.yaml up -d",
+    "backend": "docker start dev-postgres-db sb-backend-app",
+    "setup:docker": "docker build -t my-angular-app . && docker run -d -p 4200:80 my-angular-app"
   },
   "private": true,
   "dependencies": {

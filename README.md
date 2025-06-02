@@ -8,7 +8,7 @@ The project can currently use docker to set up the backend.
 You only need to give the following command in the terminal to deploy the backend with springboot.
 
 ```bash
-npm run setup_backend
+npm run setup-backend
 ```
 
 #### New Start the backend
@@ -16,7 +16,7 @@ npm run setup_backend
 After the initial deployment, you can simply enter the following command in the terminal to quickly start the container next time.
 
 ```bash
-npm run sb_server
+npm run backend
 ```
 
 Prerequisite: Make sure you have installed docker
