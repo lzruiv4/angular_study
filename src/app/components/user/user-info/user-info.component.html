@@ -13,8 +13,8 @@
     </nz-descriptions>
   </div>
   <div class="user-foto-div">
-    <nz-row [nzGutter]="70">
-      <nz-col [nzSpan]="12">
+    <nz-row [nzGutter]="50">
+      <nz-col [nzSpan]="14">
         <nz-statistic
           nzTitle="Captured"
           [nzValue]="(captured | async) ?? 0"
@@ -25,7 +25,7 @@
               imageSize="15" /></ng-template
         ></nz-statistic>
       </nz-col>
-      <nz-col [nzSpan]="12">
+      <nz-col [nzSpan]="10">
         <nz-statistic [nzValue]="amount" nzTitle="Total"></nz-statistic>
       </nz-col>
     </nz-row>

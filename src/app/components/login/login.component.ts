@@ -54,7 +54,7 @@ export class LoginComponent {
         )
         .subscribe({
           next: (res) => {
-            this.authService.saveToken(res.token);
+            this.authService.setToken(res.token);
             this.router.navigate(['/home']);
             console.log('submit', this.validateForm.value);
           },

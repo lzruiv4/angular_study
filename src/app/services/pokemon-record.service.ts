@@ -15,7 +15,7 @@ import {
   IPokemonRecordDTO,
   IPokemonRecordInList,
 } from '../models/IPokemen.model';
-import { PokemonService } from './Pokemon.service';
+import { PokemonService } from './pokemon.service';
 import {
   POKEMON_AMOUNT,
   POKEMON_RECORDS_API,
@@ -73,14 +73,14 @@ export class PokemonRecordService {
         pokemonRecordDTOs
           .filter((record) => !record.isRelease)
           .map((pokemonRecordDTO) => {
-            const imageUrl = pokemonWithNameAndFotos.find(
+            const pokemon = pokemonWithNameAndFotos.find(
               (pokemon) => pokemon.id.toString() === pokemonRecordDTO.pokemonId,
-            )?.biggerImage;
+            );
             return {
               pokemonCaptureRecordId: pokemonRecordDTO.pokemonCaptureRecordId,
               pokemonId: pokemonRecordDTO.pokemonId,
               captureTime: pokemonRecordDTO.captureTime,
-              image: imageUrl,
+              image: pokemon?.biggerImage ?? pokemon?.image,
               isRelease: pokemonRecordDTO.isRelease,
             } as IPokemonRecord;
           }),

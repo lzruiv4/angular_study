@@ -58,8 +58,8 @@
     >
       <thead>
         <tr>
-          <th [nzWidth]="'17%'" [nzSortFn]="sortByDate">Date</th>
-          <th [nzWidth]="'83%'">Pokemons</th>
+          <th [nzWidth]="'15%'" [nzSortFn]="sortByDate">Date</th>
+          <th [nzWidth]="'85%'">Pokemons</th>
         </tr>
       </thead>
       <tbody>
@@ -72,7 +72,11 @@
                 track $index
               ) {
                 <div class="img-div">
-                  <img class="right-img" [src]="poke.image" alt="LOGO" />
+                  <img
+                    class="right-img"
+                    [src]="poke.image"
+                    alt="pokemon image"
+                  />
                 </div>
               }
             </td>

@@ -22,7 +22,7 @@ export class AuthService {
       .post<UserLoginResponseTokenDTO>(LOGIN_URL, { username, password })
       .pipe(
         tap((response) => {
-          this.saveToken(response.token);
+          this.setToken(response.token);
           this.setUserId(response.userId);
         }),
       );
@@ -34,7 +34,7 @@ export class AuthService {
     window.location.href = '/login';
   }
 
-  saveToken(token: string): void {
+  setToken(token: string): void {
     localStorage.setItem('authToken', token);
   }
 
