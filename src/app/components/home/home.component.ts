@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInfoComponent } from '../../components/user/user-info/user-info.component';
+import { UserInfoComponent } from '../user/user-info/user-info.component';
 import { PokemonRecordService } from '@/services/pokemon-record.service';
 import { RechargeService } from '@/services/recharge.service';
 import { combineLatest, map, Observable } from 'rxjs';

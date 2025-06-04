@@ -18,6 +18,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { AuthService } from '@/services/auth.service';
 import { Router } from '@angular/router';
 import { RoleType } from '@/models/enums/RoleType.enum';
+import { ImageComponent } from "../../../shared/base-components/image/image.component";
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,8 @@ import { RoleType } from '@/models/enums/RoleType.enum';
     NzButtonModule,
     NzFormModule,
     NzInputModule,
-  ],
+    ImageComponent
+],
   templateUrl: './register.component.html',
   styleUrl: './register.component.less',
 })

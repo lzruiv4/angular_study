@@ -1,5 +1,6 @@
 <div class="login-container">
-  <h2 class="login-header">Login</h2>
+  <app-image imagePath="/static/poke.png" imageSize="100" />
+  <h2 class="login-header">LOGIN</h2>
   <form
     nz-form
     [formGroup]="validateForm"
@@ -20,13 +21,6 @@
           <ng-template #prefixTemplateUser
             ><nz-icon nzType="user"></nz-icon
           ></ng-template>
-          <!-- <ng-template #suffixTemplateInfo>
-            <nz-icon
-              nz-tooltip
-              nzTooltipTitle="Extra information"
-              nzType="info-circle"
-            />
-          </ng-template> -->
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
@@ -56,7 +50,7 @@
     <!-- </div> -->
     <button
       nz-button
-      class="login-form-button login-form-margin"
+      class="login-form-button"
       [nzType]="'primary'"
       [nzLoading]="isLoading"
     >

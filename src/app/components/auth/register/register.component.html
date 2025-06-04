@@ -1,41 +1,40 @@
 <div class="register-container">
-  <h2 class="register-header">Register</h2>
+  <app-image imagePath="/static/poke.png" imageSize="100" />
+  <h2 class="register-header">REGISTER</h2>
   <form
     nz-form
     [nzAutoTips]="autoTips"
     [formGroup]="validateForm"
     (ngSubmit)="submitForm()"
+    class="register-form"
   >
     <nz-form-item>
-      <nz-form-label [nzSpan]="7" nzRequired>Username</nz-form-label>
-      <nz-form-control [nzSpan]="12" nzValidatingTip="Validating...">
+      <nz-form-control nzValidatingTip="Validating...">
         <input
           nz-input
           autocomplete="username"
           formControlName="username"
-          placeholder="username"
+          placeholder="Username"
         />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSpan]="7" nzRequired>Firstname</nz-form-label>
-      <nz-form-control [nzSpan]="12">
+      <nz-form-control>
         <input
           nz-input
           autocomplete="firstname"
           formControlName="firstname"
-          placeholder="firstname"
+          placeholder="Firstname"
         />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSpan]="7" nzRequired>Lastname</nz-form-label>
-      <nz-form-control [nzSpan]="12">
+      <nz-form-control>
         <input
           nz-input
           autocomplete="lastname"
           formControlName="lastname"
-          placeholder="lastname"
+          placeholder="Lastname"
         />
       </nz-form-control>
     </nz-form-item>
@@ -57,9 +56,7 @@
     </nz-form-control>
   </nz-form-item> -->
     <nz-form-item>
-      <nz-form-label [nzSpan]="7" nzRequired>Password</nz-form-label>
       <nz-form-control
-        [nzSpan]="12"
         nzDisableAutoTips
         nzErrorTip="Please input your password!"
       >
@@ -68,23 +65,18 @@
           type="password"
           autocomplete="new-password"
           formControlName="password"
-          placeholder="password"
+          placeholder="Password"
         />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSpan]="7" nzRequired>Confirm Password</nz-form-label>
-      <nz-form-control
-        [nzSpan]="12"
-        nzDisableAutoTips
-        [nzErrorTip]="passwordErrorTpl"
-      >
+      <nz-form-control nzDisableAutoTips [nzErrorTip]="passwordErrorTpl">
         <input
           nz-input
           autocomplete="new-password"
           type="password"
           formControlName="confirm"
-          placeholder="confirm your password"
+          placeholder="Confirm your password"
         />
         <ng-template #passwordErrorTpl let-control>
           @if (control.errors?.["required"]) {
@@ -96,17 +88,23 @@
         </ng-template>
       </nz-form-control>
     </nz-form-item>
-    <nz-form-item>
-      <nz-form-control [nzOffset]="7" [nzSpan]="12">
-        <div style="display: flex; gap: 50px">
-          <button nz-button nzType="primary" [nzLoading]="isLoading">
-            Submit
-          </button>
-          <button (click)="goBackToLogin()" nz-button nzType="primary">
-            Back to login
-          </button>
-        </div>
-      </nz-form-control>
-    </nz-form-item>
+    <div class="register-button-container">
+      <button
+        nz-button
+        nzType="primary"
+        class="register-button"
+        [nzLoading]="isLoading"
+      >
+        Submit
+      </button>
+      <button
+        (click)="goBackToLogin()"
+        class="register-button"
+        nz-button
+        nzType="primary"
+      >
+        Back to login
+      </button>
+    </div>
   </form>
 </div>
