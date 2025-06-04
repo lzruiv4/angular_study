@@ -1,14 +1,25 @@
-<nz-header>
-  <img class="logo" src="/static/poke.png" />
-  <nav>
-    <a
-      *ngFor="let item of menuList; trackBy: trackByPath"
-      [routerLink]="item.path"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      >{{ item.label }}</a
-    >
-  </nav>
-  <!-- <nz-icon (click)="logout()" nzType="logout" nzTheme="outline" /> -->
-  <img (click)="logout()" class="logout" src="/static/logout.png" />
-</nz-header>
+<header class="app-header">
+  <div class="header-left">
+    <img src="/static/poke.png" class="logo" alt="Logo" />
+
+    <nav class="menu desktop-menu">
+      <a
+        *ngFor="let item of menuList; trackBy: trackByPath"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >{{ item.label }}</a
+      >
+    </nav>
+  </div>
+
+  <div class="header-right">
+    <i
+      nz-icon
+      nzType="logout"
+      nzTheme="outline"
+      class="logout-icon"
+      (click)="logout()"
+    ></i>
+  </div>
+</header>

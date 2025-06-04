@@ -1,13 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { NzHeaderComponent } from 'ng-zorro-antd/layout';
 import { AuthService } from '@/services/auth.service';
 import { HEADER_LIST } from '@/core/constants/Header-Setting';
+import { LogoutOutline } from '@ant-design/icons-angular/icons';
+import { NzIconModule, provideNzIconsPatch } from 'ng-zorro-antd/icon';
 
 @Component({
   selector: 'app-header',
-  imports: [NzHeaderComponent, CommonModule, RouterLink, RouterLinkActive],
+  imports: [
+    NzIconModule,
+    CommonModule,
+    RouterLink,
+    RouterLinkActive,
+  ],
+  providers: [provideNzIconsPatch([LogoutOutline])],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.less'],
 })
