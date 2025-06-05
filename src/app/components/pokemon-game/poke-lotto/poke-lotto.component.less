@@ -1,6 +1,8 @@
 .lotto-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
   width: 100%;
   max-width: 1700px;
   height: 100%;
@@ -8,9 +10,7 @@
 
   .ball-coin-container {
     width: 30%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    padding-bottom: 50px;
     min-width: 300px;
     max-width: 500px;
     position: relative;
@@ -81,7 +81,6 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      // height: 100px;
       gap: 10px;
 
       [nz-button] {
@@ -104,7 +103,6 @@
 
   .pokemons-history-container {
     width: 70%;
-    height: 100%;
     min-width: 500px;
     max-width: 1200px;
     padding-left: 50px;
@@ -112,7 +110,6 @@
 }
 
 ::ng-deep .ant-table {
-  // width: 100%;
   box-shadow:
     0 2px 6px rgba(0, 0, 0, 0.1),
     0 3px 8px rgba(0, 0, 0, 0.06);
