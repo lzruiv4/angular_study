@@ -1,5 +1,5 @@
 <div class="pokedex-container">
-  <div class="pokedex">
+  <div class="left-pokedex">
     <nz-table
       #basicTable
       [nzData]="pokemons"
@@ -28,14 +28,14 @@
       </tbody>
     </nz-table>
   </div>
-  <div class="poke-ball-div">
-    <app-image
-      [imagePath]="
+  <div class="right-poke-ball">
+    <img
+      [src]="
         selectedPokemon.biggerImage
           ? selectedPokemon.biggerImage
           : '/static/poke.png'
       "
-      imageSize="500"
+      class="right-poke-ball-div"
     />
   </div>
 </div>

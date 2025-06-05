@@ -6,14 +6,17 @@
       nzDescription="Please recharge."
       nzShowIcon
       [hidden]="user.pokemonCoin > 0"
-      class="lotto-ball"
+      class="alert-container"
     ></nz-alert>
-    <img
-      src="/static/poke.png"
-      alt="LOGO"
-      [ngClass]="user.pokemonCoin > 0 ? 'poke-ball' : 'no_ball_animation'"
-      (click)="openCatchPokemonDialog()"
-    />
+    <div class="ball-container">
+      <img
+        src="/static/poke.png"
+        alt="LOGO"
+        [ngClass]="user.pokemonCoin > 0 ? 'poke-ball' : 'no_ball_animation'"
+        (click)="openCatchPokemonDialog()"
+      />
+    </div>
+
     <app-catch-new-pokemon *ngIf="openCatchPokemonDialog" />
     <div class="coin-container">
       <a class="game-info" *ngIf="user$ | async as user">
@@ -22,19 +25,12 @@
       <app-image imagePath="/static/coin.png" imageSize="50" />
     </div>
     <div class="button-container">
-      <button
-        nz-button
-        nzShape="round"
-        nzType="primary"
-        nzDanger
-        (click)="openRecharge()"
-      >
+      <button nz-button nzType="primary" nzDanger (click)="openRecharge()">
         Recharge
       </button>
       <app-recharge />
       <button
         nz-button
-        nzShape="round"
         nzType="primary"
         nzDanger
         (click)="openRechargeHistory()"
@@ -45,7 +41,7 @@
     </div>
   </div>
 
-  <div class="pokemons-history-div">
+  <div class="pokemons-history-container">
     <nz-table
       #basicTable
       *ngIf="pokemonRecordInList$ | async as data"
@@ -65,8 +61,8 @@
       <tbody>
         @for (pokemonRecord of basicTable.data; track pokemonRecord.date) {
           <tr>
-            <td class="lotto-date">{{ pokemonRecord.date }}</td>
-            <td class="lotto-images">
+            <td>{{ pokemonRecord.date }}</td>
+            <td class="pokemon-images">
               @for (
                 poke of pokemonRecord.pokemonRecordsInTheSameDay;
                 track $index

@@ -9,17 +9,11 @@ import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component'
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 
 export const routes: Routes = [
-  // { path: '', redirectTo: 'login', pathMatch: 'full' },
-  // { path: 'register', component: RegisterComponent },
-  // { path: 'login', component: LoginComponent },
-  // { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  // { path: 'pokedex', component: PokedexComponent, canActivate: [AuthGuard] },
-  // {
-  //   path: 'poke-lotto',
-  //   component: PokeLottoComponent,
-  //   canActivate: [AuthGuard],
-  // },
-
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
   {
     path: '',
     component: AuthLayoutComponent,

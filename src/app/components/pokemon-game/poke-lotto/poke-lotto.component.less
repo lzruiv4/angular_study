@@ -1,93 +1,118 @@
 .lotto-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  // align-items: center;
-  max-width: 1500px;
-  height: 85vh;
+  width: 100%;
+  max-width: 1700px;
+  height: 100%;
   padding: 20px;
-  gap: 50px;
-}
 
-.ball-coin-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
-  min-width: 300px;
-  max-width: 100%;
-  max-height: 100%;
-  gap: 20px;
-}
+  .ball-coin-container {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 500px;
+    position: relative;
 
-.coin-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
+    .alert-container {
+      position: absolute;
+      top: 150px;
+      left: 20%;
+      z-index: 10; /* 保证在图片之上 */
+      background: white;
+      border: 1px solid #ccc;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      width: 300px;
+    }
 
-.button-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
+    .ball-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-.poke-ball {
-  max-width: 70%;
-  max-height: 70%;
-  animation: scaleAnimation 3s infinite;
-}
+      .poke-ball {
+        width: 80%;
+        animation: scaleAnimation 3s infinite;
+      }
 
-.no_ball_animation {
-  max-width: 70%;
-  max-height: 70%;
-  animation: none;
-}
+      .no_ball_animation {
+        width: 80%;
+        animation: none;
+      }
 
-.poke_ball:hover {
-  animation-play-state: paused;
-}
+      .poke_ball:hover {
+        animation-play-state: paused;
+      }
 
-@keyframes scaleAnimation {
-  0% {
-    transform: scale(0.8);
+      @keyframes scaleAnimation {
+        0% {
+          transform: scale(0.8);
+        }
+        50% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(0.8);
+        }
+      }
+    }
+
+    .coin-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+
+      .game-info {
+        color: rgb(0, 15, 63);
+        font-size: 50px;
+        font-weight: bold;
+        text-shadow: 0 0 2px rgb(81, 81, 81);
+      }
+    }
+
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      // height: 100px;
+      gap: 10px;
+
+      [nz-button] {
+        background-color: #001529;
+        border-radius: 10px;
+        font-size: 20px;
+        width: 200px;
+        height: 70px;
+        box-shadow:
+          0 4px 12px rgba(0, 0, 0, 0.1),
+          0 6px 16px rgba(0, 0, 0, 0.06);
+      }
+
+      [nz-button]:hover {
+        transform: translateY(-2px);
+        background-color: rgb(249, 138, 138);
+      }
+    }
   }
-  50% {
-    transform: scale(1);
+
+  .pokemons-history-container {
+    width: 70%;
+    height: 100%;
+    min-width: 500px;
+    max-width: 1200px;
+    padding-left: 50px;
   }
-  100% {
-    transform: scale(0.8);
-  }
-}
-
-.game-info {
-  color: rgb(0, 15, 63);
-  font-size: 50px;
-  font-weight: bold;
-  text-shadow: 0 0 2px rgb(81, 81, 81);
-}
-
-.pokemons-history-div {
-  flex: 3;
-  min-width: 500px;
-  max-width: 100%;
-  max-height: 75vh;
-}
-
-.lotto-date-image-container:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.1),
-    0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
 ::ng-deep .ant-table {
+  // width: 100%;
   box-shadow:
     0 2px 6px rgba(0, 0, 0, 0.1),
     0 3px 8px rgba(0, 0, 0, 0.06);
@@ -104,16 +129,14 @@
 ::ng-deep .ant-table-tbody > tr {
   font-size: 20px;
   font-weight: bold;
-  color: #000000;
   padding: 10px;
   border-bottom: 1px solid #e8e1d3;
   vertical-align: middle;
-  border-radius: 40px;
   margin: 5px;
 }
 
 /* 悬停行高亮 */
-.ant-table-tbody > tr:hover > td {
+::ng-deep .ant-table-tbody > tr:hover > td {
   background-color: #f3ebe0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition: background-color 0.7s ease;
@@ -133,50 +156,31 @@
   background: #0056b3;
 }
 
-.lotto-images {
+.pokemon-images {
   display: flex;
   overflow-x: auto;
+  height: 130px;
   gap: 10px;
 }
 
 .img-div {
-  min-width: 100px;
-  height: 100px;
-  margin: 1px 10px;
+  width: 90px;
+  height: 90px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-}
 
-.right-img {
-  width: 90%;
-  height: 90%;
-  transition: transform 0.2s;
-}
+  .right-img {
+    width: 90px;
+    height: 90px;
+    margin: 0 20px;
+    transition: transform 0.2s;
+  }
 
-.img-div:hover {
-  transform: scale(1.5);
-  border-radius: 40%;
-  background-color: rgb(216, 216, 216);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-[nz-button] {
-  background-color: #001529;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  font-size: 20px;
-  width: 200px;
-  height: 70px;
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.1),
-    0 6px 16px rgba(0, 0, 0, 0.06);
-}
-
-[nz-button]:hover {
-  transform: translateY(-2px);
-  border-radius: 10px;
-  background-color: rgb(249, 138, 138);
+  .img-div:hover {
+    transform: scale(1.2);
+    background-color: rgb(216, 216, 216);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
 }
