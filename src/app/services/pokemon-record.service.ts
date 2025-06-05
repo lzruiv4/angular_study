@@ -65,7 +65,7 @@ export class PokemonRecordService {
   getAllPokemonRecordsByCurrentUserId(): Observable<IPokemonRecord[]> {
     return combineLatest([
       this.pokemonRecordsHttp.get<IPokemonRecordDTO[]>(
-        POKEMON_RECORDS_API + '?userId=' + this.authService.getUserId(),
+        POKEMON_RECORDS_API + '/' + this.authService.getUserId(),
       ),
       this.pokemonService.pokemons$,
     ]).pipe(

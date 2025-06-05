@@ -69,7 +69,7 @@ export class RechargeService {
     return this.rechargeRecordsHttp
       .get<
         IRechargeRecordDTO[]
-      >(RECHARGE_RECORD_API + '?userId=' + this.authService.getUserId())
+      >(RECHARGE_RECORD_API + '/' + this.authService.getUserId())
       .pipe(
         tap((records) => {
           this.rechargeRecordsSubject.next(this.recordsSort(records));
