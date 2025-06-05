@@ -56,12 +56,17 @@ docker run -d -p 4200:80 my-angular-app
 
 <img src="public/markdown/register.png" width="100%" height="auto"/>
 
+#### Home
+
+<img src="public/markdown/home.png" width="100%" height="auto"/>
+
+You can check all records here
+
 #### Pokédex
 
 <img src="public/markdown/pokedex.png" width="100%" height="auto"/>
-<!-- ![Pokédex] (public/pokedex.png) -->
 
-You can check all Pokémon Pokédex here
+You can check all pokémon pokédex here
 
 #### Pokémon lotto
 
