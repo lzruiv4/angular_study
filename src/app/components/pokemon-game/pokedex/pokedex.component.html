@@ -1,5 +1,5 @@
 <div class="pokedex-container">
-  <div class="left-pokedex">
+  <div class="left-pokedex" *ngIf="pokemons$ | async as pokemons">
     <nz-table
       #basicTable
       [nzData]="pokemons"
