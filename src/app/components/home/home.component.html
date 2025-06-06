@@ -2,5 +2,7 @@
   <div class="record-container">
     <app-timeline [combined$]="combined$" [isCustom]="true" />
   </div>
-  <div class="user-container"><app-user-info /></div>
+  <div class="user-container">
+    <app-user-info [user$]="user$" [captured]="captured$" />
+  </div>
 </div>

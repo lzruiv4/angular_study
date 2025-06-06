@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserInfoComponent } from '../user/user-info/user-info.component';
 import { PokemonRecordService } from '@/services/pokemon-record.service';
 import { RechargeService } from '@/services/recharge.service';
-import { combineLatest, map, Observable } from 'rxjs';
+import { combineLatest, map, Observable, Subject, takeUntil } from 'rxjs';
 import { IRechargeRecord } from '@/models/IRechargeRecord.model';
 import { IPokemonRecord } from '@/models/IPokemen.model';
 import { TimelineComponent } from '@/shared/base-components/timeline/timeline.component';
@@ -17,11 +17,14 @@ import { AuthService } from '@/services/auth.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.less',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  destroy$ = new Subject<void>();
+
   rechargeRecords$!: Observable<IRechargeRecord[]>;
   pokemonRecords$!: Observable<IPokemonRecord[]>;
 
   combined$!: Observable<IRecord[]>;
+  captured$!: Observable<number>;
 
   constructor(
     private rechargeService: RechargeService,
@@ -32,13 +35,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.getUserId()) {
-      // this.userService.getUserInfo().subscribe();
+      this.userService.getUserInfo().pipe(takeUntil(this.destroy$)).subscribe();
       this.combined$ = combineLatest([
         (this.rechargeRecords$ =
           this.rechargeService.getAllRechargeRecordsByUserId()),
         (this.pokemonRecords$ =
           this.pokemonRecordService.getAllPokemonRecordsByCurrentUserId()),
       ]).pipe(
+        takeUntil(this.destroy$),
         map(([rechargeRecords, pokemonRecords]) => {
           const rechargeRecordMappe: IRecord[] = rechargeRecords.map(
             (rechargeRecord) => ({
@@ -61,8 +65,20 @@ export class HomeComponent implements OnInit {
           );
         }),
       );
+      this.captured$ = this.pokemonRecordService
+        .getUniquePokemonCount()
+        .pipe(takeUntil(this.destroy$));
     } else {
       console.warn('User info is loading...');
     }
+  }
+
+  get user$() {
+    return this.userService.user$;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

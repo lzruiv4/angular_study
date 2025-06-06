@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { RechargeService } from '../../../services/recharge.service';
 import { CommonModule } from '@angular/common';
 import { IRechargeRecord } from '@/models/IRechargeRecord.model';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subject, takeUntil } from 'rxjs';
 import { IRecord } from '@/models/ITimelineObject.model';
 import { TimelineComponent } from '../../../shared/base-components/timeline/timeline.component';
 import { RecordType } from '@/models/enums/RecordType.enum';
@@ -14,7 +14,9 @@ import { RecordType } from '@/models/enums/RecordType.enum';
   templateUrl: './recharge-history.component.html',
   styleUrl: './recharge-history.component.less',
 })
-export class RechargeHistoryComponent implements OnInit {
+export class RechargeHistoryComponent implements OnInit, OnDestroy {
+  destroy$ = new Subject<void>();
+
   isChargeHistoryVisible: boolean = false;
 
   rechargeRecords$!: Observable<IRecord[]>;
@@ -26,6 +28,7 @@ export class RechargeHistoryComponent implements OnInit {
       this.isChargeHistoryVisible = true;
     });
     this.rechargeRecords$ = this.rechargeService.rechargeRecords$.pipe(
+      takeUntil(this.destroy$),
       map((rechargeRecords) => {
         const rechargeRecordMappe: IRecord[] = rechargeRecords.map(
           (rechargeRecord) => ({
@@ -54,5 +57,10 @@ export class RechargeHistoryComponent implements OnInit {
 
   trackByFun(index: number, item: IRechargeRecord) {
     return item.rechargeAt;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

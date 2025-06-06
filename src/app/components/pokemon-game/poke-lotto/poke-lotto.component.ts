@@ -7,7 +7,7 @@ import { RechargeHistoryComponent } from '../recharge-history/recharge-history.c
 import { RechargeComponent } from '../recharge/recharge.component';
 import { PokemonRecordService } from '../../../services/pokemon-record.service';
 import { CatchNewPokemonComponent } from '../catch-new-pokemon/catch-new-pokemon.component';
-import { filter } from 'rxjs';
+import { filter, Observable } from 'rxjs';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { UserService } from '@/services/user.service';
 import { ImageComponent } from '@/shared/base-components/image/image.component';
