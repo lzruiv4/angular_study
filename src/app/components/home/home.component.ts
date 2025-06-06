@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.getUserId()) {
-      this.userService.loadUserInfo();
+      // this.userService.getUserInfo().subscribe();
       this.combined$ = combineLatest([
         (this.rechargeRecords$ =
           this.rechargeService.getAllRechargeRecordsByUserId()),

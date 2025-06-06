@@ -1,25 +1,20 @@
 .user-container {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
+  justify-content: center;
   min-width: 300px;
   gap: 40px;
-  margin-left: 50px;
 
   .user-info-div {
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 100%;
   }
 
   .user-foto-div {
     display: flex;
     justify-content: center;
-    align-items: center;
-    max-width: 90%;
-    margin: 5px;
+    width: 100%;
   }
 }
 
@@ -36,7 +31,7 @@
 }
 
 :host ::ng-deep .ant-descriptions-title {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   margin: 0 5px;
   text-align: center;
@@ -44,21 +39,15 @@
 }
 
 :host ::ng-deep .ant-descriptions-item-label {
-  min-width: 100px;
-  min-height: 50px;
-  /* height: 50px; */
   background-color: #1f3d54;
   font-weight: bold;
   color: #ffffff;
   font-weight: bold;
-  /* width: 100px; */
+  width: 50%;
 }
 
 :host ::ng-deep .ant-descriptions-item-content {
-  min-width: 100px;
-  min-height: 50px;
   height: 50px;
-  width: 200px;
   color: #333;
   font-weight: bold;
   background-color: #fff;

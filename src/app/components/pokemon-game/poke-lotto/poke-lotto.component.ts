@@ -46,7 +46,9 @@ export class PokeLottoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.loadUserInfo();
+    if (this.userService.user$) {
+      this.userService.getUserInfo().subscribe();
+    }
     this.pokemonRecordService.getPokemonRecordsInTable();
   }
 

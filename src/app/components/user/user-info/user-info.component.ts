@@ -32,6 +32,9 @@ export class UserInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (this.userService.user$) {
+      this.userService.getUserInfo().subscribe();
+    }
     this.captured = this.pokemonRecordService.getUniquePokemonCount();
   }
 

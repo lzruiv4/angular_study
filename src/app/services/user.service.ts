@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import {
-  IPasswordUpdateDTO,
-  IUser,
-  IUserDTO,
-  mapDtoToModel,
-} from '../models/IUser.model';
+  BehaviorSubject,
+  catchError,
+  finalize,
+  Observable,
+  of,
+  tap,
+} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { IUser, IUserDTO, mapDtoToModel } from '../models/IUser.model';
 import { USER_API } from '@/core/constants/API-Setting';
 import { AuthService } from '@/services/auth.service';
 
@@ -17,14 +19,16 @@ export class UserService {
   private userSubject = new BehaviorSubject<IUser | null>(null);
   user$ = this.userSubject.asObservable();
 
-  private isLoad = false;
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  loading$ = this.loadingSubject.asObservable();
 
   constructor(
     private userHttp: HttpClient,
     private authService: AuthService,
   ) {}
 
-  private getUserInfo(): Observable<IUser> {
+  getUserInfo(): Observable<IUser> {
+    this.loadingSubject.next(true);
     return this.userHttp
       .get<IUserDTO>(USER_API + '/' + this.authService.getUserId())
       .pipe(
@@ -33,15 +37,16 @@ export class UserService {
           console.error('Get user info failed: ', err);
           return of(null as unknown as IUser);
         }),
+        finalize(() => this.loadingSubject.next(true)),
       );
   }
 
-  loadUserInfo() {
-    if (!this.isLoad) {
-      this.isLoad = true;
-      this.getUserInfo().subscribe(console.log);
-    }
-  }
+  // loadUserInfo() {
+  //   if (!this.isLoad) {
+  //     this.isLoad = true;
+  //     // this.getUserInfo().subscribe(console.log);
+  //   }
+  // }
 
   updateUser(newUserDTO: IUserDTO): Observable<IUser> {
     return this.userHttp
