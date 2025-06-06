@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 import { CommonModule } from '@angular/common';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { POKEMON_AMOUNT } from '@/core/constants/API-Setting';
 import { PokemonRecordService } from '@/services/pokemon-record.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { UserService } from '@/services/user.service';
 import { ImageComponent } from '@/shared/base-components/image/image.component';
 
@@ -21,7 +21,9 @@ import { ImageComponent } from '@/shared/base-components/image/image.component';
   templateUrl: './user-info.component.html',
   styleUrl: './user-info.component.less',
 })
-export class UserInfoComponent implements OnInit {
+export class UserInfoComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
+
   amount = POKEMON_AMOUNT;
 
   captured!: Observable<number>;
@@ -33,12 +35,17 @@ export class UserInfoComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.userService.user$) {
-      this.userService.getUserInfo().subscribe();
+      this.userService.getUserInfo().pipe(takeUntil(this.destroy$)).subscribe();
     }
     this.captured = this.pokemonRecordService.getUniquePokemonCount();
   }
 
   get user$() {
     return this.userService.user$;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

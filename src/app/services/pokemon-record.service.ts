@@ -3,6 +3,7 @@ import {
   BehaviorSubject,
   catchError,
   combineLatest,
+  finalize,
   map,
   Observable,
   Subject,
@@ -51,6 +52,9 @@ export class PokemonRecordService {
   pokemonRecordInList$: Observable<IPokemonRecordInList[]> =
     this.pokemonRecordInListSubject.asObservable();
 
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  loading$ = this.loadingSubject.asObservable();
+
   constructor(
     private pokemonRecordsHttp: HttpClient,
     private pokemonService: PokemonService,
@@ -63,6 +67,7 @@ export class PokemonRecordService {
   }
 
   getAllPokemonRecordsByCurrentUserId(): Observable<IPokemonRecord[]> {
+    this.loadingSubject.next(true);
     return combineLatest([
       this.pokemonRecordsHttp.get<IPokemonRecordDTO[]>(
         POKEMON_RECORDS_API + '/' + this.authService.getUserId(),
@@ -94,6 +99,7 @@ export class PokemonRecordService {
         );
         throw err;
       }),
+      finalize(() => this.loadingSubject.next(false)),
     );
   }
 
@@ -107,6 +113,7 @@ export class PokemonRecordService {
   }
 
   captureNewPokemon(): Observable<IPokemonRecord> {
+    this.loadingSubject.next(true);
     const userId = this.authService.getUserId();
     const newPokemonDTO: IPokemonRecordDTO = {
       pokemonId: (Math.floor(Math.random() * POKEMON_AMOUNT) + 1).toString(),
@@ -137,6 +144,7 @@ export class PokemonRecordService {
           console.error('Error occurred during create : ', err);
           return throwError(() => err);
         }),
+        finalize(() => this.loadingSubject.next(false)),
       );
   }
 

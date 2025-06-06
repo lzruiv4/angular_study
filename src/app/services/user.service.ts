@@ -41,14 +41,8 @@ export class UserService {
       );
   }
 
-  // loadUserInfo() {
-  //   if (!this.isLoad) {
-  //     this.isLoad = true;
-  //     // this.getUserInfo().subscribe(console.log);
-  //   }
-  // }
-
   updateUser(newUserDTO: IUserDTO): Observable<IUser> {
+    this.loadingSubject.next(true);
     return this.userHttp
       .put<IUserDTO>(`${USER_API}/${this.authService.getUserId()}`, newUserDTO)
       .pipe(
@@ -60,6 +54,7 @@ export class UserService {
           console.error('Error occurred during update:', error);
           throw error;
         }),
+        finalize(() => this.loadingSubject.next(true)),
       );
   }
 }
