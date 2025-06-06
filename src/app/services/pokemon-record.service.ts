@@ -169,8 +169,8 @@ export class PokemonRecordService {
 
   getPokemonImageUrl(pokemonId: string): string {
     return (
-      this.pokemons.find((pokemon) => pokemonId == pokemon.id)?.biggerImage ??
-      ''
+      this.pokemons.find((pokemon) => pokemonId == pokemon.id)!.biggerImage ??
+      this.pokemons.find((pokemon) => pokemonId == pokemon.id)!.image
     );
   }
 }
