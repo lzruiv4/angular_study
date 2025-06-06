@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {
   BehaviorSubject,
   catchError,
+  finalize,
   Observable,
   Subject,
   tap,
@@ -42,6 +43,9 @@ export class RechargeService {
   );
   rechargeRecords$ = this.rechargeRecordsSubject.asObservable();
 
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  loading$ = this.loadingSubject.asObservable();
+
   constructor(
     private rechargeRecordsHttp: HttpClient,
     private authService: AuthService,
@@ -50,10 +54,10 @@ export class RechargeService {
   createNewRechargeRecord(
     newRechargeRecordDTO: IRechargeRecordDTO,
   ): Observable<IRechargeRecord> {
+    this.loadingSubject.next(true);
     return this.rechargeRecordsHttp
       .post<IRechargeRecordDTO>(RECHARGE_RECORD_API, newRechargeRecordDTO)
       .pipe(
-        // map((model) => mapDtoToModel(model)),
         tap((record) => {
           const old = this.rechargeRecordsSubject.getValue() ?? [];
           this.rechargeRecordsSubject.next(this.recordsSort([...old, record]));
@@ -62,10 +66,12 @@ export class RechargeService {
           console.error('Error occurred during create : ', err);
           return throwError(() => err);
         }),
+        finalize(() => this.loadingSubject.next(true)),
       );
   }
 
   getAllRechargeRecordsByUserId(): Observable<IRechargeRecord[]> {
+    this.loadingSubject.next(true);
     return this.rechargeRecordsHttp
       .get<
         IRechargeRecordDTO[]
@@ -79,6 +85,7 @@ export class RechargeService {
           this.rechargeRecordsSubject.next([]);
           throw error;
         }),
+        finalize(() => this.loadingSubject.next(true)),
       );
   }
 

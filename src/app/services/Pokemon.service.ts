@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {
   BehaviorSubject,
   catchError,
+  finalize,
   forkJoin,
   map,
   Observable,
@@ -22,9 +23,13 @@ export class PokemonService {
   pokemons$: Observable<IPokemonWithNameAndFotos[]> =
     this.pokemonsSubject.asObservable();
 
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  loading$ = this.loadingSubject.asObservable();
+
   constructor(private pokemonHttp: HttpClient) {}
 
   getPokemonDTOs(): Observable<IPokemonWithNameAndFotos[]> {
+    this.loadingSubject.next(true);
     return this.pokemonHttp
       .get<{ results: IPokemonWithNameAndUrl[] }>(POKEMON_API)
       .pipe(
@@ -62,6 +67,7 @@ export class PokemonService {
         }),
         map((results) => results.filter((p) => p !== null)),
         tap((pokemon) => this.pokemonsSubject.next(pokemon)),
+        finalize(() => this.loadingSubject.next(true)),
       );
   }
 }
