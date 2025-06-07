@@ -7,7 +7,7 @@
   <ng-container *nzModalContent>
     <ng-container *ngIf="rechargeRecords$ | async as rechargeRecords">
       <div class="timeline_content">
-        <app-timeline [combined$]="rechargeRecords$" />
+        <app-timeline type="recharge" />
       </div>
     </ng-container>
   </ng-container>

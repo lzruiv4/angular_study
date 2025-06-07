@@ -21,7 +21,7 @@
       <nz-col [nzSpan]="14">
         <nz-statistic
           nzTitle="Captured"
-          [nzValue]="(captured | async) ?? 0"
+          [nzValue]="(captured$ | async) ?? 0"
           [nzPrefix]="prefixTpl"
           ><ng-template #prefixTpl
             ><app-image

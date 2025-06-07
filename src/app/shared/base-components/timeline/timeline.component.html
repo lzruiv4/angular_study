@@ -1,11 +1,17 @@
 <nz-timeline
-  [nzMode]="isCustom ? 'custom' : 'left'"
+  [nzMode]="
+    type === 'recharge' ? 'left' : type === 'pokemon' ? 'right' : 'custom'
+  "
   *ngIf="combined$ | async as data"
 >
   @for (record of data; track $index) {
     <nz-timeline-item
       [nzPosition]="
-        record.recordType === recordType.RECHARGE_RECORD ? 'right' : 'left'
+        type !== 'custom'
+          ? 'right'
+          : record.recordType === recordType.RECHARGE_RECORD
+            ? 'right'
+            : 'left'
       "
       [nzColor]="
         record.recordType === recordType.RECHARGE_RECORD ? 'blue' : 'green'

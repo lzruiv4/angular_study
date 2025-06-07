@@ -8,4 +8,11 @@ export function sortMapByDateDesc(
   return new Map(sortedEntries);
 }
 
+export function sortArrayByDateDesc(inputMap: any[]) {
+  return inputMap.sort(
+    (a, b) =>
+      new Date(b.recordDate).getTime() - new Date(a.recordDate).getTime(),
+  );
+}
+
 export const DATE_PIPE: string = 'yyyy-MM-dd hh:mm:ss';
