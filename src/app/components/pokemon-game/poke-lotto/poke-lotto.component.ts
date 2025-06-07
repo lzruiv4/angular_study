@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { RechargeService } from '../../../services/recharge.service';
@@ -7,7 +7,7 @@ import { RechargeHistoryComponent } from '../recharge-history/recharge-history.c
 import { RechargeComponent } from '../recharge/recharge.component';
 import { PokemonRecordService } from '../../../services/pokemon-record.service';
 import { CatchNewPokemonComponent } from '../catch-new-pokemon/catch-new-pokemon.component';
-import { filter, Observable } from 'rxjs';
+import { filter, Subject, takeUntil } from 'rxjs';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { UserService } from '@/services/user.service';
 import { ImageComponent } from '@/shared/base-components/image/image.component';
@@ -27,7 +27,9 @@ import { ImageComponent } from '@/shared/base-components/image/image.component';
   templateUrl: './poke-lotto.component.html',
   styleUrl: './poke-lotto.component.less',
 })
-export class PokeLottoComponent implements OnInit {
+export class PokeLottoComponent implements OnInit, OnDestroy {
+  destroy$ = new Subject<void>();
+
   constructor(
     private rechargeService: RechargeService,
     private pokemonRecordService: PokemonRecordService,
@@ -47,9 +49,12 @@ export class PokeLottoComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.userService.user$) {
-      this.userService.getUserInfo().subscribe();
+      this.userService.getUserInfo().pipe(takeUntil(this.destroy$)).subscribe();
     }
-    this.pokemonRecordService.getPokemonRecordsInTable();
+    this.pokemonRecordService
+      .getRecordByGroup()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe();
   }
 
   openRechargeHistory(): void {
@@ -79,4 +84,9 @@ export class PokeLottoComponent implements OnInit {
     const diffB = Math.abs(this.parseDate(b.date).getTime() - today.getTime());
     return diffA - diffB;
   };
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

@@ -11,7 +11,6 @@ import {
   throwError,
 } from 'rxjs';
 import {
-  IPokemonWithNameAndFotos,
   IPokemonRecord,
   IPokemonRecordDTO,
   IPokemonRecordInList,
@@ -28,8 +27,6 @@ import { AuthService } from '@/services/auth.service';
   providedIn: 'root',
 })
 export class PokemonRecordService {
-  pokemons: IPokemonWithNameAndFotos[] = [];
-
   private isLoad: boolean = false;
 
   // For dialog
@@ -60,9 +57,7 @@ export class PokemonRecordService {
     private pokemonService: PokemonService,
     private authService: AuthService,
   ) {
-    this.pokemonService
-      .getPokemonDTOs()
-      .subscribe((item) => (this.pokemons = item));
+    this.pokemonService.getPokemonDTOs().subscribe();
     this.getAllPokemonRecordsByCurrentUserId().subscribe();
   }
 
@@ -119,36 +114,42 @@ export class PokemonRecordService {
       pokemonId: (Math.floor(Math.random() * POKEMON_AMOUNT) + 1).toString(),
       userId: userId!,
     };
-    return this.pokemonRecordsHttp
-      .post<IPokemonRecordDTO>(POKEMON_RECORDS_API, newPokemonDTO)
-      .pipe(
-        map((pokemonRecordResponseDTO) => {
-          return {
-            pokemonCaptureRecordId:
-              pokemonRecordResponseDTO.pokemonCaptureRecordId,
-            pokemonId: pokemonRecordResponseDTO.pokemonId,
-            captureTime: pokemonRecordResponseDTO.captureTime,
-            image:
-              pokemonRecordResponseDTO.pokemonCaptureRecordId !== null
-                ? this.getPokemonImageUrl(pokemonRecordResponseDTO.pokemonId)
-                : undefined,
-            isRelease: pokemonRecordResponseDTO.isRelease,
-          } as IPokemonRecord;
-        }),
-        tap((poke) => {
-          const old = this.pokemonRecordsSubject.getValue() ?? [];
-          this.pokemonRecordsSubject.next([...old, poke]);
-          this.groupByRecords();
-        }),
-        catchError((err) => {
-          console.error('Error occurred during create : ', err);
-          return throwError(() => err);
-        }),
-        finalize(() => this.loadingSubject.next(false)),
-      );
+
+    return combineLatest([
+      this.pokemonRecordsHttp.post<IPokemonRecordDTO>(
+        POKEMON_RECORDS_API,
+        newPokemonDTO,
+      ),
+      this.pokemonService.pokemons$,
+    ]).pipe(
+      map(([pokemonRecordResponseDTO, pokemonWithNameAndFotos]) => {
+        const pokemon = pokemonWithNameAndFotos.find(
+          (pokemon) =>
+            pokemon.id.toString() === pokemonRecordResponseDTO.pokemonId,
+        );
+        return {
+          pokemonCaptureRecordId:
+            pokemonRecordResponseDTO.pokemonCaptureRecordId,
+          pokemonId: pokemonRecordResponseDTO.pokemonId,
+          captureTime: pokemonRecordResponseDTO.captureTime,
+          image: pokemon!.biggerImage ?? pokemon!.image,
+          isRelease: pokemonRecordResponseDTO.isRelease,
+        } as IPokemonRecord;
+      }),
+      tap((poke) => {
+        const old = this.pokemonRecordsSubject.getValue() ?? [];
+        this.pokemonRecordsSubject.next([...old, poke]);
+        this.getRecordByGroup();
+      }),
+      catchError((err) => {
+        console.error('Error occurred during create : ', err);
+        return throwError(() => err);
+      }),
+      finalize(() => this.loadingSubject.next(false)),
+    );
   }
 
-  private groupByRecords(): Observable<IPokemonRecordInList[]> {
+  getRecordByGroup(): Observable<IPokemonRecordInList[]> {
     return this.pokemonRecords$.pipe(
       map((records) => {
         const map = new Map<string, IPokemonRecord[]>();
@@ -168,17 +169,6 @@ export class PokemonRecordService {
         );
       }),
       tap((records) => this.pokemonRecordInListSubject.next(records)),
-    );
-  }
-
-  getPokemonRecordsInTable() {
-    this.groupByRecords().subscribe();
-  }
-
-  getPokemonImageUrl(pokemonId: string): string {
-    return (
-      this.pokemons.find((pokemon) => pokemonId == pokemon.id)!.biggerImage ??
-      this.pokemons.find((pokemon) => pokemonId == pokemon.id)!.image
     );
   }
 }

@@ -13,12 +13,8 @@ import { Observable, Subject, takeUntil } from 'rxjs';
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.less',
 })
-export class PokedexComponent implements OnInit, OnDestroy {
-  destroy$ = new Subject<void>();
-
-  get pokemons$(): Observable<IPokemonWithNameAndFotos[]> {
-    return this.pokemonService.pokemons$;
-  }
+export class PokedexComponent implements OnInit {
+  // destroy$ = new Subject<void>();
 
   selectedPokemon: IPokemonWithNameAndFotos = {
     id: '',
@@ -36,12 +32,16 @@ export class PokedexComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.pokemonService
       .getPokemonDTOs()
-      .pipe(takeUntil(this.destroy$))
+      // .pipe(takeUntil(this.destroy$))
       .subscribe();
   }
 
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+  get pokemons$(): Observable<IPokemonWithNameAndFotos[]> {
+    return this.pokemonService.pokemons$;
   }
+
+  // ngOnDestroy(): void {
+  //   this.destroy$.next();
+  //   this.destroy$.complete();
+  // }
 }
