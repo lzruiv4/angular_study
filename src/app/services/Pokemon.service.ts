@@ -19,6 +19,8 @@ import { POKEMON_API } from '@/core/constants/API-Setting';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {
+  pokemons: IPokemonWithNameAndFotos[] = [];
+
   private pokemonsSubject = new BehaviorSubject<IPokemonWithNameAndFotos[]>([]);
   pokemons$: Observable<IPokemonWithNameAndFotos[]> =
     this.pokemonsSubject.asObservable();
@@ -66,7 +68,11 @@ export class PokemonService {
           return forkJoin(requests);
         }),
         map((results) => results.filter((p) => p !== null)),
-        tap((pokemon) => this.pokemonsSubject.next(pokemon)),
+        tap((pokemons) => {
+          this.pokemonsSubject.next(pokemons);
+          this.pokemons = pokemons;
+          console.log(this.pokemons);
+        }),
         finalize(() => this.loadingSubject.next(true)),
       );
   }

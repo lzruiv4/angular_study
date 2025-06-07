@@ -58,11 +58,11 @@ export class PokemonRecordService {
     private authService: AuthService,
   ) {
     this.pokemonService.getPokemonDTOs().subscribe();
-    this.getAllPokemonRecordsByCurrentUserId().subscribe();
   }
 
   getAllPokemonRecordsByCurrentUserId(): Observable<IPokemonRecord[]> {
     this.loadingSubject.next(true);
+
     return combineLatest([
       this.pokemonRecordsHttp.get<IPokemonRecordDTO[]>(
         POKEMON_RECORDS_API + '/' + this.authService.getUserId(),
@@ -94,7 +94,10 @@ export class PokemonRecordService {
         );
         throw err;
       }),
-      finalize(() => this.loadingSubject.next(false)),
+      finalize(() => {
+        this.isLoad = true;
+        this.loadingSubject.next(false);
+      }),
     );
   }
 
@@ -150,6 +153,7 @@ export class PokemonRecordService {
   }
 
   getRecordByGroup(): Observable<IPokemonRecordInList[]> {
+    console.log('sdfs', this.isLoad);
     return this.pokemonRecords$.pipe(
       map((records) => {
         const map = new Map<string, IPokemonRecord[]>();

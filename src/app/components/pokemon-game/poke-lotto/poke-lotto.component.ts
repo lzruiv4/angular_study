@@ -11,6 +11,7 @@ import { filter, Subject, takeUntil } from 'rxjs';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { UserService } from '@/services/user.service';
 import { ImageComponent } from '@/shared/base-components/image/image.component';
+import { PokemonService } from '@/services/pokemon.service';
 
 @Component({
   selector: 'app-poke-lotto',
@@ -51,6 +52,7 @@ export class PokeLottoComponent implements OnInit, OnDestroy {
     if (this.userService.user$) {
       this.userService.getUserInfo().pipe(takeUntil(this.destroy$)).subscribe();
     }
+    this.pokemonRecordService.getAllPokemonRecordsByCurrentUserId().pipe(takeUntil(this.destroy$)).subscribe();
     this.pokemonRecordService
       .getRecordByGroup()
       .pipe(takeUntil(this.destroy$))
