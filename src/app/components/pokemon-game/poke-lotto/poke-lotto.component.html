@@ -15,9 +15,9 @@
         [ngClass]="user.pokemonCoin > 0 ? 'poke-ball' : 'no_ball_animation'"
         (click)="openCatchPokemonDialog()"
       />
+      <app-catch-new-pokemon />
     </div>
 
-    <app-catch-new-pokemon *ngIf="openCatchPokemonDialog" />
     <div class="coin-container">
       <a class="game-info" *ngIf="user$ | async as user">
         {{ user.pokemonCoin }}

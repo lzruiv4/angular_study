@@ -13,6 +13,6 @@ export const LOGIN_URL = SPRINGBOOT_BACKEND_BASE + '/auth/login';
 export const REGISTER_URL = SPRINGBOOT_BACKEND_BASE + '/auth/register';
 
 // API from pokeapi
-export const POKEMON_AMOUNT = 1000;
+export const POKEMON_AMOUNT = 890; // max 905
 export const POKEMON_API =
   'https://pokeapi.co/api/v2/pokemon?limit=' + POKEMON_AMOUNT;

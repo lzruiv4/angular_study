@@ -130,7 +130,6 @@ export class PokemonRecordService {
       tap((poke) => {
         const old = this.pokemonRecordsSubject.getValue() ?? [];
         this.pokemonRecordsSubject.next([...old, poke]);
-        console.log('新增方法执行了');
         this.getRecordByGroup();
       }),
       catchError((err) => {
@@ -154,7 +153,6 @@ export class PokemonRecordService {
 
         const result: IPokemonRecordInList[] = [];
         map.forEach((pokemonRecordsInTheSameDay, date) => {
-          console.log('排序方法执行了');
           result.push({ date, pokemonRecordsInTheSameDay });
         });
         return result.sort(

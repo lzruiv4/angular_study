@@ -47,6 +47,7 @@ export class PokeLottoComponent implements OnInit, OnDestroy {
   ) {}
 
   isWarningVisible = false;
+  isCapturedPokemonDialogVisible = false;
 
   // Getter for user
   get user$() {
@@ -59,8 +60,14 @@ export class PokeLottoComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userService.getUserInfo().pipe(takeUntil(this.destroy$)).subscribe();
-    this.pokemonRecordService.getAllPokemonRecordsByCurrentUserId().subscribe();
-    this.pokemonRecordService.getRecordByGroup().subscribe();
+    this.pokemonRecordService
+      .getAllPokemonRecordsByCurrentUserId()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe();
+    this.pokemonRecordService
+      .getRecordByGroup()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe();
   }
 
   openRechargeHistoryDialog(): void {
