@@ -20,7 +20,6 @@ import {
   POKEMON_RECORDS_API,
 } from '@/core/constants/API-Setting';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '@/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -46,17 +45,15 @@ export class PokemonRecordService {
   constructor(
     private pokemonRecordsHttp: HttpClient,
     private pokemonService: PokemonService,
-    private authService: AuthService,
   ) {
     this.pokemonService.getPokemonDTOs().subscribe();
   }
 
   getAllPokemonRecordsByCurrentUserId(): Observable<IPokemonRecord[]> {
     this.loadingSubject.next(true);
-
     return combineLatest([
       this.pokemonRecordsHttp.get<IPokemonRecordDTO[]>(
-        POKEMON_RECORDS_API + '/' + this.authService.getUserId(),
+        POKEMON_RECORDS_API + '/' + localStorage.getItem('userId'),
       ),
       this.pokemonService.pokemons$,
     ]).pipe(
@@ -103,7 +100,7 @@ export class PokemonRecordService {
 
   captureNewPokemon(): Observable<IPokemonRecord> {
     this.loadingSubject.next(true);
-    const userId = this.authService.getUserId();
+    const userId = localStorage.getItem('userId');
     const newPokemonDTO: IPokemonRecordDTO = {
       pokemonId: (Math.floor(Math.random() * POKEMON_AMOUNT) + 1).toString(),
       userId: userId!,
@@ -133,6 +130,7 @@ export class PokemonRecordService {
       tap((poke) => {
         const old = this.pokemonRecordsSubject.getValue() ?? [];
         this.pokemonRecordsSubject.next([...old, poke]);
+        console.log('新增方法执行了');
         this.getRecordByGroup();
       }),
       catchError((err) => {
@@ -156,6 +154,7 @@ export class PokemonRecordService {
 
         const result: IPokemonRecordInList[] = [];
         map.forEach((pokemonRecordsInTheSameDay, date) => {
+          console.log('排序方法执行了');
           result.push({ date, pokemonRecordsInTheSameDay });
         });
         return result.sort(

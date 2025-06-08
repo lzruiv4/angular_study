@@ -13,7 +13,6 @@ import {
   IRechargeRecordDTO,
 } from '../models/IRechargeRecord.model';
 import { RECHARGE_RECORD_API } from '@/core/constants/API-Setting';
-import { AuthService } from '@/services/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class RechargeService {
@@ -25,10 +24,7 @@ export class RechargeService {
   private loadingSubject = new BehaviorSubject<boolean>(false);
   loading$ = this.loadingSubject.asObservable();
 
-  constructor(
-    private rechargeRecordsHttp: HttpClient,
-    private authService: AuthService,
-  ) {}
+  constructor(private rechargeRecordsHttp: HttpClient) {}
 
   createNewRechargeRecord(
     newRechargeRecordDTO: IRechargeRecordDTO,
@@ -54,7 +50,7 @@ export class RechargeService {
     return this.rechargeRecordsHttp
       .get<
         IRechargeRecordDTO[]
-      >(RECHARGE_RECORD_API + '/' + this.authService.getUserId())
+      >(RECHARGE_RECORD_API + '/' + localStorage.getItem('userId'))
       .pipe(
         tap((records) => {
           this.rechargeRecordsSubject.next(this.recordsSort(records));

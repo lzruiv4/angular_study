@@ -15,4 +15,9 @@ export function sortArrayByDateDesc(inputMap: any[]) {
   );
 }
 
+export function parseDate(dateStr: string): Date {
+  const [day, month, year] = dateStr.split('-').map(Number);
+  return new Date(year, month - 1, day);
+}
+
 export const DATE_PIPE: string = 'yyyy-MM-dd hh:mm:ss';

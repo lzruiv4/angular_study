@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { RechargeService } from '../../../services/recharge.service';
 import { RechargeHistoryComponent } from '../recharge-history/recharge-history.component';
 import { RechargeComponent } from '../recharge/recharge.component';
 import { PokemonRecordService } from '../../../services/pokemon-record.service';
@@ -13,6 +12,7 @@ import { UserService } from '@/services/user.service';
 import { ImageComponent } from '@/shared/base-components/image/image.component';
 import { PokemonRecordDialogService } from '@/services/pokemon-record-dialog.service';
 import { RechargeDialogService } from '@/services/recharge-dialog.service';
+import { parseDate } from '@/shared/utils/DateTools';
 
 @Component({
   selector: 'app-poke-lotto',
@@ -31,6 +31,13 @@ import { RechargeDialogService } from '@/services/recharge-dialog.service';
 })
 export class PokeLottoComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();
+
+  sortByDate = (a: any, b: any): number => {
+    const today = new Date();
+    const diffA = Math.abs(parseDate(a.date).getTime() - today.getTime());
+    const diffB = Math.abs(parseDate(b.date).getTime() - today.getTime());
+    return diffA - diffB;
+  };
 
   constructor(
     private rechargeDialogService: RechargeDialogService,
@@ -51,46 +58,26 @@ export class PokeLottoComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    if (this.userService.user$) {
-      this.userService.getUserInfo().pipe(takeUntil(this.destroy$)).subscribe();
-    }
-    this.pokemonRecordService
-      .getAllPokemonRecordsByCurrentUserId()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe();
-    this.pokemonRecordService
-      .getRecordByGroup()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe();
+    this.userService.getUserInfo().pipe(takeUntil(this.destroy$)).subscribe();
+    this.pokemonRecordService.getAllPokemonRecordsByCurrentUserId().subscribe();
+    this.pokemonRecordService.getRecordByGroup().subscribe();
   }
 
-  openRechargeHistory(): void {
+  openRechargeHistoryDialog(): void {
     this.rechargeDialogService.triggerRechargeHistoryDialog();
   }
 
-  openRecharge(): void {
+  openRechargeDialog(): void {
     this.rechargeDialogService.triggerRechargeDialog();
   }
 
   openCatchPokemonDialog(): void {
-    this.user$.pipe(filter((user) => !!user)).subscribe((user) => {
-      if (user.pokemonCoin > 0) {
+    this.user$.pipe(takeUntil(this.destroy$)).subscribe((user) => {
+      if (user!.pokemonCoin > 0) {
         this.pokemonRecordDialogService.triggerCapturePokemonDialog();
       }
     });
   }
-
-  parseDate(dateStr: string): Date {
-    const [day, month, year] = dateStr.split('-').map(Number);
-    return new Date(year, month - 1, day);
-  }
-
-  sortByDate = (a: any, b: any): number => {
-    const today = new Date();
-    const diffA = Math.abs(this.parseDate(a.date).getTime() - today.getTime());
-    const diffB = Math.abs(this.parseDate(b.date).getTime() - today.getTime());
-    return diffA - diffB;
-  };
 
   ngOnDestroy(): void {
     this.destroy$.next();

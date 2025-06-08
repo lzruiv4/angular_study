@@ -52,8 +52,7 @@ export class CatchNewPokemonComponent implements OnInit {
           }),
         )
         .subscribe();
-
-      this.pokemonRecordService.captureNewPokemon();
+      this.pokemonRecordService.captureNewPokemon().subscribe();
       this.isDialogVisible = false;
       this.isOkLoading = false;
     }, 1000);

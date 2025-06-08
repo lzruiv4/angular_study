@@ -25,7 +25,12 @@
       <app-image imagePath="/static/coin.png" imageSize="50" />
     </div>
     <div class="button-container">
-      <button nz-button nzType="primary" nzDanger (click)="openRecharge()">
+      <button
+        nz-button
+        nzType="primary"
+        nzDanger
+        (click)="openRechargeDialog()"
+      >
         Recharge
       </button>
       <app-recharge />
@@ -33,7 +38,7 @@
         nz-button
         nzType="primary"
         nzDanger
-        (click)="openRechargeHistory()"
+        (click)="openRechargeHistoryDialog()"
       >
         Recharge History
       </button>

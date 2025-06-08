@@ -10,7 +10,6 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { IUser, IUserDTO, mapDtoToModel } from '../models/IUser.model';
 import { USER_API } from '@/core/constants/API-Setting';
-import { AuthService } from '@/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,13 +23,12 @@ export class UserService {
 
   constructor(
     private userHttp: HttpClient,
-    private authService: AuthService,
   ) {}
 
   getUserInfo(): Observable<IUser> {
     this.loadingSubject.next(true);
     return this.userHttp
-      .get<IUserDTO>(USER_API + '/' + this.authService.getUserId())
+      .get<IUserDTO>(USER_API + '/' + localStorage.getItem('userId'))
       .pipe(
         tap((userDTO) => this.userSubject.next(mapDtoToModel(userDTO))),
         catchError((err) => {
@@ -44,7 +42,10 @@ export class UserService {
   updateUser(newUserDTO: IUserDTO): Observable<IUser> {
     this.loadingSubject.next(true);
     return this.userHttp
-      .put<IUserDTO>(`${USER_API}/${this.authService.getUserId()}`, newUserDTO)
+      .put<IUserDTO>(
+        `${USER_API}/${localStorage.getItem('userId')}`,
+        newUserDTO,
+      )
       .pipe(
         tap((updatedUserDTO) => {
           this.userSubject.next(updatedUserDTO);
