@@ -6,7 +6,6 @@ import {
   finalize,
   map,
   Observable,
-  Subject,
   tap,
   throwError,
 } from 'rxjs';
@@ -28,14 +27,6 @@ import { AuthService } from '@/services/auth.service';
 })
 export class PokemonRecordService {
   private isLoad: boolean = false;
-
-  // For dialog
-  private openDialog = new Subject<void>();
-  showDialog$ = this.openDialog.asObservable();
-
-  triggerCapturePokemonModal() {
-    this.openDialog.next();
-  }
 
   // Get all record from db
   private pokemonRecordsSubject = new BehaviorSubject<IPokemonRecord[]>([]);
@@ -153,7 +144,6 @@ export class PokemonRecordService {
   }
 
   getRecordByGroup(): Observable<IPokemonRecordInList[]> {
-    console.log('sdfs', this.isLoad);
     return this.pokemonRecords$.pipe(
       map((records) => {
         const map = new Map<string, IPokemonRecord[]>();

@@ -11,7 +11,8 @@ import { filter, Subject, takeUntil } from 'rxjs';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { UserService } from '@/services/user.service';
 import { ImageComponent } from '@/shared/base-components/image/image.component';
-import { PokemonService } from '@/services/pokemon.service';
+import { PokemonRecordDialogService } from '@/services/pokemon-record-dialog.service';
+import { RechargeDialogService } from '@/services/recharge-dialog.service';
 
 @Component({
   selector: 'app-poke-lotto',
@@ -32,8 +33,9 @@ export class PokeLottoComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();
 
   constructor(
-    private rechargeService: RechargeService,
+    private rechargeDialogService: RechargeDialogService,
     private pokemonRecordService: PokemonRecordService,
+    private pokemonRecordDialogService: PokemonRecordDialogService,
     private userService: UserService,
   ) {}
 
@@ -52,7 +54,10 @@ export class PokeLottoComponent implements OnInit, OnDestroy {
     if (this.userService.user$) {
       this.userService.getUserInfo().pipe(takeUntil(this.destroy$)).subscribe();
     }
-    this.pokemonRecordService.getAllPokemonRecordsByCurrentUserId().pipe(takeUntil(this.destroy$)).subscribe();
+    this.pokemonRecordService
+      .getAllPokemonRecordsByCurrentUserId()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe();
     this.pokemonRecordService
       .getRecordByGroup()
       .pipe(takeUntil(this.destroy$))
@@ -60,17 +65,17 @@ export class PokeLottoComponent implements OnInit, OnDestroy {
   }
 
   openRechargeHistory(): void {
-    this.rechargeService.triggerRechargeHistoryModal();
+    this.rechargeDialogService.triggerRechargeHistoryDialog();
   }
 
   openRecharge(): void {
-    this.rechargeService.triggerRechargeModal();
+    this.rechargeDialogService.triggerRechargeDialog();
   }
 
   openCatchPokemonDialog(): void {
     this.user$.pipe(filter((user) => !!user)).subscribe((user) => {
       if (user.pokemonCoin > 0) {
-        this.pokemonRecordService.triggerCapturePokemonModal();
+        this.pokemonRecordDialogService.triggerCapturePokemonDialog();
       }
     });
   }

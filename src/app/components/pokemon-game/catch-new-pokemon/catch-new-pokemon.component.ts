@@ -5,6 +5,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { PokemonRecordService } from '../../../services/pokemon-record.service';
 import { filter, switchMap, take } from 'rxjs';
 import { UserService } from '@/services/user.service';
+import { PokemonRecordDialogService } from '@/services/pokemon-record-dialog.service';
 
 @Component({
   selector: 'app-catch-new-pokemon',
@@ -22,13 +23,14 @@ export class CatchNewPokemonComponent implements OnInit {
 
   constructor(
     private pokemonRecordService: PokemonRecordService,
+    private pokemonRecordDialogService: PokemonRecordDialogService,
     private userService: UserService,
   ) {}
 
   ngOnInit(): void {
     this.user$.subscribe((user) => {
       if (user!.pokemonCoin > 0) {
-        this.pokemonRecordService.showDialog$.subscribe(() => {
+        this.pokemonRecordDialogService.pokemonRecordDialog$.subscribe(() => {
           this.isDialogVisible = true;
         });
       }
@@ -51,7 +53,7 @@ export class CatchNewPokemonComponent implements OnInit {
         )
         .subscribe();
 
-      this.pokemonRecordService.captureNewPokemon().subscribe();
+      this.pokemonRecordService.captureNewPokemon();
       this.isDialogVisible = false;
       this.isOkLoading = false;
     }, 1000);

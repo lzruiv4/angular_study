@@ -7,6 +7,7 @@ import { map, Observable, Subject, takeUntil } from 'rxjs';
 import { IRecord } from '@/models/ITimelineObject.model';
 import { TimelineComponent } from '../../../shared/base-components/timeline/timeline.component';
 import { RecordType } from '@/models/enums/RecordType.enum';
+import { RechargeDialogService } from '@/services/recharge-dialog.service';
 
 @Component({
   selector: 'app-recharge-history',
@@ -21,10 +22,13 @@ export class RechargeHistoryComponent implements OnInit, OnDestroy {
 
   rechargeRecords$!: Observable<IRecord[]>;
 
-  constructor(private rechargeService: RechargeService) {}
+  constructor(
+    private rechargeService: RechargeService,
+    private rechargeDialogService: RechargeDialogService,
+  ) {}
 
   ngOnInit(): void {
-    this.rechargeService.showRechargeHistoryModal$.subscribe(() => {
+    this.rechargeDialogService.rechargeDialogHistory$.subscribe(() => {
       this.isChargeHistoryVisible = true;
     });
     this.rechargeRecords$ = this.rechargeService.rechargeRecords$.pipe(

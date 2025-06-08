@@ -30,10 +30,7 @@
         <div *ngIf="record.recordType === recordType.POKEMON_RECORD">
           <span>
             Congratulation, you got a
-            <img
-              [src]="record.recordObject.image"
-              style="width: auto; height: 30px"
-            />.
+            <img [src]="record.recordObject.image" class="image-style" />
           </span>
         </div>
         <div class="time-class">

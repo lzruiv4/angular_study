@@ -5,7 +5,6 @@ import {
   catchError,
   finalize,
   Observable,
-  Subject,
   tap,
   throwError,
 } from 'rxjs';
@@ -18,26 +17,6 @@ import { AuthService } from '@/services/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class RechargeService {
-  /**
-   * open a dialog for coin recharge
-   */
-  private openRecharge = new Subject<void>();
-  showRechargeModal$ = this.openRecharge.asObservable();
-
-  triggerRechargeModal() {
-    this.openRecharge.next();
-  }
-
-  /**
-   * open a dialog for recharge history
-   */
-  private openRechargeHistory = new Subject<void>();
-  showRechargeHistoryModal$ = this.openRechargeHistory.asObservable();
-
-  triggerRechargeHistoryModal() {
-    this.openRechargeHistory.next();
-  }
-
   private rechargeRecordsSubject = new BehaviorSubject<IRechargeRecord[] | []>(
     [],
   );

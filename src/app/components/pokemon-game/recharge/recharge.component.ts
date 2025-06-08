@@ -7,6 +7,7 @@ import { filter, switchMap, take } from 'rxjs';
 import { IRechargeRecordDTO } from '@/models/IRechargeRecord.model';
 import { UserService } from '@/services/user.service';
 import { AuthService } from '@/services/auth.service';
+import { RechargeDialogService } from '@/services/recharge-dialog.service';
 
 @Component({
   selector: 'app-recharge',
@@ -27,12 +28,13 @@ export class RechargeComponent implements OnInit {
 
   constructor(
     private rechargeService: RechargeService,
+    private rechargeDialogService: RechargeDialogService,
     private userService: UserService,
     private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
-    this.rechargeService.showRechargeModal$.subscribe(() => {
+    this.rechargeDialogService.rechargeDialogObserver$.subscribe(() => {
       this.isRechargeVisible = true;
     });
   }
